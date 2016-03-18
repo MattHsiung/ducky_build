@@ -22,7 +22,7 @@ module.exports = function (app) {
 
     } else {
         //authenticate user in mongoose
-        User.validateUser(req.body)
+        User.validateStreamingUser(req.body)
             .then( function (user){
                 var token = tokenGenerator.createToken({uid: user.email });
                 console.log('token is:' + token);
@@ -33,6 +33,5 @@ module.exports = function (app) {
                 res.status(401).send(err.message);
             })
     }
-
 });
 }
