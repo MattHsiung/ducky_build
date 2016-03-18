@@ -23,10 +23,12 @@
     <link rel="stylesheet" id="ppstyle" type="text/css" href="./browser/style.css">
     <link rel="stylesheet" id="ppstyle" type="text/css" href="./browser/style2.css">
     <link rel='stylesheet' href='./browser/css/font-awesome.min.css'/>
+    <link rel='stylesheet' href='/js/utils/angular-bootstrap-nav-tree/dist/abn_tree.css'/>    
     <link href='http://fonts.googleapis.com/css?family=Ubuntu&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <script src="./browser/js/jquery-2.1.0.min.js"></script>
     <script src="./browser/js/bootstrap.js"></script>
     <script src="./browser/js/blocs.js"></script>
+   	<script src="/js/utils/angular-bootstrap-nav-tree/dist/abn_tree_directive.js"></script>   	
 </head>
 <body ng-app="FullstackGeneratedApp">
 <!-- Main container -->
@@ -72,8 +74,8 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="embed-responsive embed-responsive-16by9">
-					<iframe class="embed-responsive-item" src="https://player.vimeo.com/video/111507117" frameborder="0">
-					</iframe>
+					<!-- <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/111507117" frameborder="0">
+					</iframe> -->
 				</div>
 			</div>
 		</div>
@@ -168,35 +170,38 @@
 						</h4>
 					</div>
 					<div class="panel-body"  ng-controller="AccordionDemoCtrl">
-						<script type="text/ng-template" id="directoryTree">
-						   <span ng-if='value.content'>{{ key }}</span>
+						<!--<script type="text/ng-template" id="directoryTree">
+						   // <span ng-if='value.content'>{{ key }}</span>
 
-						   <uib-accordion  ng-if="!value.content">
-						       <uib-accordion-group heading="title" ng-repeat="(key,value) in value" ng-include="'directoryTree'"></uib-accordion-group>
-						   </uib-accordion >
-						</script>
+						   // <uib-accordion  ng-if="!value.content">
+						   //     <uib-accordion-group heading="title" ng-repeat="(key,value) in value" ng-include="'directoryTree'"></uib-accordion-group>
+						   // </uib-accordion >
+						</script> --!>
 
-						<uib-accordion >
+						<!-- <uib-accordion >
 						    <uib-accordion-group heading="key" ng-repeat="(key,value) in directory" ng-include="'directoryTree'">stuff</uib-accordion-group>
-						</uib-accordion >
+						</uib-accordion > -->
 							<!-- <li>
 								<h5 class="mg-md tc-white">
 									<span class="fa fa-file-code-o icon-1315"> Folder</span> 
 								</h5>
 							</li> -->
 						<!-- <pre>{{directory | json }}</pre> -->
-<!-- 
-						<script type="text/ng-template" id="directoryTree">
+						
+						<abn-tree tree-data="directory"></abn-tree>
+
+						<!-- // <script type="text/ng-template" id="directoryTree">
 						   
-						   <span ng-if='value.content'>{{ key }}</span>
+						//    <span ng-if='value.content'>{{ key }}</span>
 
-						   <ul ng-if="!value.content">
-						       <li ng-repeat="(key,value) in value" ng-include="'directoryTree'"></li>
-						   </ul>
+						//    <ul ng-if="!value.content">
+						//    		<span>{{ key }}</span>
+						//        <li ng-repeat="(key,value) in value" ng-include="'directoryTree'"></li>
+						//    </ul>
 
-						</script>
-
-						<ul>
+						// </script>
+ -->
+						<!-- <ul>
 						    <li ng-repeat="(key,value) in directory" ng-include="'directoryTree'"></li>
 						</ul> -->
 					</div>
