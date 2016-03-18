@@ -9,7 +9,8 @@ var UserModel = mongoose.model('User');
 
 var ENABLED_AUTH_STRATEGIES = [
     'local',
-    'ducky-module'
+    'ducky-module',
+    'stream'
     //'twitter',
     //'facebook',
     //'google'

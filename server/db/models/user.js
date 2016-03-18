@@ -41,33 +41,33 @@ var schema = new mongoose.Schema({
 function validateEmail(email) {
    var emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
    return emailRegex.test(email);
-}
+};
 
 schema.statics.validateStreamingUser = function (data){
     console.log(data);
     return this.findOne({email : data.email})
         .then(function (user){
-            var encrypted = encryptedPassword(data.password, user.salt);
+            var encrypted = encryptPassword(data.password, user.salt);
             if(!user) throw Error('Not a valid email & password');
             //TODO use once signup ready
             //if(user.password !== encrypted) throw new Error('Not a valid email & password');
             if(user.password !== data.password) throw new Error('Not a valid email & password');
             return user;
         })
-}
+};
 
 // method to remove sensitive information from user objects before sending them out
-schema.methods.sanitize =  function () {
+schema.methods.sanitize = function () {
     return _.omit(this.toJSON(), ['password', 'salt']);
 };
 
 // generateSalt, encryptPassword and the pre 'save' and 'correctPassword' operations
 // are all used for local authentication security.
-var generateSalt = function () {
+function generateSalt() {
     return crypto.randomBytes(16).toString('base64');
 };
 
-var encryptPassword = function (plainText, salt) {
+function encryptPassword(plainText, salt) {
     var hash = crypto.createHash('sha1');
     hash.update(plainText);
     hash.update(salt);

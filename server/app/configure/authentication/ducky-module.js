@@ -8,7 +8,6 @@ var ducky = new Firebase("https://ducky.firebaseio.com/");
 var FirebaseTokenGenerator = require("firebase-token-generator");
 var tokenGenerator = new FirebaseTokenGenerator("Yn8pOTEBHpYwr9I4njqaN6XlFolJGBwbFRuPQH4A");
 
-
 module.exports = function (app) {
     app.post('/auth/ducky-auth', function(req, res) {
     console.log('authenticating user');
