@@ -1,7 +1,5 @@
 'use strict';
-var passport = require('passport');
 var _ = require('lodash');
-var LocalStrategy = require('passport-local').Strategy;
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var Firebase = require("firebase");
@@ -12,7 +10,7 @@ var tokenGenerator = new FirebaseTokenGenerator("Yn8pOTEBHpYwr9I4njqaN6XlFolJGBw
 
 
 module.exports = function (app) {
-    app.post('/ducky-auth', function(req, res) {
+    app.post('/auth/ducky-auth', function(req, res) {
     console.log('authenticating user');
     if(req.body.token) {
         console.log('with this token', req.body.token);

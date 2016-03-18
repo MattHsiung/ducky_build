@@ -28,6 +28,7 @@
     "express": "^4.12.0",
     "express-session": "^1.10.3",
     "firebase": "^2.4.1",
+    "firebase-token-generator": "^2.0.0",
     "gaze": "^1.0.0",
     "gulp": "^3.8.11",
     "gulp-babel": "^5.1.0",
