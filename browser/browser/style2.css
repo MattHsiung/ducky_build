@@ -21,6 +21,14 @@
     margin:0;
 }
 
+#directory{
+	overflow: scroll;
+	position: absolute;
+	top: 40px;
+	bottom: 40px;
+
+}
+
 #code-editor .panel-footer{
 	position: absolute;
     right: 0;
@@ -28,7 +36,6 @@
     left: 0;
 }
 #editor{
-	top:;
 }
 
 body > div{

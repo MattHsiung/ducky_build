@@ -169,41 +169,8 @@
 							Project Directory
 						</h4>
 					</div>
-					<div class="panel-body"  ng-controller="AccordionDemoCtrl">
-						<!--<script type="text/ng-template" id="directoryTree">
-						   // <span ng-if='value.content'>{{ key }}</span>
-
-						   // <uib-accordion  ng-if="!value.content">
-						   //     <uib-accordion-group heading="title" ng-repeat="(key,value) in value" ng-include="'directoryTree'"></uib-accordion-group>
-						   // </uib-accordion >
-						</script> --!>
-
-						<!-- <uib-accordion >
-						    <uib-accordion-group heading="key" ng-repeat="(key,value) in directory" ng-include="'directoryTree'">stuff</uib-accordion-group>
-						</uib-accordion > -->
-							<!-- <li>
-								<h5 class="mg-md tc-white">
-									<span class="fa fa-file-code-o icon-1315"> Folder</span> 
-								</h5>
-							</li> -->
-						<!-- <pre>{{directory | json }}</pre> -->
-						
+					<div id="directory" class="panel-body"  ng-controller="AccordionDemoCtrl">
 						<abn-tree tree-data="directory"></abn-tree>
-
-						<!-- // <script type="text/ng-template" id="directoryTree">
-						   
-						//    <span ng-if='value.content'>{{ key }}</span>
-
-						//    <ul ng-if="!value.content">
-						//    		<span>{{ key }}</span>
-						//        <li ng-repeat="(key,value) in value" ng-include="'directoryTree'"></li>
-						//    </ul>
-
-						// </script>
- -->
-						<!-- <ul>
-						    <li ng-repeat="(key,value) in directory" ng-include="'directoryTree'"></li>
-						</ul> -->
 					</div>
 					<div class="panel-footer bgc-dark-sea-green">
 						<h4 class="mg-clear tc-dark-jungle-green ">
