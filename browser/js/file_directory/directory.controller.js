@@ -1,27 +1,46 @@
-app.controller('AccordionDemoCtrl', function ($scope, $firebaseObject ) {
+app.controller('AccordionDemoCtrl', function ($scope, $firebaseObject) {
   $scope.oneAtATime = true;
 
   $scope.headers = {
     folder:'<span>folder</span>',
     file:'<span>file</span>'
   }
-  var ref = new Firebase('https://ducky.firebaseio.com/users/ducky')
 
-  $scope.directory = $firebaseObject(ref)
+  var ref = new Firebase('https://ducky.firebaseio.com/users/ducky');
+  
+  $scope.directory = [{
+    label: "Public",
+    children: ["One","Two","Three"],
+    classes: ["special", "blue"]
+  }]
+  
+  var needed;
 
-  // ref.on("value", function(snapshot){
-  //   console.log(snapshot.val())
+  $firebaseObject(ref).$loaded()
+    .then(function(data){
+      console.log(converter(data));
+      $scope.directory = converter(data);
+    });
 
-  //   $scope.apply(function(){
-  //     $scope.directory = snapshot.val()
-      
-  //   })
+  function converter(obj) {
+    if (obj.content) {
+      return;
+    }
+    else {
+      var final = [];
 
-  //   console.log('Scope', $scope.directory)
-  // }, function (errorObject) {
-  //   console.log("The read failed: " + errorObject.code);
-  // });
+      for (var key in obj) {
+        if (obj.hasOwnProperty(key) && String(key).indexOf("$") === -1) {
+          final.push({
+            label: key,
+            children: converter(obj[key])
+          })
+        }
+      }
 
+      return final;
+    }
+  }
 
   $scope.status = {
     isFirstOpen: true,
