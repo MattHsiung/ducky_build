@@ -5,7 +5,13 @@ var _ = require('lodash');
 
 var schema = new mongoose.Schema({
     email: {
-        type: String
+        type: String,
+        required: true,
+        unique: true,
+        validate: {
+          validator: validateEmail,
+          message: "Not a valid email address"
+        }
     },
     password: {
         type: String
@@ -24,8 +30,27 @@ var schema = new mongoose.Schema({
     },
     google: {
         id: String
+    },
+    firebase: {
+        uid: String,
+        token: String
     }
 });
+
+//expect an email string
+function validateEmail(email) {
+   var emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+   return emailRegex.test(email);
+}
+
+schema.statics.validateStreamingUser = function (data){
+    return this.findOne({email : data.email})
+        .then(function (user){
+            if(!user) throw Error('Not a valid email & password');
+            if(user.password !== data.password) throw new Error('Not a valid email & password');
+            return user;
+        })
+}
 
 // method to remove sensitive information from user objects before sending them out
 schema.methods.sanitize =  function () {
