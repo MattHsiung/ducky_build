@@ -28,10 +28,10 @@ function getHeroHeight()
 {
 	var H = $(window).height(); // Window height
 	
-	if(H < heroBodyH) // If window height is less than content height
-	{
-		H = heroBodyH+100;
-	}
+	// if(H < heroBodyH) // If window height is less than content height
+	// {
+	// 	H = heroBodyH+100;
+	// }
 	return H
 }
 
