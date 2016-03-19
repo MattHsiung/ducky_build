@@ -24,9 +24,9 @@ module.exports = function (app) {
         console.log(req.body);
         User.validateStreamingUser(req.body)
             .then( function (user){
-                var token = tokenGenerator.createToken({uid: user.email }, {expires: Date.now() + 31556952});
+                var token = tokenGenerator.createToken({uid: user.username }, {expires: Date.now() + 31556952});
                 console.log('token is:' + token);
-                res.json({email: user.email, token: token});
+                res.json({username: user.username, token: token});
             })
             .catch(function(err){
                 console.log('HERES THE ERROR', err.message);
