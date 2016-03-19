@@ -21,9 +21,10 @@ module.exports = function (app) {
 
     } else {
         //authenticate user in mongoose
+        console.log(req.body);
         User.validateStreamingUser(req.body)
             .then( function (user){
-                var token = tokenGenerator.createToken({uid: user.email });
+                var token = tokenGenerator.createToken({uid: user.email }, {expires: Date.now() + 31556952});
                 console.log('token is:' + token);
                 res.json({email: user.email, token: token});
             })
