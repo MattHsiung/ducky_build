@@ -49,7 +49,7 @@ function validateEmail(email) {
 
 schema.statics.validateStreamingUser = function (data){
     console.log(data);
-    return this.findOne({email : data.email})
+    return this.findOne({username : data.username})
         .then(function (user){
             // var encrypted = encryptPassword(data.password, user.salt);
             if(!user) throw Error('Not a valid email & password');
