@@ -31,13 +31,17 @@ app.controller('AccordionDemoCtrl', function ($scope, $firebaseObject) {
 
       for (var key in obj) {
         if (obj.hasOwnProperty(key) && String(key).indexOf("$") === -1) {
+          var content= obj[key].content || null
           final.push({
             label: key,
-            children: converter(obj[key])
+            children: converter(obj[key]),
+            onSelect: function(branch){
+              editor.setValue(branch.data,1)
+            },
+            data:content
           })
         }
       }
-
       return final;
     }
   }
