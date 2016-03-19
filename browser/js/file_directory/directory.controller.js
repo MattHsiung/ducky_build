@@ -36,7 +36,7 @@ app.controller('AccordionDemoCtrl', function ($scope, $firebaseObject) {
             label: key,
             children: converter(obj[key]),
             onSelect: function(branch){
-              editor.setValue(branch.data,1)
+                if(branch.data) editor.setValue(branch.data,1)
             },
             data:content
           })
