@@ -73,6 +73,10 @@
           };
           selected_branch = null;
           select_branch = function(branch) {
+            for_each_branch(function(branch){
+              branch.selected = false
+            })
+
             if (!branch) {
               if (selected_branch != null) {
                 selected_branch.selected = false;
