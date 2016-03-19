@@ -15,12 +15,20 @@ app.controller('AccordionDemoCtrl', function ($scope, $firebaseObject) {
   }]
   
   var needed;
-
-  $firebaseObject(ref).$loaded()
+  function load(){
+    $firebaseObject(ref).$loaded()
     .then(function(data){
-      console.log(converter(data));
+      // console.log(converter(data));
       $scope.directory = converter(data);
     });
+  }
+
+  load()
+
+  var watch = $firebaseObject(ref).$watch(function(data){
+    load()
+  })
+
 
   function converter(obj) {
     if (obj.content) {
@@ -32,13 +40,24 @@ app.controller('AccordionDemoCtrl', function ($scope, $firebaseObject) {
       for (var key in obj) {
         if (obj.hasOwnProperty(key) && String(key).indexOf("$") === -1) {
           var content= obj[key].content || null
+          var selectMe=false;
+          if(key===$scope.currentFile){
+            editor.setValue(obj[key].content,1)
+            selectMe = true;
+          }
           final.push({
             label: key,
             children: converter(obj[key]),
             onSelect: function(branch){
-                if(branch.data) editor.setValue(branch.data,1)
+                if(branch.data) {
+                  console.log(branch)
+                  $scope.currentFile=branch.label
+                  editor.setValue(branch.data,1)
+                }
             },
-            data:content
+            data:content,
+            selected:selectMe
+
           })
         }
       }
