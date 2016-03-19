@@ -25,15 +25,4 @@ module.exports = function (app) {
 	    	}
 	    });
 	});
-}
-
-// { app: 'live',
-//   flashver: 'FMLE/3.0 (compatible; obs-studi',
-//   swfurl: 'rtmp://127.0.0.1/live?key=ajsdlfjsioewonvowiioefwwef',
-//   tcurl: 'rtmp://127.0.0.1/live?key=ajsdlfjsioewonvowiioefwwef',
-//   pageurl: '',
-//   addr: '10.0.2.2',
-//   clientid: '58',
-//   call: 'publish',
-//   name: 'sean',
-//   type: 'live' }
+};
