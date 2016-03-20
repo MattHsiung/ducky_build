@@ -18,7 +18,8 @@ var schema = new mongoose.Schema({
         }
     },
     password: {
-        type: String
+        type: String,
+        required: true
     },
     salt: {
         type: String
@@ -52,10 +53,10 @@ schema.statics.validateStreamingUser = function (data){
     return this.findOne({username : data.username})
         .then(function (user){
             // var encrypted = encryptPassword(data.password, user.salt);
-            if(!user) throw Error('Not a valid email & password');
+            if(!user) throw Error('Not a valid username & password');
             //TODO use once signup ready
             //if(user.password !== encrypted) throw new Error('Not a valid email & password');
-            if(user.password !== data.password) throw new Error('Not a valid email & password');
+            if(user.password !== data.password) throw new Error('Not a valid username & password');
             return user;
         })
 };
