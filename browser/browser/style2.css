@@ -28,7 +28,6 @@
     left: 0;
 }
 #editor{
-	top:;
 }
 
 body > div{
@@ -38,20 +37,86 @@ body > div{
 #sidenav{
 	position: fixed;
 	top: 0;
-	left: 0;
+	left: -250px;
 	bottom: 0;
+	padding:20px 5px;
+  	transition : 100ms left;
+  	z-index: 2;
+  	width:300px;
+}
+
+.chatWindow{
+	position: fixed;
+	top: 0;
+	right: -350px;
+	bottom: 0;
+	padding:20px 5px;
+  	transition : 100ms right;
+  	z-index: 2;
+  	width:350px;
+}
+
+.chatWindow > a{
+	right:20px;
+	position:fixed;
+	top:50px;
+	transition : 100ms right;
+}
+
+.iconMove{
+	right:360px!important;
+}
+
+.showChat {
+    right: 0px !important;
+}
+
+#sidenav .icons{
+
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
 	width:50px;
 	padding:20px 5px;
-}	
-#sidenav>div>span{
+
+}
+.rabu-special{
+	background-image: url("../img/rabu.png");
+	background-repeat: no-repeat;
+	background-position: right bottom;
+	background-blend-mode: overlay;
+}
+.area {
+	text-align: center;
+}
+.area h1{
+	font-family: 'Source Code Pro' ;
+	margin-top: 0;
+	color: rgba(0,0,0,0.3);
+	text-shadow: 0px 1px 0px white;
+}
+.show {
+    left: 0px !important;
+}
+#sidenav .icons>div>span{
 	margin-bottom: 25px;
 	display: block;
 }
-#sidenav>div>span:last-of-type{
+#sidenav .icons>div>span:last-of-type{
 	
 	position:absolute;
 	left:10px;
 	bottom:0;
+}
+
+#sidenav .area{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	width:250px;
+	padding:20px 5px;
 }
 
 .icon-bg-light{
@@ -62,4 +127,14 @@ body > div{
 	position: absolute;
 	left:50px;
 	right:0;
+  	transition : 100ms left;
+  	transition : 100ms right;
+
+}
+
+.sidebarOpen{
+	left:300px!important;
+}
+.chatOpen{
+	right:350px!important;
 }
