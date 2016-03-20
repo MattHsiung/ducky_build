@@ -1,34 +1,22 @@
-app.controller('AccordionDemoCtrl', function ($scope, $firebaseObject) {
-  $scope.oneAtATime = true;
-
-  $scope.headers = {
-    folder:'<span>folder</span>',
-    file:'<span>file</span>'
-  }
-
-  var ref = new Firebase('https://ducky.firebaseio.com/users/ducky');
+app.controller('DirectoryCtrl', function ($scope, $firebaseObject) {
+  var ref = new Firebase('https://ducky.firebaseio.com/users/jmeeker');
   
   $scope.directory = [{
-    label: "Public",
-    children: ["One","Two","Three"],
-    classes: ["special", "blue"]
+    label: "Ducky",
+    children: [{}]
   }]
   
-  var needed;
   function load(){
     $firebaseObject(ref).$loaded()
     .then(function(data){
-      // console.log(converter(data));
+      console.log(converter(data));
       $scope.directory = converter(data);
     });
   }
 
-  load()
-
   var watch = $firebaseObject(ref).$watch(function(data){
     load()
   })
-
 
   function converter(obj) {
     if (obj.content) {
@@ -36,17 +24,19 @@ app.controller('AccordionDemoCtrl', function ($scope, $firebaseObject) {
     }
     else {
       var final = [];
-
       for (var key in obj) {
         if (obj.hasOwnProperty(key) && String(key).indexOf("$") === -1) {
-          var content= obj[key].content || null
+          var content = obj[key].content || null
+          if(obj[key].type){
+            var type = key + '.'+ obj[key].type;
+          }
           var selectMe=false;
           if(key===$scope.currentFile){
             editor.setValue(obj[key].content,1)
             selectMe = true;
           }
           final.push({
-            label: key,
+            label: type||key,
             children: converter(obj[key]),
             onSelect: function(branch){
                 if(branch.data) {
@@ -57,16 +47,11 @@ app.controller('AccordionDemoCtrl', function ($scope, $firebaseObject) {
             },
             data:content,
             selected:selectMe
-
           })
         }
       }
       return final;
     }
   }
-
-  $scope.status = {
-    isFirstOpen: true,
-    isFirstDisabled: false
-  };
+  load()
 });
