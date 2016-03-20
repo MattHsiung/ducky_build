@@ -1,13 +1,22 @@
 app.controller('ChannelCtrl', function ($scope, streamer, $firebaseObject) {
   $scope.username = streamer;
 
-  //Ace editor Setup
+  //ACE EDITOR SETUP
   var editor = ace.edit('editor' );
   editor.setTheme("ace/theme/monokai");
   editor.getSession().setMode("ace/mode/javascript");
   editor.$blockScrolling = Infinity
   editor.setReadOnly(true);
   editor.setShowPrintMargin(false);
+
+  //JW PLAYER SETUP
+  jwplayer.key = 'UI/JLLVJo3qYTxLMSXu9hiyaEAY/jkFCLR+38A==';
+  var playerInstance = jwplayer("streamer");
+  playerInstance.setup({
+      file: "rtmp://192.168.68.8/live/stream",
+      width: "100%",
+      aspectratio: "16:9"
+    });
 
   $scope.oneAtATime = true;
 
