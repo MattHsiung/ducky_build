@@ -7,7 +7,9 @@
                     <!-- <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/111507117" frameborder="0">
                     </iframe> -->
                     <!-- <video width="1400" src="http://192.168.1.186:1234" autoplay type="video/ogg; codecs=theora"></video> -->
+
                     <div id="streamer"></div>
+
                 </div>
             </div>
         </div>
@@ -95,13 +97,13 @@
     <div class="container">
         <div class="row collapse" id="code-editor">
             <div class="col-sm-3">
-                <div ng-model="streamer" class="panel bgc-dark-jungle-green panel-sq">
+                <div class="panel bgc-dark-jungle-green panel-sq">
                     <div class="panel-heading bgc-deep-carmine-pink">
                         <h4 class="mg-clear tc-dark-jungle-green ">
                             Project Directory
                         </h4>
                     </div>
-                    <div id="directory" class="panel-body" >
+                    <div id="directory" class="panel-body">
                         <abn-tree tree-data="directory"></abn-tree>
                     </div>
                     <div class="panel-footer bgc-dark-sea-green">
@@ -112,7 +114,7 @@
                 </div>
             </div>
             <div class="col-sm-9">
-                <div id="editor">function(){}</div>
+                <div id="editor">Click on a file to see some code!</div>
             </div>
         </div>
     </div>
@@ -193,6 +195,8 @@
     </div>
 </div>
 
-<script type="text/javascript" src="./browser/app.js"></script>
-<script type="text/javascript">
-</script>
+<!-- bloc-7 END -->
+</div>
+<div class="chatWindow bgc-dark-jungle-green" ng-controller="chatController" chat-directive="state">
+<a class="fa icon-bg-light icon-md" ng-class="{'fa-caret-right':state, 'fa-caret-left':!state, 'iconMove':state }" ng-click="toggleState()"></a>
+</div>

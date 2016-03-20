@@ -14,6 +14,8 @@
     <script src="/socket.io-client/socket.io.js"></script>
     <script src="/main.js"></script>
 <!-- divy-->
+    <script type="text/javascript" src="./browser/app.js"></script>
+    <script type="text/javascript"></script>
     <meta charset="utf-8">
     <meta name="keywords" content="">
     <meta name="description" content="">
@@ -24,30 +26,32 @@
     <link rel="stylesheet" id="ppstyle" type="text/css" href="./browser/style2.css">
     <link rel="stylesheet" id="ppstyle" type="text/css" href="./style.css">
     <link rel='stylesheet' href='./browser/css/font-awesome.min.css'/>
-    <!-- <link rel='stylesheet' href='/js/utils/angular-bootstrap-nav-tree/dist/abn_tree.css'/> -->
     <link href='http://fonts.googleapis.com/css?family=Ubuntu&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <script src="https://cdn.jsdelivr.net/ace/1.2.3/min/ace.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="/utils/jwplayer/jwplayer.js"></script>
     <script src="./browser/js/jquery-2.1.0.min.js"></script>
     <script src="./browser/js/bootstrap.js"></script>
     <script src="./browser/js/blocs.js"></script>
-    <!-- <script src="/js/utils/angular-bootstrap-nav-tree/dist/abn_tree_directive.js"></script> -->
 </head>
 <body ng-app="FullstackGeneratedApp">
 <!-- Main container -->
-<div class="bgc-dark-jungle-green" id="sidenav">
+<div class="bgc-dark-jungle-green" id="sidenav" ng-controller="SidebarController" sidebar-directive="state">
+    <div class="area bgc-deep-carmine-pink rabu-special">
+    <h1>DUCKY.</h1>
+    </div>
+    <div class="icons">
     <div class="text-center">
-        <span class="fa fa-caret-right icon-bg-light icon-md"></span>
+        <a class="fa icon-bg-light icon-md" ng-class="{'fa-caret-right':!state, 'fa-caret-left':state }" ng-click="toggleState()"></a>
         <span class="fa fa-user icon-deep-carmine-pink icon-md"></span>
         <span class="fa fa-search icon-deep-carmine-pink icon-md"></span>
         <span class="fa fa-file-code-o icon-deep-carmine-pink icon-md"></span>
         <span class="fa fa-comment icon-deep-carmine-pink icon-md"></span>
         <span class="fa fa-github-alt icon-deep-carmine-pink icon-md"></span>
         <span class="fa fa-cog icon-bg-light icon-md"></span>
-
+    </div>
     </div>
 </div>
-<div class="page-container">
+<div class="page-container" ng-class="{'sidebarOpen': sidebar, 'chatOpen': chat}">
 
 <!-- bloc-0 -->
 <div class="bloc bgc-dark-sea-green d-bloc" id="bloc-0">
@@ -71,8 +75,6 @@
 </div>
 <!-- bloc-0 END -->
 <ui-view></ui-view>
-<!-- bloc-7 END -->
-</div>
 <!-- Main container END -->
 </body>
 
