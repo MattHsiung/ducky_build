@@ -1,3 +1,23 @@
+<!-- bloc-0 -->
+<div class="bloc bgc-dark-sea-green d-bloc" id="bloc-0">
+    <div class="container bloc-sm">
+        <div class="row">
+            <div class="col-sm-1">
+                <div class="text-center">
+                    <span class="fa fa-terminal icon-deep-carmine-pink icon-lg"></span>
+                </div>
+            </div>
+            <div class="col-sm-10">
+                <h2 class="mg-md tc-dark-jungle-green ">
+                    Working on Capstone!!! =]
+                </h2>
+                <h4 class="mg-md tc-wenge ">
+                    Franklin Lee working in Javascript on Back-End
+                </h4>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- bloc-1 -->
 <div class="bloc bgc-white l-bloc" id="bloc-1">
     <div class="container">
@@ -7,7 +27,6 @@
                     <!-- <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/111507117" frameborder="0">
                     </iframe> -->
                     <!-- <video width="1400" src="http://192.168.1.186:1234" autoplay type="video/ogg; codecs=theora"></video> -->
-
                     <div id="streamer"></div>
 
                 </div>
@@ -22,7 +41,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-2">
-                <a href="index.html" class="btn   btn-deep-carmine-pink btn-sq btn-block"><span class="fa fa-heart-o icon-spacer"></span>Follow</a>
+                <a href="index.html" class="btn   btn-deep-carmine-pink btn-sq btn-block"><span class="fa fa-heart-o icon-spacer"></span>Follow {{username}}</a>
             </div>
             <div class="col-sm-2">
                 <a href="index.html" class="btn   btn-dark-jungle-green btn-sq btn-block">Subscribe</a>
@@ -80,20 +99,6 @@
 <!-- bloc-4 -->
 <div class="bloc bgc-outer-space d-bloc tc-white" id="bloc-4">
 
-<script type="text/ng-template" id="group-template.html">
-    <div class="panel {{panelClass || 'panel-default'}}">
-      <div class="panel-heading">
-        <h4 class="panel-title" style="color:#fa39c3">
-          <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading"><span
-            ng-class="{'text-muted': isDisabled}">{{heading}}</span></a>
-        </h4>
-      </div>
-      <div class="panel-collapse collapse" uib-collapse="!isOpen">
-        <div class="panel-body" style="text-align: right" ng-transclude></div>
-      </div>
-    </div>
-  </script>
-
     <div class="container">
         <div class="row collapse" id="code-editor">
             <div class="col-sm-3">
@@ -104,7 +109,7 @@
                         </h4>
                     </div>
                     <div id="directory" class="panel-body">
-                        <abn-tree tree-data="directory"></abn-tree>
+                        <abn-tree tree-data="directory" intial-selection="{{currentFile}}"></abn-tree>
                     </div>
                     <div class="panel-footer bgc-dark-sea-green">
                         <h4 class="mg-clear tc-dark-jungle-green ">

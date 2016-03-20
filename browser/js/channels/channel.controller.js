@@ -13,41 +13,31 @@ app.controller('ChannelCtrl', function ($scope, streamer, $firebaseObject) {
   jwplayer.key = 'UI/JLLVJo3qYTxLMSXu9hiyaEAY/jkFCLR+38A==';
   var playerInstance = jwplayer("streamer");
   playerInstance.setup({
-      file: "rtmp://192.168.68.8/live/stream",
+      file: "rtmp://192.168.68.8/live/" +  streamer,
       width: "100%",
       aspectratio: "16:9"
     });
 
-  $scope.oneAtATime = true;
-
-  $scope.headers = {
-    folder:'<span>folder</span>',
-    file:'<span>file</span>'
-  }
 
   var ref = new Firebase('https://ducky.firebaseio.com/users/' + streamer);
 
   $scope.directory = [{
-    label: "Public",
-    children: ["One","Two","Three"],
-    classes: ["special", "blue"]
+    label: "Ducky",
+    children: [{}]
   }]
 
-  var needed;
   function load(){
     $firebaseObject(ref).$loaded()
     .then(function(data){
-      // console.log(converter(data));
+      console.log('loading');
       $scope.directory = converter(data);
     });
   }
 
-  load()
-
   var watch = $firebaseObject(ref).$watch(function(data){
+    console.log('watching');
     load()
   })
-
 
   function converter(obj) {
     if (obj.content) {
@@ -55,38 +45,38 @@ app.controller('ChannelCtrl', function ($scope, streamer, $firebaseObject) {
     }
     else {
       var final = [];
-
       for (var key in obj) {
         if (obj.hasOwnProperty(key) && String(key).indexOf("$") === -1) {
-          var content= obj[key].content || null
+          var content = obj[key].content || null
+          if(obj[key].type){
+            var type = key + '.'+ obj[key].type;
+          }
           var selectMe=false;
-          if(key===$scope.currentFile){
+
+          if(key + '.'+ obj[key].type === $scope.currentFile){
             editor.setValue(obj[key].content,1)
             selectMe = true;
           }
+          console.log('selectMe', selectMe, 'type', type);
           final.push({
-            label: key,
+            label: type||key,
             children: converter(obj[key]),
             onSelect: function(branch){
                 if(branch.data) {
                   console.log(branch)
-                  $scope.currentFile=branch.label
+                  $scope.currentFile=branch.label;
+                  console.log('$scopecurrentfile', $scope.currentFile);
                   editor.setValue(branch.data,1)
                 }
             },
             data:content,
             selected:selectMe
-
           })
         }
       }
       return final;
     }
   }
-
-  $scope.status = {
-    isFirstOpen: true,
-    isFirstDisabled: false
-  };
+  // load()
 
 });
