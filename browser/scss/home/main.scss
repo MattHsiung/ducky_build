@@ -1,0 +1,101 @@
+#home {
+	font-family: "proxima-nova",sans-serif;
+
+	.home-header {
+		background-color: $primary-light;
+		width: 100%;
+		height: 40vh;
+
+		h1	{
+			margin: 0;
+			font-size: 10em;
+			font-family: 'Raleway', sans-serif;
+			font-style: normal;
+			font-weight: 900;
+			// text-transform: uppercase;
+			color: white;
+			color: $secondary-dark;
+			padding-top: .3em;
+		}
+
+		h2 {
+			margin: 0;
+			color: #fff;
+		}
+
+		.header-content {
+			width: 80%;
+			margin: 0 auto;
+		}
+	}
+
+	.featured-streams {
+		text-align: center;
+		margin: 0 auto;
+		width: 80%;
+		padding-top: 3em;
+
+		h3 {
+			margin: 0;
+			font-family: "proxima-nova",sans-serif;
+			font-size: 3em;
+			font-weight: 700;
+		}
+
+		h4 {
+			color: #999;
+			font-family: "proxima-nova",sans-serif;
+			font-size: 1.6em;
+		}
+	}
+
+	.info {
+		height: 60vh;
+		background-color: $tertiary;
+	}
+
+	.streams-list {
+		display: -webkit-flex; /* Safari */
+		display: flex;
+		-webkit-flex-direction: row; /* Safari */
+		flex-direction: row;
+		-webkit-flex-wrap: wrap; /* Safari */
+		flex-wrap: wrap;
+		-webkit-justify-content: space-between; /* Safari */
+		justify-content:         space-between;
+		margin-top: 3em;
+	}
+
+	.stream-card {
+		flex: 0 0 23%;
+		margin-bottom: 3em;
+
+		img {
+			width: 100%;
+			height: auto;
+		}
+
+		a {
+			width: 100%;
+			height: 100%;
+		}
+
+		.stream-info {
+			padding-top: .5em;
+			text-align: left;
+		}
+
+		h5 {
+			font-family: "proxima-nova",sans-serif;
+			font-weight: 700;
+			font-size: 1.5em;
+			color: #333;
+			margin-bottom: 0;
+		}
+
+		p {
+			color: #999;
+			font-size: 1.2em;
+		}
+	}
+}
