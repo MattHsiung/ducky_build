@@ -202,6 +202,31 @@
 
 <!-- bloc-7 END -->
 </div>
-<div class="chatWindow bgc-dark-jungle-green" ng-controller="chatController" chat-directive="state">
-<a class="fa icon-bg-light icon-md" ng-class="{'fa-caret-right':state, 'fa-caret-left':!state, 'iconMove':state }" ng-click="toggleState()"></a>
+<div class="chatWindow bgc-dark-jungle-green" chat-directive="state">
+    <a class="fa icon-bg-light icon-md" ng-class="{'fa-caret-right':show, 'fa-caret-left':!show, 'iconMove':show }" ng-click="toggle()"></a>
+    <div class="chatHeader">
+        <h3>
+            <a class="fa fa-bars pull-left" ></a>
+                {{username}}
+            <a class="fa fa-cog icon-bg-light icon-md pull-right"></a>
+        </h3>
+        
+    </div>
+    <div class="chatMessages">
+        <ul class="list-group">
+            <li class="list-group-item message" ng-repeat="message in messages">
+                <span class="messageUser">{{message.from}}: </span>
+                <span class="messageText">{{message.content}}</span>
+                <br>
+                <span class="messageText">{{convertTimestamp(message.timestamp)}}</span>
+            </li>
+        </ul>
+    </div>
+    <div class="chatEnter">
+        <textarea class="chatInput" ng-model="message"></textarea>
+        <a ng-click="addMessage()" class="btn   btn-deep-carmine-pink btn-sq btn-block">
+            <span class="fa fa-comments-o icon-spacer"></span>Send
+        </a>
+    </div>
+
 </div>
