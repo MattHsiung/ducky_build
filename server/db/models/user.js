@@ -17,6 +17,9 @@ var schema = new mongoose.Schema({
           message: "Not a valid email address"
         }
     },
+    following: [{
+        type: mongoose.Schema.Types.ObjectId, ref: 'User'
+    }],
     password: {
         type: String,
         required: true
@@ -37,7 +40,6 @@ var schema = new mongoose.Schema({
         id: String
     },
     firebase: {
-        uid: String,
         token: String
     }
 });
