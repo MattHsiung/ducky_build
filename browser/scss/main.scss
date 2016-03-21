@@ -6,8 +6,6 @@ $secondary-light:#DCD34B;
 $secondary-dark:#FFD501;
 $tertiary:#FF5F41;
 
-
-
 * {
   box-sizing: border-box;
 }
@@ -27,6 +25,10 @@ body {
 #main {
   padding-top: 60px;
   margin: 0 auto;
+}
+
+#sidenav {
+	background-color: #333;
 }
 
 @import 'directives/main';
