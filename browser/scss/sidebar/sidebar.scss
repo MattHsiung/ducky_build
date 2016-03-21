@@ -1,0 +1,40 @@
+#sidenav {
+    background-color: #333;
+    font-family: "proxima-nova",sans-serif;
+    color: white;
+    text-align: left;
+    h3 {
+        font-family: "proxima-nova",sans-serif;
+        margin-bottom: 1.5em;
+        font-size: 1.2em;
+    }
+    .area {
+        padding-left: 2em;
+        text-align: left;
+        li {
+            list-style: none;
+            margin-bottom:  1em;
+            a {
+                color: white;
+            }
+        }
+        span {
+            color: $secondary-dark;
+            padding-right: 1.2em;
+            font-size: 1.2em;
+        }
+    }
+    .nav-headers {
+        text-transform: uppercase;
+        font-size: 1.2em;
+    }
+    .user-options, .browse-options {
+         border-bottom: 1px solid grey;
+    }
+    .user-options {
+
+    }
+    .browse-options {
+
+    }
+}

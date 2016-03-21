@@ -34,10 +34,28 @@
 <body ng-app="FullstackGeneratedApp">
 <!-- Main container -->
 <div class="bgc-dark-jungle-green" id="sidenav" ng-controller="SidebarController" sidebar-directive="state">
-    <div class="area bgc-deep-carmine-pink rabu-special">
-    <h1>DUCKY.</h1>
+    <div class="area">
+        <h1>DUCKY</h1>
+        <div>
+            <input>Search</input>
+        </div>
+        <h3 >Username</h3>
+        <ul class="user-options">
+            <li><a href="#"><span class="fa fa-user"></span>Profile</a></li>
+            <li><a href="#"><span class="fa fa-plus"></span>Following</a></li>
+        </ul>
+        <h3 class="nav-headers">Browse</h3>
+        <ul class="browse-options">
+            <li><a href="#"><span class="fa fa-file-code-o"></span>Languages</a></li>
+            <li><a href="#"><span class="fa fa-play"></span>Channels</a></li>
+            <li><a href="#"><span class="fa fa-video-camera"></span>Videos</a></li>
+        </ul>
+        <h3 class='nav-headers'>Recommended Channels</h3>
     </div>
-    <div class="icons">
+    <div ng-if="sidebar" class="icons">
+        <a class="fa icon-bg-light icon-md" ng-class="{'fa-caret-right':!state, 'fa-caret-left':state }" ng-click="toggleState()"></a>
+    </div>
+    <div ng-if="!sidebar" class="icons">
     <div class="text-center">
         <a class="fa icon-bg-light icon-md" ng-class="{'fa-caret-right':!state, 'fa-caret-left':state }" ng-click="toggleState()"></a>
         <span ui-sref="user_dashboard" class="fa fa-user icon-deep-carmine-pink icon-md"></span>
