@@ -7,8 +7,8 @@ var User = mongoose.model('User');
 //get All streamers, search by firebaseId
 router.get('/allStreamers', (req, res, next) => {
     User.find({ firebase: { $exists: true } }).populate('following').sort()
-        .then( streamers => res.json(streamers))
-        .catch( err => next(err))
+    .then( streamers => res.json(streamers))
+    .catch( err => next(err))
 })
 
 //get all followers for a specific user
@@ -18,20 +18,21 @@ router.get('/:userid/followers', (req, res, next) => {
     .catch( err => next(err))
 })
 
+//userid should be logged in user, user to follow should be streamer to follow
 router.put('/:userid/followers/:userToFollowId', (req, res, next) => {
     User.findById(req.params.userid)
-        .then(user => {
-            return user.following.push(req.params.userToFollowId).save()
-        })
-        .then(updatedUser => res.status(201).json(updatedUser))
-        .catch( err => next(err))
+    .then(user => {
+        return user.following.push(req.params.userToFollowId).save()
+    })
+    .then(updatedUser => res.status(201).json(updatedUser))
+    .catch( err => next(err))
 })
 
 //get a user by ID
 router.get('/:userid', (req, res, next) => {
     User.findById(req.params.userid).populate('following')
-        .then( user => res.json(user))
-        .catch( err => next(err))
+    .then( user => res.json(user))
+    .catch( err => next(err))
 })
 
 //edit a user by ID
