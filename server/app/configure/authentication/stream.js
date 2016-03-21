@@ -12,6 +12,7 @@ var tokenGenerator = new FirebaseTokenGenerator("Yn8pOTEBHpYwr9I4njqaN6XlFolJGBw
 module.exports = function (app) {
     app.post('/auth/stream', function(req, res) {
 	    console.log('authenticating stream');
+
         var key = req.body.name;
 	    ducky.authWithCustomToken(key, function(error, authData) {
 	    	if (error) {
