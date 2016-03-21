@@ -27,7 +27,8 @@ module.exports = function (app) {
                 var token = tokenGenerator.createToken({uid: user.username }, {expires: Date.now() + 31556952});
                  console.log('token is:' + token);
                 //store token in mongo so we know they are streamers
-                return user.firebase({token: token}).save()
+                user.firebase.token = token;
+                return user.save()
                 .then(user => res.json({username: user.username, token: token}));
             })
             .catch(function(err){
