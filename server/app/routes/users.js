@@ -4,6 +4,13 @@ module.exports = router;
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
+//get ALL users, no matter who they are
+router.get('/', (req, res, next) => {
+    User.find({}).populate('following').sort()
+    .then( users => res.json(users))
+    .catch( err => next(err))
+})
+
 //get All streamers, search by firebaseId
 router.get('/allStreamers', (req, res, next) => {
     User.find({ firebase: { $exists: true } }).populate('following').sort()
