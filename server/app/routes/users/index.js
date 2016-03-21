@@ -59,5 +59,3 @@ router.delete('/:userid', (req, res, next) => {
     .then(() => res.sendStatus(401))
     .catch( err => next(err))
 })
-
-
