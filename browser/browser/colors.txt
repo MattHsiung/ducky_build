@@ -1,0 +1,7 @@
+colors:
+light blue:#00BFE8
+yellow: #FFD501
+dark yellow: #DCD34B
+med blue: #016BBF
+dark blue: #22507D
+orange: #FF5F41

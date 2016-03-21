@@ -1,3 +1,13 @@
+$primary:#016BBF;
+$primary-light: #00BFE8;
+$primary-dark: #22507D;
+$secondary:#FFD501;
+$secondary-light:#DCD34B;
+$secondary-dark:#FFD501;
+$tertiary:#FF5F41;
+
+
+
 * {
   box-sizing: border-box;
 }
@@ -24,3 +34,5 @@ body {
 @import 'about/main';
 @import 'tutorial/main';
 @import 'login/main';
+@import 'channel/channel';
+@import 'master/master';
