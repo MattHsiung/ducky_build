@@ -20,10 +20,14 @@ router.get('/:userid/followers', (req, res, next) => {
 
 //userid should be logged in user, user to follow should be streamer to follow
 router.put('/:userid/followers/:userToFollowId', (req, res, next) => {
-    User.findById(req.params.userid)
-    .then(user => {
-        return user.following.push(req.params.userToFollowId).save()
-    })
+    User.findOne({id: req.params.userid}, { $addToSet: {following: req.params.userToUnfollowId} } )
+    .then(updatedUser => res.status(201).json(updatedUser))
+    .catch( err => next(err))
+})
+
+//userid should be logged in user, user to follow should be streamer to follow
+router.delete('/:userid/followers/:userToUnfollowId', (req, res, next) => {
+    User.findById({id: req.params.userid}, {$pull: {following: req.params.userToUnfollowId} })
     .then(updatedUser => res.status(201).json(updatedUser))
     .catch( err => next(err))
 })
