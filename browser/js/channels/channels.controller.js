@@ -1,4 +1,4 @@
-app.controller('ChannelsCtrl', function ($scope, $firebaseObject) {
+app.controller('ChannelsCtrl', function ($window, $scope, $firebaseObject) {
     var ref = new Firebase('https://ducky.firebaseio.com/users/');
 
     var activeChannels = [];
@@ -12,5 +12,8 @@ app.controller('ChannelsCtrl', function ($scope, $firebaseObject) {
        });
     $scope.channels = activeChannels;
     });
+    
+
 
 });
+

@@ -203,3 +203,83 @@ body > div{
 	width:100%;
 	height:90px;
 }
+/*-----CHANNELS--------*/
+.fill-vh-fixed{
+	max-height: 100vh;
+	overflow: hidden;
+}
+.fixed-top{
+	position: fixed;
+}
+
+.channel-thumb{
+	background-color: black;
+	background-blend-mode: multiply;
+	background-size: auto 100%;
+	background-position: center center;
+	background-repeat: no-repeat;
+	opacity:1;
+	height: 40vh;
+	box-shadow: 1px 10px 30px rgba(0,0,0,0.4)!important;
+	background-color: $secondary-light;
+	margin-bottom:50px;
+	
+}
+
+.channel-thumb .panel-heading{
+	background-color:#444;
+	color:white;
+}
+
+.channel-thumb-body{
+	opacity: 0;
+}
+.channel-thumb-body:hover{
+	opacity: 1;
+}
+.i-red{
+	color: red;
+}
+
+.cloud{
+	/*background-image:  url('img/sky.png') !important;*/
+	background-color:$primary-light!important;
+	height: 100vh;
+	overflow: scroll;
+}
+
+.bg-js{
+	background-image: url('img/languages/js.png');
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: center center;
+	height:100vh;
+}
+.bg-html{
+	background-image: url('img/languages/html.png');
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: center center;
+	height: 100vh;
+}
+.bg-css{
+	background-image: url('img/languages/css.png');
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: center center;
+	height: 100vh;
+}
+
+
+.cloud .bloc-sm{
+	padding:20px 0px;
+}
+
+#search{
+	margin-top:15px;
+}
+
+
+
+
+

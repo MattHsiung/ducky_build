@@ -13,12 +13,11 @@ body{
 }
 a:hover{text-decoration: none; cursor:pointer;}
 
-a,button{outline: none!important;} /* Prevent ugly blue glow on chrome and safari */
+a,button{outline: none!important;} /* Prevent ugly blue glow on chrome and safari */   
 
-
-   
-
-
+.fill-vh{
+	min-height: 100vh;
+}
 
 
 /* Globals type styling */

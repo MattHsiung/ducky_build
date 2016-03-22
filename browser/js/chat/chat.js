@@ -53,5 +53,4 @@ app.directive('chatDirective', function($rootScope, chatFactory) {
 app.factory('chatFactory',['$firebaseArray',function ($firebaseArray) {
     var ref = new Firebase('https://ducky.firebaseio.com/chat/jmeeker');
     return $firebaseArray(ref)
-
-}])
+}]);
