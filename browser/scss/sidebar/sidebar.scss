@@ -9,11 +9,19 @@
         font-size: 1.2em;
     }
     .area {
-        padding-left: 2em;
+        padding-left: 1em;
+        padding-right: 1em;
         text-align: left;
+        ul{
+            padding-left: 0;
+        }
         li {
+            padding: .5em 0;
+            padding-left: 2em;
+            &:hover {
+               background-color: RGBA(0,0,0,.4);
+            }
             list-style: none;
-            margin-bottom:  1em;
             a {
                 color: white;
             }
@@ -37,4 +45,12 @@
     .browse-options {
 
     }
+    .active {
+        border-left: 2px solid $primary-light;
+        background-color: RGBA(0,0,0,.4);
+    }
+}
+
+.icon-secondary {
+    color: $secondary;
 }
