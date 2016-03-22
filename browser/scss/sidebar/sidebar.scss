@@ -1,0 +1,56 @@
+#sidenav {
+    background-color: #333;
+    font-family: "proxima-nova",sans-serif;
+    color: white;
+    text-align: left;
+    h3 {
+        font-family: "proxima-nova",sans-serif;
+        margin-bottom: 1.5em;
+        font-size: 1.2em;
+    }
+    .area {
+        padding-left: 1em;
+        padding-right: 1em;
+        text-align: left;
+        ul{
+            padding-left: 0;
+        }
+        li {
+            padding: .5em 0;
+            padding-left: 2em;
+            &:hover {
+               background-color: RGBA(0,0,0,.4);
+            }
+            list-style: none;
+            a {
+                color: white;
+            }
+        }
+        span {
+            color: $secondary-dark;
+            padding-right: 1.2em;
+            font-size: 1.2em;
+        }
+    }
+    .nav-headers {
+        text-transform: uppercase;
+        font-size: 1.2em;
+    }
+    .user-options, .browse-options {
+         border-bottom: 1px solid grey;
+    }
+    .user-options {
+
+    }
+    .browse-options {
+
+    }
+    .active {
+        border-left: 2px solid $primary-light;
+        background-color: RGBA(0,0,0,.4);
+    }
+}
+
+.icon-secondary {
+    color: $secondary;
+}

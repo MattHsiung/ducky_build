@@ -6,14 +6,14 @@ var User = mongoose.model('User');
 
 //get ALL users, no matter who they are
 router.get('/', (req, res, next) => {
-    User.find({}).populate('following').sort()
+    User.find({}).populate('following')
     .then( users => res.json(users))
     .catch( err => next(err))
 })
 
 //get All streamers, search by firebaseId
 router.get('/allStreamers', (req, res, next) => {
-    User.find({ firebase: { $exists: true } }).populate('following').sort()
+    User.find({ firebase: { $exists: true } }).populate('following')
     .then( streamers => res.json(streamers))
     .catch( err => next(err))
 })
@@ -59,5 +59,3 @@ router.delete('/:userid', (req, res, next) => {
     .then(() => res.sendStatus(401))
     .catch( err => next(err))
 })
-
-
