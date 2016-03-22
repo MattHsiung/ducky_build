@@ -27,14 +27,11 @@ var schema = new mongoose.Schema({
     salt: {
         type: String
     },
-    twitter: {
-        id: String,
+    github: {
+        githubId: String,
         username: String,
-        token: String,
-        tokenSecret: String
-    },
-    facebook: {
-        id: String
+        url: String,
+        accessToken: String
     },
     google: {
         id: String
