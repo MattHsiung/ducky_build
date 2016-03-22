@@ -3,6 +3,7 @@ app.controller('SidebarController', function($scope, $rootScope) {
     $scope.state = false;
     $rootScope.sidebar=false;
 
+
     $scope.setActive = function(tab){
       $scope.activetab = tab;
     }
