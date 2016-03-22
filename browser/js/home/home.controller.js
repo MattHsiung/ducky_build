@@ -4,7 +4,7 @@ app.controller('HomeCtrl', function ($scope) {
     jwplayer.key = 'UI/JLLVJo3qYTxLMSXu9hiyaEAY/jkFCLR+38A==';
     var playerInstance = jwplayer("hero-stream");
     playerInstance.setup({
-        file: "rtmp://192.168.68.8/live/",
+        file: "rtmp://10.0.2.15/live/",
         width: "100%",
         aspectratio: "16:9"
       });

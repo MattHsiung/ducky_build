@@ -1,4 +1,32 @@
 #login-form {
-  width: 60%;
-  margin: 0 auto;
+	padding: 0 2em;
+	width: 400px;
+	margin: 0 auto;
+	margin-top: 10em;
+
+	h1 {
+		font-family: $main-font;
+		font-weight: 700;
+		color: $primary-light;
+		margin-bottom: .5em;
+	}
+
+	input {
+		border-radius: 0;
+		border: 2px solid $primary-light;
+	}
+
+	label {
+		font-weight: 400;
+	}
+
+	button {
+		margin-top: .5em;
+		border-radius: 0;
+		background-color: $primary-light;
+		color: #fff;
+		border: none;
+		font-weight: 600;
+		padding: 8px 25px;
+	}
 }
