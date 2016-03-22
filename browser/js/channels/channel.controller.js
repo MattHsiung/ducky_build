@@ -13,9 +13,10 @@ app.controller('ChannelCtrl', function ($scope, streamer, $firebaseObject) {
   jwplayer.key = 'UI/JLLVJo3qYTxLMSXu9hiyaEAY/jkFCLR+38A==';
   var playerInstance = jwplayer("streamer");
   playerInstance.setup({
-      file: "rtmp://192.168.68.8/live/" +  streamer,
+      file: "rtmp://192.168.2.120/live/" +  streamer,
       width: "100%",
-      aspectratio: "16:9"
+      aspectratio: "16:9",
+      image: '/img/js_logo.jpg'
     });
 
 
