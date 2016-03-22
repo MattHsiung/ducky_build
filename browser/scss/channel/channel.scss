@@ -90,6 +90,12 @@ body > div{
 	bottom: 0px;
 	width:50px;
 	padding:20px 5px;
+    a {
+        margin-bottom: 1em;
+        &:hover {
+            color: $primary-light;
+        }
+    }
 
 }
 .rabu-special{

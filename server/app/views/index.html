@@ -36,23 +36,47 @@
 <body ng-app="FullstackGeneratedApp">
     <!-- Main container -->
     <div class="bgc-dark-jungle-green" id="sidenav" ng-controller="SidebarController" sidebar-directive="state">
-        <div class="area">
-            <h1>DUCKY</h1>
-            <div>
-                <input>Search</input>
+        <div ng-if="sidebar" class="area">
+            <div class="row title">
+              <img class="col-sm-3" ng-src="https://static.gearslutz.com/board/customavatars/avatar211639_1.gif">
+              <h1 class="col-sm-9">DUCKY</h1>
+            </div>
+            <div class='search'>
+                <span class="fa fa-search"></span>
+                <input class="embedded-search" placeholder="Search">
             </div>
             <h3>Username</h3>
             <ul class="user-options">
-                <li ng-class="{active: activetab == 'profile'}"><a href="#"><span class="fa fa-user"></span>Profile</a></li>
-                <li ng-class="{active: activetab == 'following'}"><a href="#"><span class="fa fa-plus"></span>Following</a></li>
+                <li ng-click="setActive('profile')" ui-sref="user_dashboard" ng-class="{active: activetab == 'profile'}"><a href="#"><span class="fa fa-user"></span>Profile</a></li>
+                <li ng-click="setActive('following')" ng-class="{active: activetab == 'following'}"><a href="#"><span class="fa fa-plus"></span>Following</a></li>
             </ul>
             <h3 class="nav-headers">Browse</h3>
             <ul class="browse-options">
-                <li ng-class="{active: activetab == 'languages'}"><a href="#"><span class="fa fa-file-code-o"></span>Languages</a></li>
-                <li ng-class="{active: activetab == 'channels'}"><a href="#"><span class="fa fa-play"></span>Channels</a></li>
-                <li ng-class="{active: activetab == 'videos'}"><a href="#"><span class="fa fa-video-camera"></span>Videos</a></li>
+                <li ng-click="setActive('languages')" ng-class="{active: activetab == 'languages'}"><a href="#"><span class="fa fa-file-code-o"></span>Languages</a></li>
+                <li ng-click="setActive('channels')" ng-class="{active: activetab == 'channels'}"><a href="#"><span class="fa fa-play"></span>Channels</a></li>
+                <li ng-click="setActive('videos')"ng-class="{active: activetab == 'videos'}"><a href="#"><span class="fa fa-video-camera"></span>Videos</a></li>
             </ul>
             <h3 class='nav-headers'>Recommended Channels</h3>
+            <ul class="recommended-channels">
+              <li>
+                <div class="row">
+                  <img class="col-sm-3" src="/img/js_logo.jpg">
+                  <h5 class="col-sm-9">Franklin coding in JS</h5>
+                <div>
+              </li>
+              <li>
+                <div class="row">
+                  <img class="col-sm-3" src="/img/js_logo.jpg">
+                  <h5 class="col-sm-9">Sean coding in JS</h5>
+                <div>
+              </li>
+              <li>
+                <div class="row">
+                  <img class="col-sm-3" src="/img/js_logo.jpg">
+                  <h5 class="col-sm-9">Matt coding in JS</h5>
+                <div>
+              </li>
+            </ul>
         </div>
         <div ng-if="sidebar" class="icons">
             <a class="fa icon-bg-light icon-md" ng-class="{'fa-caret-right':!state, 'fa-caret-left':state }" ng-click="toggleState()"></a>

@@ -3,7 +3,9 @@ app.controller('SidebarController', function($scope, $rootScope) {
     $scope.state = false;
     $rootScope.sidebar=false;
 
-    $scope.activetab = 'profile';
+    $scope.setActive = function(tab){
+      $scope.activetab = tab;
+    }
 
     $scope.toggleState = function() {
         $scope.state = !$scope.state;
