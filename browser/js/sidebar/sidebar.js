@@ -50,3 +50,4 @@ app.directive('sidebarDirective', function() {
         }
     };
 });
+

@@ -15,89 +15,18 @@
     <div class="featured-streams">
         <h3>Featured Streams</h3>
         <h4>Users streaming right now</h4>
+   		<div class="streams-list" ng-controller="ChannelsCtrl">
+	   		<div class="stream-card" ng-repeat="channel in channels">
+	   			<a href="#">
+	   				<img src="/img/js_logo.jpg">
+	   				<div class="stream-info">
+	   					<h5>{{channel.user}}</h1>
+	   					<p>{{channel.title}}</p>
+	   				</div>
+	   			</a>
+	   		</div>
+	   		
+	   	</div>
+   	</div>
 
-        <div class="streams-list">
-            <div class="stream-card">
-
-                <a href="#">
-                    <img src="/img/js_logo.jpg">
-                    <div class="stream-info">
-                        <h5>Stream Name</h1>
-                        <p>Lorem ipsum dollor sit amet.</p>
-                    </div>
-                </a>
-
-            </div>
-            <div class="stream-card">
-                <a href="#">
-                    <img src="/img/js_logo.jpg">
-                    <div class="stream-info">
-                        <h5>Stream Name</h1>
-                        <p>Lorem ipsum dollor sit amet.</p>
-                    </div>
-                </a>
-
-            </div>
-            <div class="stream-card">
-                <a href="#">
-                    <img src="/img/js_logo.jpg">
-                    <div class="stream-info">
-                        <h5>Stream Name</h1>
-                        <p>Lorem ipsum dollor sit amet.</p>
-                    </div>
-                </a>
-
-            </div>
-            <div class="stream-card">
-                <a href="#">
-                    <img src="/img/js_logo.jpg">
-                    <div class="stream-info">
-                        <h5>Stream Name</h1>
-                        <p>Lorem ipsum dollor sit amet.</p>
-                    </div>
-                </a>
-
-            </div>
-            <div class="stream-card">
-                <a href="#">
-                    <img src="/img/js_logo.jpg">
-                    <div class="stream-info">
-                        <h5>Stream Name</h1>
-                        <p>Lorem ipsum dollor sit amet.</p>
-                    </div>
-                </a>
-
-            </div>
-            <div class="stream-card">
-                <a href="#">
-                    <img src="/img/js_logo.jpg">
-                    <div class="stream-info">
-                        <h5>Stream Name</h1>
-                        <p>Lorem ipsum dollor sit amet.</p>
-                    </div>
-                </a>
-
-            </div>
-            <div class="stream-card">
-                <a href="#">
-                    <img src="/img/js_logo.jpg">
-                    <div class="stream-info">
-                        <h5>Stream Name</h1>
-                        <p>Lorem ipsum dollor sit amet.</p>
-                    </div>
-                </a>
-
-            </div>
-            <div class="stream-card">
-                <a href="#">
-                    <img src="/img/js_logo.jpg">
-                    <div class="stream-info">
-                        <h5>Stream Name</h1>
-                        <p>Lorem ipsum dollor sit amet.</p>
-                    </div>
-                </a>
-
-            </div>
-        </div>
-    </div>
 </section>
