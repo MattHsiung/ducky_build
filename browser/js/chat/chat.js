@@ -1,20 +1,19 @@
-// app.controller('chatController', function($scope, $rootScope) {
-    
-// });
-
-app.directive('chatDirective', function($rootScope, chatFactory) {
+app.directive('chatDirective', function($rootScope, $firebaseArray) {
     return {
         link : function(scope, element, attr) {
+
+            var ducky = new Firebase('https://ducky.firebaseio.com/chat/' + scope.username);
+
             scope.show=false;
             $rootScope.chat=false;
             scope.toggle=function(){
               scope.show=!scope.show
               $rootScope.chat=!$rootScope.chat;
-              if(scope.show)element.addClass('showChat'); 
+              if(scope.show)element.addClass('showChat');
               else element.removeClass('showChat');
             }
 
-            scope.messages = chatFactory;
+            scope.messages = $firebaseArray(ducky);
             scope.addMessage = function() {
               // $add on a synchronized array is like Array.push() except it saves to the database!
               scope.messages.$add({
@@ -50,7 +49,3 @@ app.directive('chatDirective', function($rootScope, chatFactory) {
     };
 });
 
-app.factory('chatFactory',['$firebaseArray',function ($firebaseArray) {
-    var ref = new Firebase('https://ducky.firebaseio.com/chat/jmeeker');
-    return $firebaseArray(ref)
-}]);

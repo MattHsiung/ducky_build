@@ -27,10 +27,12 @@ var seedUsers = function () {
 
     var users = [
         {
+            username: "tester",
             email: 'testing@fsa.com',
             password: 'password'
         },
         {
+            username:"potus",
             email: 'obama@gmail.com',
             password: 'potus'
         }

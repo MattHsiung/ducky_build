@@ -6,8 +6,6 @@ $secondary-light:#DCD34B;
 $secondary-dark:#FFD501;
 $tertiary:#FF5F41;
 
-
-
 * {
   box-sizing: border-box;
 }
@@ -29,6 +27,10 @@ body {
   margin: 0 auto;
 }
 
+#sidenav {
+	background-color: #333;
+}
+
 @import 'directives/main';
 @import 'home/main';
 @import 'about/main';
@@ -36,3 +38,4 @@ body {
 @import 'login/main';
 @import 'channel/channel';
 @import 'master/master';
+@import 'sidebar/sidebar';

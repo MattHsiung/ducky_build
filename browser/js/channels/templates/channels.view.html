@@ -1,5 +1,5 @@
 <div class=" fill-vh-fixed">
-<div class="bloc l-bloc bgc-white fixed-top" id="bloc-10">
+<div class="searchBar bloc l-bloc bgc-white fixed-top" id="bloc-10">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-8">
@@ -10,7 +10,7 @@
 			<div class="col-sm-4">
 				<form id="search" novalidate>
 					<div class="form-group input-group">
-						<input ng-model="search"class="form-control" placeholder="Search" />
+						<input ng-model="search.$"class="form-control" placeholder="Search" />
 						<span class="input-group-btn">
 				        	<button class="btn btn-default" type="button"><a class="fa fa-search"></a></button>
 				      	</span>
@@ -26,13 +26,12 @@
 <div class="bloc cloud" id="bloc-11">
 	<div class="container-fluid bloc-sm">
 		<div class="row bg-js">
-			<div class="col-sm-4 animated fadeIn" ng-repeat="channel in channels" >
+			<div class="col-sm-4 animated fadeIn" ng-repeat="channel in channels | filter:search:strict" >
 				<div ui-sref="channel({username: channel.username})" class="panel channel-thumb panel-sq" style="background-image: url('/img/js.png')">
 					<div class="panel-heading">
 						<h4 class="mg-clear">
 							{{channel.username}}
 							<span class="fa fa-eye pull-right">120</span>
-							<span class="fa fa-heart i-red pull-right">1230</span>
 						</h4>
 					</div>
 					<div class="panel-body channel-thumb-body">
@@ -40,6 +39,9 @@
 							Description about channel. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
 						</p>
 					</div>
+					<!-- <div class="panel-footer">
+						Hello
+					</div> -->
 				</div>
 			</div>
 		</div>

@@ -25,8 +25,11 @@ module.exports = function (app) {
         User.validateStreamingUser(req.body)
             .then( function (user){
                 var token = tokenGenerator.createToken({uid: user.username }, {expires: Date.now() + 31556952});
-                console.log('token is:' + token);
-                res.json({username: user.username, token: token});
+                 console.log('token is:' + token);
+                //store token in mongo so we know they are streamers
+                user.firebase.token = token;
+                return user.save()
+                .then(user => res.json({username: user.username, token: token}));
             })
             .catch(function(err){
                 console.log('HERES THE ERROR', err.message);

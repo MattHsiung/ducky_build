@@ -152,14 +152,24 @@ a,button{outline: none!important;} /* Prevent ugly blue glow on chrome and safar
 }
 
 /* Bloc text custom styling */
+#bloc-0{
+	font-family: 'Raleway', sans-serif;
+}
+.rale{
+	font-family: 'Raleway', sans-serif!important;
+}
 
 #bloc-0 h2{
-	font-weight: 400;
-	font-family: Ubuntu;
+	font-weight: 900!important;
+	color:$secondary!important;
+	font-size: 5rem!important;
+    text-shadow: 0px 3px 5px $primary;
 }
+
+
+
 #bloc-0 h4{
-	font-weight: 700;
-	font-family: Ubuntu;
+	color:$primary!important;
 }
 #bloc-4 h4{
 	font-weight: 700;
@@ -287,7 +297,9 @@ nav .caret{
 
 /* = Buttons
 -------------------------------------------------------------- */
-
+.btn{
+	font-size: 1.5rem;
+}
 .btn{
 	margin: 0 5px 5px 0;
 }
@@ -387,7 +399,7 @@ iframe{
 /* Background colour styles */
 
 .bgc-dark-sea-green{
-	background-color:$primary;
+	background-color:$primary-light;
 }
 .bgc-white{
 	background-color:#ffffff;
@@ -396,7 +408,7 @@ iframe{
 	background-color:$primary-dark;
 }
 .bgc-outer-space{
-	background-color:#47454B;
+	background-color:$primary-light;
 }
 .bgc-deep-carmine-pink{
 	background-color:$tertiary;
@@ -410,7 +422,7 @@ iframe{
 /* Text colour styles */
 
 .tc-dark-jungle-green{
-	color:#22507D!important;
+	color:$primary!important;
 }
 .tc-wenge{
 	color:#635555!important;
@@ -427,28 +439,28 @@ iframe{
 /* Button colour styles */
 
 .btn-deep-carmine-pink{
-	background:#ED3B3B;
-	color:#FFFFFF!important;
+	background:$secondary-dark;
+	color:$primary-light!important;
 }
 .btn-deep-carmine-pink:hover{
-	background:#be2f2f;
-	color:#FFFFFF!important;
+	background:$primary;
+	color:$tertiary!important;
 }
 .btn-dark-jungle-green{
-	background:#171E26;
+	background:$primary;
 	color:#FFFFFF!important;
 }
 .btn-dark-jungle-green:hover{
-	background:#12181e;
+	background:$primary-light;
 	color:#FFFFFF!important;
 }
 .btn-dark-sea-green{
-	background:#77B59C;
+	background:$tertiary;
 	color:#FFFFFF!important;
 }
 .btn-dark-sea-green:hover{
-	background:#5f917d;
-	color:#FFFFFF!important;
+	background:$secondary-dark;
+	color:$primary-light!important;
 }
 /* Icon colour styles */
 

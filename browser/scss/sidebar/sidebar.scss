@@ -1,0 +1,84 @@
+#sidenav {
+    background-color: #333;
+    font-family: "proxima-nova",sans-serif;
+    color: white;
+    text-align: left;
+    h3 {
+        font-family: "proxima-nova",sans-serif;
+        margin-bottom: 1em;
+        font-size: 1.2em;
+    }
+    .title {
+        margin-bottom: 1.2em;
+    }
+    .area {
+        h1 {
+            font-family: "proxima-nova",sans-serif;
+            color: white;
+        }
+        .embedded-search {
+            font-family: "proxima-nova",sans-serif;
+            background-color: RGBA(0,0,0,.4);
+            width: 100%;
+            border: 0;
+            padding: .5em 0;
+            padding-left: 2em;
+            text-indent: 2.5em;
+        }
+        .search { position: relative; }
+        .search .fa-search {
+          position: absolute;
+          top: 8px;
+          left: 2em;
+          font-size: 1.2em;
+        }
+        padding-left: 1em;
+        padding-right: 1em;
+        text-align: left;
+        ul{
+            padding-left: 0;
+        }
+        li {
+            padding: .5em 0;
+            padding-left: 2em;
+            &:last-child {
+            }
+            &:hover {
+               background-color: RGBA(0,0,0,.4);
+               border-left: 2px solid $primary-light;
+            }
+            list-style: none;
+            a {
+                text-decoration: none;
+                color: white;
+            }
+        }
+        span {
+            color: $secondary-dark;
+            padding-right: 1.2em;
+            font-size: 1.2em;
+        }
+    }
+    .nav-headers {
+        text-transform: uppercase;
+        font-size: 1.2em;
+    }
+    .user-options, .browse-options, .recommended-channels {
+         padding-bottom: 1em;
+         border-bottom: 1px solid grey;
+    }
+    .user-options {
+
+    }
+    .browse-options {
+
+    }
+    .active {
+        border-left: 2px solid $primary-light;
+        background-color: RGBA(0,0,0,.4);
+    }
+}
+
+.icon-secondary {
+    color: $secondary;
+}
