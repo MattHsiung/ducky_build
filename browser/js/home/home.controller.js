@@ -1,5 +1,6 @@
-app.controller('HomeCtrl', function ($scope) {
+app.controller('HomeCtrl', function ($scope, loggedInUser) {
 
+    $scope.user = loggedInUser;
     //JW PLAYER SETUP
     jwplayer.key = 'UI/JLLVJo3qYTxLMSXu9hiyaEAY/jkFCLR+38A==';
     var playerInstance = jwplayer("hero-stream");
