@@ -8,6 +8,7 @@
     <script src="/angular/angular.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
     <script src="/angularfire/dist/angularfire.js"></script>
+    <script src="http://cdn.jsdelivr.net/mojs/latest/mo.min.js"></script>
     <script src="/angular-animate/angular-animate.js"></script>
     <script src="/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/angular-ui-bootstrap/ui-bootstrap.js"></script>
@@ -38,14 +39,15 @@
     <div class="bgc-dark-jungle-green" id="sidenav" ng-controller="SidebarController" sidebar-directive="state">
         <div ng-if="sidebar" class="area">
             <div ui-sref="home" class="row title">
-              <img class="col-sm-3" ng-src="https://static.gearslutz.com/board/customavatars/avatar211639_1.gif">
+              <img id='ducky-icon' class="col-sm-3" ng-click="duckyAnimate()" ng-src="https://static.gearslutz.com/board/customavatars/avatar211639_1.gif">
               <h1 class="col-sm-9">DUCKY</h1>
             </div>
             <div class='search'>
                 <span class="fa fa-search"></span>
                 <input class="embedded-search" placeholder="Search">
             </div>
-            <h3>Username</h3>
+            <span ng-if="!user" ui-sref='login'>Login</span>
+            <span ng-if="user" ui-sref='user_dashboard'>{{user}}</span><span ng-if="user" class="pull-right" ng-click="logout()">Logout</span>
             <ul class="user-options">
                 <li ng-click="setActive('profile')" ui-sref="user_dashboard" ng-class="{active: activetab == 'profile'}"><a href="#"><span class="fa fa-user"></span>Profile</a></li>
                 <li ng-click="setActive('following')" ng-class="{active: activetab == 'following'}"><a href="#"><span class="fa fa-plus"></span>Following</a></li>
@@ -94,7 +96,17 @@
             });
         } catch (e) {}
         </script>
+<<<<<<< HEAD
 
+=======
+        <script>
+        //   var burst = new mojs.Burst({
+        //     shape:    'circle',
+        //     fill:     [ 'deeppink', 'cyan', 'orange' ],
+        //     x: '50%', y: '50%'
+        // });
+        </script>
+>>>>>>> master
 </body>
 <!-- Google Analytics -->
 <!-- Google Analytics END -->
