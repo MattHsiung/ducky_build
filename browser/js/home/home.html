@@ -1,21 +1,20 @@
 <section id="home">
-   	<header class="home-header">
-   		<div class="header-content">
-   			<a ng-if="user" ui-sref="login" class="log-in">Log In</a>
-	   		<h1>Ducky</h1>
-	   		<h2>ラバーダキ</h2>
-	   		<div class="stream-contain">
-		   		<div id="hero-stream">
+    <header class="home-header">
+        <div class="header-content">
+            <a ng-if="!user" ui-sref="login" class="log-in">Log In</a>
+            <h1>Ducky</h1>
+            <h2>ラバーダキ</h2>
+            <div class="stream-contain">
+                <div id="hero-stream">
 
-		   		</div>
-	   		</div>
-   		</div>
-   	</header>
+                </div>
+            </div>
+        </div>
+    </header>
 
-   	<div class="featured-streams">
-   		<h3>Featured Streams</h3>
-   		<h4>Users streaming right now</h4>
-
+    <div class="featured-streams">
+        <h3>Featured Streams</h3>
+        <h4>Users streaming right now</h4>
    		<div class="streams-list" ng-controller="ChannelsCtrl">
 	   		<div class="stream-card" ng-repeat="channel in channels">
 	   			<a href="#">
@@ -29,4 +28,5 @@
 	   		
 	   	</div>
    	</div>
+
 </section>

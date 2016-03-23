@@ -18,6 +18,29 @@
             &:hover {
             }
         }
+        .user {
+            color: white;
+            padding-left: .4em;
+            padding-bottom: 0;
+        }
+        .login, .logout {
+            width: 100%;
+            font-family: "Raleway",sans-serif;
+            font-size: 1.2em;
+            font-weight: 800;
+        }
+        .login {
+
+        }
+        .auth-panel {
+            text-align: center;
+            padding-top: 1em;
+            padding-bottom: .8em;
+            border-bottom: 1px solid grey;
+            &:hover {
+               background-color: RGBA(0,0,0,.4);
+            }
+        }
         .embedded-search {
             font-family: "proxima-nova",sans-serif;
             background-color: RGBA(0,0,0,.4);
@@ -27,7 +50,11 @@
             padding-left: 2em;
             text-indent: 2.5em;
         }
-        .search { position: relative; }
+        .search {
+            position: relative;
+            padding-bottom: 1em;
+            border-bottom: 1px solid grey;
+        }
         .search .fa-search {
           position: absolute;
           top: 8px;
@@ -69,8 +96,8 @@
          padding-bottom: 1em;
          border-bottom: 1px solid grey;
     }
-    .user-options {
-
+    .user-options > li:first-of-type {
+        margin-top: 1em;
     }
     .browse-options {
 
@@ -83,7 +110,7 @@
 
 @-webkit-keyframes thumb {
     0% { -webkit-transform: scale(1); }
-    50% { -webkit-transform: scale(0.8); }
+    50% { -webkit-transform: scale(0.7); }
     100% { -webkit-transform: scale(1); }
 }
 

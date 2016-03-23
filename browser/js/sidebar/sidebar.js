@@ -3,18 +3,27 @@ app.controller('SidebarController', function($scope, $state, $rootScope, AuthSer
     $scope.state = false;
     $rootScope.sidebar=false;
 
-    AuthService.getLoggedInUser()
-    .then(user => {
-      console.log(user)
-      if(!user) $scope.user = false;
-      else $scope.user = user.username;
+    function checkUser (){
+      AuthService.getLoggedInUser()
+        .then(user => {
+          console.log(user)
+          if(!user) $scope.user = false;
+          else $scope.user = user.username;
+        })
+    }
+
+    $scope.$on('auth-login-success', checkUser)
+    $scope.$on('auth-logout-success', () => {
+      $scope.user = false;
     })
 
     $scope.logout = function(){
       AuthService.logout()
-      .then(() => $state.go('home'))
+      .then(() => {
+        $scope.user = false;
+        $state.go('home');
+      })
     }
-
 
     $scope.setActive = function(tab){
       $scope.activetab = tab;
