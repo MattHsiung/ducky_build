@@ -1,5 +1,25 @@
-<h1>User Dashboard!</h1>
+<section id = "dashboard">	
 
-User Name : {{ user.userName }};
-User Email : {{ user.email }};
-User Followers : {{ theFollowers }};
+	<header class = "dashboard-header">
+		<h1>User Dashboard</h1>
+		<div class = "nav-bar-right">
+			<h3>Streaming Info</h3>
+			<h3>Stats</h3>
+		</div>
+   	</header>
+
+	<div class = "dashboard-main">
+
+		<div class = "information">
+			<h4 class = "info-titles">Title of your stream</h4>
+			<input placeholder="Whatever the title was before" size="50" ng-model="newData.title"></input>
+			<br>
+			<br>
+			<h4 class = "info-titles">Main Topic</h4>
+			<select placeholder="Whatever the category was before" ng-model="newData.category">
+				<option ng-repeat="category in categories">{{category}}</option>
+			</select>
+			<button ng-click="updateFirebase(newData)">Update</button>
+		</div>	
+	</div>
+</section>
