@@ -8,11 +8,11 @@
     <script src="/angular/angular.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
     <script src="/angularfire/dist/angularfire.js"></script>
-    <script src="http://cdn.jsdelivr.net/mojs/latest/mo.min.js"></script>
     <script src="/angular-animate/angular-animate.js"></script>
     <script src="/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/angular-ui-bootstrap/ui-bootstrap.js"></script>
     <script src="/angular-ui-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="//cdn.jsdelivr.net/mojs/latest/mo.min.js"></script>
     <script src="/socket.io-client/socket.io.js"></script>
     <script src="/main.js"></script>
     <!-- divy-->
@@ -46,10 +46,12 @@
                 <span class="fa fa-search"></span>
                 <input class="embedded-search" placeholder="Search">
             </div>
-            <span ng-if="!user" ui-sref='login'>Login</span>
-            <span ng-if="user" ui-sref='user_dashboard'>{{user}}</span><span ng-if="user" class="pull-right" ng-click="logout()">Logout</span>
-            <ul class="user-options">
-                <li ng-click="setActive('profile')" ui-sref="user_dashboard" ng-class="{active: activetab == 'profile'}"><a href="#"><span class="fa fa-user"></span>Profile</a></li>
+            <div class="auth-panel">
+                <span class="login text-center" ng-if="!user" ui-sref='login'>Login</span>
+                <span ng-if="user" class="logout text-center" ng-click="logout()">Logout</span>
+            </div>
+            <ul ng-if="user" class="user-options">
+                <li ng-click="setActive('profile')" ui-sref="user_dashboard" ng-class="{active: activetab == 'profile'}"><a href="#"><span class="fa fa-user"></span>{{user}}</a></li>
                 <li ng-click="setActive('following')" ng-class="{active: activetab == 'following'}"><a href="#"><span class="fa fa-plus"></span>Following</a></li>
             </ul>
             <h3 class="nav-headers">Browse</h3>
@@ -96,17 +98,6 @@
             });
         } catch (e) {}
         </script>
-<<<<<<< HEAD
-
-=======
-        <script>
-        //   var burst = new mojs.Burst({
-        //     shape:    'circle',
-        //     fill:     [ 'deeppink', 'cyan', 'orange' ],
-        //     x: '50%', y: '50%'
-        // });
-        </script>
->>>>>>> master
 </body>
 <!-- Google Analytics -->
 <!-- Google Analytics END -->
