@@ -48,14 +48,14 @@ function validateEmail(email) {
 };
 
 schema.statics.validateStreamingUser = function (data){
-    console.log(data);
+    console.log('validation', data);
     return this.findOne({username : data.username})
         .then(function (user){
-            // var encrypted = encryptPassword(data.password, user.salt);
+            console.log('user', user);
+            var encrypted = encryptPassword(data.password, user.salt);
+            console.log('salted pword', encrypted);
             if(!user) throw Error('Not a valid username & password');
-            //TODO use once signup ready
-            //if(user.password !== encrypted) throw new Error('Not a valid email & password');
-            if(user.password !== data.password) throw new Error('Not a valid username & password');
+            if(user.password !== encrypted) throw new Error('Not a valid email & password');
             return user;
         })
 };
