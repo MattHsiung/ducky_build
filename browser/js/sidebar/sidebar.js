@@ -1,17 +1,29 @@
-app.controller('SidebarController', function($scope, $rootScope) {
+app.controller('SidebarController', function($scope, $state, $rootScope, AuthService) {
+
     $scope.state = false;
     $rootScope.sidebar=false;
 
-     // var burst = new mojs.Burst({
-     //        shape:    'circle',
-     //        fill:     [ 'deeppink', 'cyan', 'orange' ],
-     //        x: '50%', y: '50%'
-     //    });
-
-    $scope.duckyAnimate = function (){
-      burst.start();
+    function checkUser (){
+      AuthService.getLoggedInUser()
+        .then(user => {
+          console.log(user)
+          if(!user) $scope.user = false;
+          else $scope.user = user.username;
+        })
     }
 
+    $scope.$on('auth-login-success', checkUser)
+    $scope.$on('auth-logout-success', () => {
+      $scope.user = false;
+    })
+
+    $scope.logout = function(){
+      AuthService.logout()
+      .then(() => {
+        $scope.user = false;
+        $state.go('home');
+      })
+    }
 
     $scope.setActive = function(tab){
       $scope.activetab = tab;

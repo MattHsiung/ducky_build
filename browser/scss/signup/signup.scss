@@ -1,4 +1,4 @@
-.login-header {
+.signup-header {
 	position: relative;
 	text-align: center;
 	h1 {
@@ -17,27 +17,36 @@
 	height: 20vh;
 }
 
-#login-form {
-	width: 400px;
+.signup-contain {
 	margin: 0 auto;
-	margin-top: 7em;
-
-	input {
-		border-radius: 0;
-		padding: 18px 15px;
+	width: 375px;
+	
+	h2 {
+		margin-top: 2em;
+		margin-bottom: 1.2em;
+		text-align: center;
+		font-weight: 300;
 	}
 
-	label {
+	input {
 		font-weight: 400;
+		border-radius: 0;
+
+		&:focus {
+			outline: none;
+		}
 	}
 
 	button {
-		margin-top: .5em;
-		border-radius: 0;
 		background-color: $primary-light;
-		color: #fff;
 		border: none;
+		border-radius: 0;
+		color: white;
 		font-weight: 600;
-		padding: 8px 25px;
+		padding: 10px 20px;
+		&:hover {
+			background-color: $primary-light;
+			color: white;
+		}
 	}
 }

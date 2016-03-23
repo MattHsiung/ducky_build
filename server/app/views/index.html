@@ -46,36 +46,28 @@
                 <span class="fa fa-search"></span>
                 <input class="embedded-search" placeholder="Search">
             </div>
-            <h3>Username</h3>
-            <ul class="user-options">
-                <li ng-click="setActive('profile')" ui-sref="user_dashboard" ng-class="{active: activetab == 'profile'}"><a href="#"><span class="fa fa-user"></span>Profile</a></li>
+            <div class="auth-panel">
+                <span></span><span class="login text-center" ng-if="!user" ui-sref='login'>Login</span>
+                <span ng-if="user" class="logout text-center" ng-click="logout()">Logout</span>
+            </div>
+            <ul ng-if="user" class="user-options">
+                <li ng-click="setActive('profile')" ui-sref="user_dashboard" ng-class="{active: activetab == 'profile'}"><a href="#"><span class="fa fa-user"></span>{{user}}</a></li>
                 <li ng-click="setActive('following')" ng-class="{active: activetab == 'following'}"><a href="#"><span class="fa fa-plus"></span>Following</a></li>
             </ul>
             <h3 class="nav-headers">Browse</h3>
             <ul class="browse-options">
                 <li ng-click="setActive('languages')" ng-class="{active: activetab == 'languages'}"><a href="#"><span class="fa fa-file-code-o"></span>Languages</a></li>
-                <li ng-click="setActive('channels')" ng-class="{active: activetab == 'channels'}"><a href="#"><span class="fa fa-play"></span>Channels</a></li>
+                <li ui-sref="channels" ng-click="setActive('channels')" ng-class="{active: activetab == 'channels'}"><a ><span class="fa fa-play"></span>Channels</a></li>
                 <li ng-click="setActive('videos')"ng-class="{active: activetab == 'videos'}"><a href="#"><span class="fa fa-video-camera"></span>Videos</a></li>
             </ul>
             <h3 class='nav-headers'>Recommended Channels</h3>
-            <ul class="recommended-channels">
-              <li>
+            <ul class="recommended-channels" ng-controller="ChannelsCtrl">
+              <li ng-repeat="channel in channels" ui-sref="channel({username: channel.username})">
+
                 <div class="row">
                   <img class="col-sm-3" src="/img/js_logo.jpg">
-                  <h5 class="col-sm-9">Franklin coding in JS</h5>
-                <div>
-              </li>
-              <li>
-                <div class="row">
-                  <img class="col-sm-3" src="/img/js_logo.jpg">
-                  <h5 class="col-sm-9">Sean coding in JS</h5>
-                <div>
-              </li>
-              <li>
-                <div class="row">
-                  <img class="col-sm-3" src="/img/js_logo.jpg">
-                  <h5 class="col-sm-9">Matt coding in JS</h5>
-                <div>
+                  <h5 class="col-sm-9">{{channel.username}}</h5>
+                </div>
               </li>
             </ul>
         </div>
@@ -86,9 +78,8 @@
             <div class="text-center">
                 <a class="fa icon-bg-light icon-md" ng-class="{'fa-caret-right':!state, 'fa-caret-left':state }" ng-click="toggleState()"></a>
                 <span ui-sref="user_dashboard" class="fa fa-user icon-secondary icon-md"></span>
-                <span class="fa fa-search icon-secondary icon-md"></span>
+                <span ui-sref="channels" class="fa fa-search icon-secondary icon-md"></span>
                 <span class="fa fa-file-code-o icon-secondary icon-md"></span>
-                <span class="fa fa-comment icon-secondary icon-md"></span>
                 <span class="fa fa-github-alt icon-secondary icon-md"></span>
                 <span class="fa fa-cog icon-bg-light icon-md"></span>
             </div>
@@ -98,6 +89,7 @@
         <!-- bloc-0 END -->
         <ui-view></ui-view>
         <!-- Main container END -->
+    </div>
         <script src="https://use.typekit.net/snz2cgr.js"></script>
         <script>
         try {

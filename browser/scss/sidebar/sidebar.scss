@@ -18,6 +18,19 @@
             &:hover {
             }
         }
+        .user {
+            color: white;
+            padding-left: .4em;
+            padding-bottom: 0;
+        }
+        .login, .logout {
+            margin-left: 5.5em;
+        }
+        .auth-panel {
+            margin-top: 1em;
+            padding-bottom: .8em;
+            border-bottom: 1px solid grey;
+        }
         .embedded-search {
             font-family: "proxima-nova",sans-serif;
             background-color: RGBA(0,0,0,.4);
@@ -27,7 +40,11 @@
             padding-left: 2em;
             text-indent: 2.5em;
         }
-        .search { position: relative; }
+        .search {
+            position: relative;
+            padding-bottom: 1em;
+            border-bottom: 1px solid grey;
+        }
         .search .fa-search {
           position: absolute;
           top: 8px;
