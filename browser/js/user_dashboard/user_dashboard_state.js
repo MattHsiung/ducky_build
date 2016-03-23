@@ -1,4 +1,5 @@
 'use strict';
+var ducky = new Firebase("https://ducky.firebaseio.com/");
 
 app.config(function ($stateProvider) {
 
