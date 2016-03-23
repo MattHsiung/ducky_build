@@ -3,23 +3,62 @@
 	<header class = "dashboard-header">
 		<h1>User Dashboard</h1>
 		<div class = "nav-bar-right">
-			<h3>Streaming Info</h3>
-			<h3>Stats</h3>
+			<h3>Logged in: {{user.username}}</h3>
 		</div>
    	</header>
 
-	<div class = "dashboard-main">
+	<div class = "dashboard-main container-fluid">
+		<div class = "row">
+			<div class = "dashboard-streamer col-sm-4">
+				<div class = "dashboard-title">
+					<h2>Streamer's Corner</h2>
+				</div>
+				
+				<div class = "each-dashboard">
+					<div class ="information-holder">
+						<h4 class = "info-titles">Title of your stream</h4>
+						<input placeholder="Whatever the title was before" ng-model="newData.title"></input>
+						<br>
+						<br>
+						<h4 class = "info-titles">Main Topic</h4>
+						<select placeholder="Whatever the category was before" ng-model="newData.category">
+							<option ng-repeat="category in categories">{{category}}</option>
+						</select>
+						<button ng-click="updateFirebase(newData)">Update</button>
+					</div>
+				</div>
+			</div>
 
-		<div class = "information">
-			<h4 class = "info-titles">Title of your stream</h4>
-			<input placeholder="Whatever the title was before" size="50" ng-model="newData.title"></input>
-			<br>
-			<br>
-			<h4 class = "info-titles">Main Topic</h4>
-			<select placeholder="Whatever the category was before" ng-model="newData.category">
-				<option ng-repeat="category in categories">{{category}}</option>
-			</select>
-			<button ng-click="updateFirebase(newData)">Update</button>
-		</div>	
+			<div class = "dashboard-user col-sm-4">
+				<div class = "dashboard-title">
+					<h2>Analytics</h2>
+				</div>	
+
+				<div class = "each-dashboard">
+					<div class ="information-holder">
+						<h4 class = "info-titles">Followers: <span>100</span></h4>
+						<br>
+						<h4 class = "info-titles">New Followers This Week: <span>12</span></h4>
+					</div>
+				</div>
+			</div>
+
+			<div class = "dashboard-user col-sm-4">
+				<div class = "dashboard-title">
+					<h2>User's Info</h2>
+				</div>	
+
+				<div class = "each-dashboard">
+					<div class ="information-holder">
+						<h4 class = "info-titles">Following:</h4>
+						<br>
+						<h4 class = "info-titles">Recently Watched Channel:</h4>
+						<br>
+						<h4 class = "info-titles">Favorites:</h4>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
+
 </section>
