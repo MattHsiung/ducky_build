@@ -1,4 +1,4 @@
-app.controller('ChannelCtrl', function ($scope, streamer, $firebaseObject, $firebaseArray) {
+app.controller('ChannelCtrl', function ($scope, streamer, $firebaseObject, $firebaseArray, AuthService) {
   $scope.username = streamer;
 
   //ACE EDITOR SETUP
@@ -91,5 +91,7 @@ app.controller('ChannelCtrl', function ($scope, streamer, $firebaseObject, $fire
     $scope.subs = $firebaseArray(ref.child('subscribers').child(streamer))  
   }
   getSubs()
+
+  AuthService.getLoggedInUser().then(user=>console.log(user))
 
 });
