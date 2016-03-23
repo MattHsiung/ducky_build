@@ -36,24 +36,20 @@
 <div class="bloc l-bloc bgc-white" id="bloc-2">
     <div class="container">
         <div class="row push-down-xs">
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <a href="index.html" class="btn   btn-deep-carmine-pink btn-sq btn-block"><span class="fa fa-heart-o icon-spacer"></span>Follow {{username}}</a>
             </div>
-            <div class="col-sm-2">
-                <a href="index.html" class="btn   btn-dark-jungle-green btn-sq btn-block">Subscribe</a>
+            <div class="col-sm-1 text-center">
+                <span><a class="fa fa-facebook-square fa-2x"></a>
+                </span>
             </div>
-            <div class="col-sm-2">
-                <div class="btn-group btn-block">
-                    <a href="#" class="btn dropdown-toggle   btn-sq btn-block btn-dark-sea-green" data-toggle="dropdown" aria-expanded="false">Share<span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li>
-                            <a href="index.html" class="a-btn a-block">Options 1</a>
-                        </li>
-                        <li>
-                            <a href="index.html" class="a-btn a-block">Options 2</a>
-                        </li>
-                    </ul>
-                </div>
+            <div class="col-sm-1 text-center">
+                <span><a class="fa fa-github fa-2x"></a>
+                </span>
+            </div>
+            <div class="col-sm-1 text-center">
+                <span><a class="fa fa-twitter fa-2x"></a>
+                </span>
             </div>
             <div class="col-md-1 col-md-offset-3 col-sm-2 col-xs-4 txt-r">
                 <h5 class="mg-md text-w-md">
@@ -218,10 +214,10 @@
         </ul>
     </div>
     <div class="chatEnter">
-        <textarea class="chatInput" ng-model="message"></textarea>
-        <a ng-click="addMessage()" class="btn   btn-deep-carmine-pink btn-sq btn-block">
-            <span class="fa fa-comments-o icon-spacer"></span>Send
-        </a>
+            <textarea ng-enter="addMessage()"class="chatInput" ng-model="message"></textarea>
+            <a ng-click="addMessage()" class="btn btn-deep-carmine-pink btn-sq btn-block">
+                <span class="fa fa-comments-o icon-spacer"></span>Send
+            </a>
     </div>
 
 </div>

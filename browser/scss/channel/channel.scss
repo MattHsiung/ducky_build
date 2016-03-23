@@ -7,6 +7,9 @@
 .push-down-xs{
 	margin-top:10px;
 }
+.push-down-s{
+	margin-top:15px;
+}
 .icon-lg{
 	font-size:80px!important;
 }
@@ -232,6 +235,7 @@ body > div{
 
 .searchBar{
 	box-shadow: 1px 10px 25px rgba(0,0,0,0.5)!important;
+	z-index: 2;
 }
 
 .channel-thumb{
@@ -270,14 +274,23 @@ body > div{
 .i-red{
 	color: red;
 }
-
+.half-n-half{
+	background: white;
+    background: -webkit-linear-gradient($primary-light 50%, white 50% )!important;
+    background: -o-linear-gradient($primary-light 50%, white 50% )!important;
+    background: -moz-linear-gradient($primary-light 50%, white 50% )!important;
+    background: linear-gradient($primary-light 50%, white 50% )!important;
+}
+.viewsCounter{
+	font-weight: 900;
+	color: $primary-light;
+	margin-left: 5px;
+}
 .cloud{
-	/*background-image:  url('img/sky.png') !important;*/
-	background-color:white!important;
+
 	height: 100vh;
 	overflow: scroll;
 }
-
 .bg-js{
 	background-image: url('img/languages/js.png');
 	background-attachment: fixed;
@@ -305,8 +318,17 @@ body > div{
 	padding:20px 0px;
 }
 
+.btn-cat{
+	color:$secondary!important;
+	font-weight: 900;
+	font-size: 1.4em!important;
+}
+.btn-cat:hover{
+	color:$secondary-dark!important;
+}
+
 #search{
-	margin-top:15px;
+	margin-top:20px;
 }
 
 #bloc-10 h1{
@@ -323,6 +345,12 @@ body > div{
 
 }
 
+.fa:hover{
+	transform: rotate(360deg);
+}
+.fa{
+	transition: transform 0.5s
+}
 
 
 

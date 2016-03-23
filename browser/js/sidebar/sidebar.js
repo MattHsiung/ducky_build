@@ -41,3 +41,4 @@ app.directive('sidebarDirective', function() {
         }
     };
 });
+

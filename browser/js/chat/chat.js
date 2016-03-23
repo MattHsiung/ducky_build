@@ -1,4 +1,4 @@
-app.directive('chatDirective', function($rootScope, $firebaseArray) {
+app.directive('chatDirective', function($rootScope, $firebaseArray, AuthService) {
     return {
         link : function(scope, element, attr) {
 
@@ -12,12 +12,13 @@ app.directive('chatDirective', function($rootScope, $firebaseArray) {
               if(scope.show)element.addClass('showChat');
               else element.removeClass('showChat');
             }
+            AuthService.getLoggedInUser().then(user=>scope.user=user)
 
             scope.messages = $firebaseArray(ducky);
             scope.addMessage = function() {
               // $add on a synchronized array is like Array.push() except it saves to the database!
               scope.messages.$add({
-                from: 'user',
+                from: scope.user.username,
                 content: scope.message,
                 timestamp: Firebase.ServerValue.TIMESTAMP
               });
@@ -48,4 +49,20 @@ app.directive('chatDirective', function($rootScope, $firebaseArray) {
         }
     };
 });
+
+app.directive('ngEnter', function() {
+        return function(scope, element, attrs) {
+            element.bind("keydown keypress", function(event) {
+                if(event.which === 13) {
+                    scope.$apply(function(){
+                        scope.$eval(attrs.ngEnter, {'event': event});
+                    });
+
+                    event.preventDefault();
+                }
+            });
+        };
+    });
+
+
 

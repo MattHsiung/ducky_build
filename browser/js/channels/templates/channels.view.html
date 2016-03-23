@@ -2,10 +2,24 @@
 <div class="searchBar bloc l-bloc bgc-white fixed-top" id="bloc-10">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-8">
+			<div class="col-sm-6">
 				<h1 class="mg-md">
 					All Channels
 				</h1>
+			</div>
+			<div class="col-sm-2">
+				<div class="btn-group btn-block push-down-s">
+					<a href="#" class="btn dropdown-toggle   btn-sq  btn-md btn-block btn-cat rale" data-toggle="dropdown" aria-expanded="false">{{search.curCategory||'Category'}}<span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li>
+							<a ng-click="selCategory(undefined)" class="a-btn a-block">None</a>
+						</li>
+						<li ng-repeat="category in categories">
+							<a ng-click="selCategory(category)" class="a-btn a-block">{{category}}</a>
+						</li>
+						
+					</ul>
+				</div>
 			</div>
 			<div class="col-sm-4">
 				<form id="search" novalidate>
@@ -23,20 +37,20 @@
 <!-- bloc-0 END -->
 
 <!-- bloc-1 -->
-<div class="bloc cloud" id="bloc-11">
+<div class="bloc cloud half-n-half" id="bloc-11">
 	<div class="container-fluid bloc-sm">
 		<div class="row bg-js">
-			<div class="col-sm-4 animated fadeIn" ng-repeat="channel in channels | filter:search:strict" >
-				<div ui-sref="channel({username: channel.username})" class="panel channel-thumb panel-sq" style="background-image: url('/img/js.png')">
+			<div class="col-sm-4 animated fadeIn" ng-repeat="channel in channels | filter:search:undefined | filter:searchCat:true" ui-sref="channel({username: channel.user})">
+				<div class="panel channel-thumb panel-sq" style="background-image: url('/img/js.png')">
 					<div class="panel-heading">
 						<h4 class="mg-clear">
-							{{channel.username}}
-							<span class="fa fa-eye pull-right">120</span>
+							{{channel.user}}
+							<span class="fa fa-eye pull-right"><span class="viewsCounter rale">{{channel.views}}</span></span>
 						</h4>
 					</div>
 					<div class="panel-body channel-thumb-body">
 						<p>
-							Description about channel. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+							{{channel.title}}
 						</p>
 					</div>
 					<!-- <div class="panel-footer">
