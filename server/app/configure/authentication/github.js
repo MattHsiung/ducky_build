@@ -1,7 +1,7 @@
 'use strict';
 
 var passport = require('passport');
-var GithubStrategy = require('passport-github').OAuth2Strategy;
+var GithubStrategy = require('passport-github').Strategy;
 var mongoose = require('mongoose');
 var UserModel = mongoose.model('User');
 
