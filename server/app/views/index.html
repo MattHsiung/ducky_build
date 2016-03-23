@@ -8,6 +8,7 @@
     <script src="/angular/angular.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
     <script src="/angularfire/dist/angularfire.js"></script>
+    <script src="http://cdn.jsdelivr.net/mojs/latest/mo.min.js"></script>
     <script src="/angular-animate/angular-animate.js"></script>
     <script src="/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/angular-ui-bootstrap/ui-bootstrap.js"></script>
@@ -37,15 +38,16 @@
     <!-- Main container -->
     <div class="bgc-dark-jungle-green" id="sidenav" ng-controller="SidebarController" sidebar-directive="state">
         <div ng-if="sidebar" class="area">
-            <div class="row title">
-              <img class="col-sm-3" ng-src="https://static.gearslutz.com/board/customavatars/avatar211639_1.gif">
+            <div ui-sref="home" class="row title">
+              <img id='ducky-icon' class="col-sm-3" ng-click="duckyAnimate()" ng-src="https://static.gearslutz.com/board/customavatars/avatar211639_1.gif">
               <h1 class="col-sm-9">DUCKY</h1>
             </div>
             <div class='search'>
                 <span class="fa fa-search"></span>
                 <input class="embedded-search" placeholder="Search">
             </div>
-            <h3>Username</h3>
+            <span ng-if="!user" ui-sref='login'>Login</span>
+            <span ng-if="user" ui-sref='user_dashboard'>{{user}}</span><span ng-if="user" class="pull-right" ng-click="logout()">Logout</span>
             <ul class="user-options">
                 <li ng-click="setActive('profile')" ui-sref="user_dashboard" ng-class="{active: activetab == 'profile'}"><a href="#"><span class="fa fa-user"></span>Profile</a></li>
                 <li ng-click="setActive('following')" ng-class="{active: activetab == 'following'}"><a href="#"><span class="fa fa-plus"></span>Following</a></li>
@@ -53,28 +55,17 @@
             <h3 class="nav-headers">Browse</h3>
             <ul class="browse-options">
                 <li ng-click="setActive('languages')" ng-class="{active: activetab == 'languages'}"><a href="#"><span class="fa fa-file-code-o"></span>Languages</a></li>
-                <li ng-click="setActive('channels')" ng-class="{active: activetab == 'channels'}"><a href="#"><span class="fa fa-play"></span>Channels</a></li>
+                <li ui-sref="channels" ng-click="setActive('channels')" ng-class="{active: activetab == 'channels'}"><a ><span class="fa fa-play"></span>Channels</a></li>
                 <li ng-click="setActive('videos')"ng-class="{active: activetab == 'videos'}"><a href="#"><span class="fa fa-video-camera"></span>Videos</a></li>
             </ul>
             <h3 class='nav-headers'>Recommended Channels</h3>
-            <ul class="recommended-channels">
-              <li>
+            <ul class="recommended-channels" ng-controller="ChannelsCtrl">
+              <li ng-repeat="channel in channels" ui-sref="channel({username: channel.username})">
+
                 <div class="row">
                   <img class="col-sm-3" src="/img/js_logo.jpg">
-                  <h5 class="col-sm-9">Franklin coding in JS</h5>
-                <div>
-              </li>
-              <li>
-                <div class="row">
-                  <img class="col-sm-3" src="/img/js_logo.jpg">
-                  <h5 class="col-sm-9">Sean coding in JS</h5>
-                <div>
-              </li>
-              <li>
-                <div class="row">
-                  <img class="col-sm-3" src="/img/js_logo.jpg">
-                  <h5 class="col-sm-9">Matt coding in JS</h5>
-                <div>
+                  <h5 class="col-sm-9">{{channel.username}}</h5>
+                </div>
               </li>
             </ul>
         </div>
@@ -85,9 +76,8 @@
             <div class="text-center">
                 <a class="fa icon-bg-light icon-md" ng-class="{'fa-caret-right':!state, 'fa-caret-left':state }" ng-click="toggleState()"></a>
                 <span ui-sref="user_dashboard" class="fa fa-user icon-secondary icon-md"></span>
-                <span class="fa fa-search icon-secondary icon-md"></span>
+                <span ui-sref="channels" class="fa fa-search icon-secondary icon-md"></span>
                 <span class="fa fa-file-code-o icon-secondary icon-md"></span>
-                <span class="fa fa-comment icon-secondary icon-md"></span>
                 <span class="fa fa-github-alt icon-secondary icon-md"></span>
                 <span class="fa fa-cog icon-bg-light icon-md"></span>
             </div>
@@ -97,6 +87,7 @@
         <!-- bloc-0 END -->
         <ui-view></ui-view>
         <!-- Main container END -->
+    </div>
         <script src="https://use.typekit.net/snz2cgr.js"></script>
         <script>
         try {
@@ -105,6 +96,17 @@
             });
         } catch (e) {}
         </script>
+<<<<<<< HEAD
+
+=======
+        <script>
+        //   var burst = new mojs.Burst({
+        //     shape:    'circle',
+        //     fill:     [ 'deeppink', 'cyan', 'orange' ],
+        //     x: '50%', y: '50%'
+        // });
+        </script>
+>>>>>>> master
 </body>
 <!-- Google Analytics -->
 <!-- Google Analytics END -->

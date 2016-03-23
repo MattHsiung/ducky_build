@@ -9,10 +9,10 @@
             </div>
             <div class="col-sm-10">
                 <h2 class="mg-md tc-dark-jungle-green ">
-                    Working on Capstone!!! =]
+                    {{channelInfo.title}}
                 </h2>
                 <h4 class="mg-md tc-wenge ">
-                    Franklin Lee working in Javascript on Back-End
+                    {{username}} working in {{channelInfo.category}}
                 </h4>
             </div>
         </div>
@@ -24,11 +24,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="embed-responsive embed-responsive-16by9">
-                    <!-- <iframe  src="https://player.vimeo.com/video/111507117" frameborder="0">
-                    </iframe> -->
-                    <!-- <video width="1400" src="http://192.168.1.186:1234" autoplay type="video/ogg; codecs=theora"></video> -->
                     <div  id="streamer"></div>
-
                 </div>
             </div>
         </div>
@@ -39,7 +35,7 @@
 <!-- bloc-2 -->
 <div class="bloc l-bloc bgc-white" id="bloc-2">
     <div class="container">
-        <div class="row">
+        <div class="row push-down-xs">
             <div class="col-sm-2">
                 <a href="index.html" class="btn   btn-deep-carmine-pink btn-sq btn-block"><span class="fa fa-heart-o icon-spacer"></span>Follow {{username}}</a>
             </div>
@@ -59,18 +55,18 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-sm-4">
-                <h5 class="mg-md text-right">
-                    <span class="fa fa-user icon-deep-carmine-pink icon-dark-jungle-green"></span> 33,440
+            <div class="col-md-1 col-md-offset-3 col-sm-2 col-xs-4 txt-r">
+                <h5 class="mg-md text-w-md">
+                    <span class="fa fa-user icon-deep-carmine-pink icon-dark-jungle-green"></span> {{subs.length}}
                 </h5>
             </div>
-            <div class="col-sm-1">
+            <div class="col-md-1 col-sm-2 col-xs-4 txt-r">
                 <h5 class="mg-md sm-shadow text-w-md">
-                    <span class="fa fa-eye icon-1315"></span>100,004
+                    <span class="fa fa-eye icon-1315"></span>{{channelInfo.views}}
                 </h5>
             </div>
-            <div class="col-sm-1">
-                <h5 class="mg-md sm-shadow text-w-md">
+            <div class="col-md-1 col-sm-2 no-pad col-xs-4 txt-r">
+                <h5 class="mg-md sm-shadow text-w-md ">
                     <span class="fa fa-heart icon-deep-carmine-pink"></span> 15,334
                 </h5>
             </div>
@@ -201,7 +197,6 @@
 </div>
 
 <!-- bloc-7 END -->
-</div>
 <div class="chatWindow bgc-dark-jungle-green" chat-directive="state">
     <a class="fa icon-bg-light icon-md" ng-class="{'fa-caret-right':show, 'fa-caret-left':!show, 'iconMove':show }" ng-click="toggle()"></a>
     <div class="chatHeader">

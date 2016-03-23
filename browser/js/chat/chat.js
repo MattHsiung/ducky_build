@@ -4,7 +4,6 @@ app.directive('chatDirective', function($rootScope, $firebaseArray) {
 
             var ducky = new Firebase('https://ducky.firebaseio.com/chat/' + scope.username);
 
-            console.log('scope', scope);
             scope.show=false;
             $rootScope.chat=false;
             scope.toggle=function(){

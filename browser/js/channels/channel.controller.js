@@ -1,4 +1,4 @@
-app.controller('ChannelCtrl', function ($scope, streamer, $firebaseObject) {
+app.controller('ChannelCtrl', function ($scope, streamer, $firebaseObject, $firebaseArray) {
   $scope.username = streamer;
 
   //ACE EDITOR SETUP
@@ -17,9 +17,8 @@ app.controller('ChannelCtrl', function ($scope, streamer, $firebaseObject) {
       width: "100%",
       aspectratio: "16:9"
     });
-
-
-  var ref = new Firebase('https://ducky.firebaseio.com/users/' + streamer);
+  //Firebase DB Reference
+  var ref = new Firebase('https://ducky.firebaseio.com');
 
   $scope.directory = [{
     label: "Ducky",
@@ -27,17 +26,18 @@ app.controller('ChannelCtrl', function ($scope, streamer, $firebaseObject) {
   }]
 
   function load(){
-    $firebaseObject(ref).$loaded()
+    $firebaseObject(ref.child('users').child(streamer))
+    .$loaded()
     .then(function(data){
-      console.log('loading');
+      // console.log('loading');
       $scope.directory = converter(data);
     });
   }
 
-  var watch = $firebaseObject(ref).$watch(function(data){
-    console.log('watching');
-    load()
-  })
+  var watch = $firebaseObject(ref.child('users').child(streamer))
+    .$watch(function(data){load()})
+  var watchChannel = $firebaseObject(ref.child('channel').child(streamer)).$watch(function(data){})
+  var watchSubs = $firebaseObject(ref.child('subscribers').child(streamer)).$watch(function(data){})
 
   function converter(obj) {
     if (obj.content) {
@@ -77,6 +77,18 @@ app.controller('ChannelCtrl', function ($scope, streamer, $firebaseObject) {
       return final;
     }
   }
-  // load()
+  (function getChannelInfo(){
+    $firebaseObject(ref.child('channel').child(streamer))
+    .$loaded()
+    .then(function(data){
+      $scope.channelInfo = data;
+      // console.log($scope.channelInfo)
+    });
+  })()
+
+  function getSubs(){
+    $scope.subs = $firebaseArray(ref.child('subscribers').child(streamer))  
+  }
+  getSubs()
 
 });

@@ -1,7 +1,20 @@
-app.controller('SidebarController', function($scope, $rootScope) {
+app.controller('SidebarController', function($scope, $state, $rootScope, AuthService) {
 
     $scope.state = false;
     $rootScope.sidebar=false;
+
+    AuthService.getLoggedInUser()
+    .then(user => {
+      console.log(user)
+      if(!user) $scope.user = false;
+      else $scope.user = user.username;
+    })
+
+    $scope.logout = function(){
+      AuthService.logout()
+      .then(() => $state.go('home'))
+    }
+
 
     $scope.setActive = function(tab){
       $scope.activetab = tab;
