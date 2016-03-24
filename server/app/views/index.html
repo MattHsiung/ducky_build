@@ -39,36 +39,55 @@
 <body ng-app="FullstackGeneratedApp">
     <!-- Main container -->
     <div class="bgc-dark-jungle-green" id="sidenav" ng-controller="SidebarController" sidebar-directive="state">
-        <div ng-if="sidebar" class="area">
+        <div ng-if="sidebar" class="area" ng-controller="ChannelsCtrl">
             <div ui-sref="home" class="row title">
               <img id='ducky-icon' class="col-sm-3" ng-click="duckyAnimate()" ng-src="https://static.gearslutz.com/board/customavatars/avatar211639_1.gif">
               <h1 class="col-sm-9">DUCKY</h1>
             </div>
-            <div class='search'>
+            
+            <!-- TEMPLATE FOR TYPEAHEAD -->
+            <script type="text/ng-template" id="customTemplate.html">
+              <a class="searchRes" ng-click="reset()" ui-sref="channel({username: match.model.user})">
+                  <span class="searchTitle" ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
+                  <span class="searchUser">{{match.model.user}}</span>
+                  <span class="searchUser pull-right">{{match.model.category}}</span>
+              </a>
+            </script>
+            <!-- TEMPLATE FOR TYPEAHEAD -->
+            <pre>{{selected}}</pre>
+            <div class='search' ng-controller="TypeaheadCtrl">
                 <span class="fa fa-search"></span>
-                <input class="embedded-search" placeholder="Search">
+                <input class="embedded-search form-control" placeholder="Search" type="text" ng-model="selected" uib-typeahead="channel as channel.title for channel in channels | filter:$viewValue | limitTo:20" typeahead-template-url="customTemplate.html">
             </div>
             <div class="auth-panel">
                 <span class="login text-center" ng-if="!user" ui-sref='login'>Login</span>
                 <span ng-if="user" class="logout text-center" ng-click="logout()">Logout</span>
             </div>
+            <h3 ng-if="user"class="nav-headers">User</h3>
             <ul ng-if="user" class="user-options">
-                <li ng-click="setActive('profile')" ui-sref="user_dashboard" ng-class="{active: activetab == 'profile'}"><a href="#"><span class="fa fa-user"></span>{{user}}</a></li>
-                <li ng-click="setActive('following')" ng-class="{active: activetab == 'following'}"><a href="#"><span class="fa fa-plus"></span>Following</a></li>
+                <li ng-click="setActive('profile')" ui-sref="user_dashboard({userId:user._id})" ng-class="{active: activetab == 'profile'}">
+                    <a href="#">
+                        <span class="fa fa-user"></span>
+                        {{user.username}}
+                    </a>
+                </li>
+                <li ui-sref="subscribers"ng-click="setActive('following')" ng-class="{active: activetab == 'following'}">
+                    <a href="#">
+                        <span class="fa fa-plus"></span>
+                        Subscribers
+                    </a>
+                </li>
             </ul>
             <h3 class="nav-headers">Browse</h3>
             <ul class="browse-options">
-                <li ng-click="setActive('languages')" ng-class="{active: activetab == 'languages'}"><a href="#"><span class="fa fa-file-code-o"></span>Languages</a></li>
                 <li ui-sref="channels" ng-click="setActive('channels')" ng-class="{active: activetab == 'channels'}"><a ><span class="fa fa-play"></span>Channels</a></li>
-                <li ng-click="setActive('videos')"ng-class="{active: activetab == 'videos'}"><a href="#"><span class="fa fa-video-camera"></span>Videos</a></li>
             </ul>
-            <h3 class='nav-headers'>Recommended Channels</h3>
-            <ul class="recommended-channels" ng-controller="ChannelsCtrl">
-              <li ng-repeat="channel in channels" ui-sref="channel({username: channel.username})">
-
+            <h3 class='nav-headers' ng-if="user">Subscribed Channels</h3>
+            <ul class="recommended-channels" ng-if="user" ng-controller="ChannelsCtrl">
+              <li ng-repeat="subs in subscriptions" ui-sref="channel({username:subs.$id})">
                 <div class="row">
                   <img class="col-sm-3" src="/img/js_logo.jpg">
-                  <h5 class="col-sm-9">{{channel.username}}</h5>
+                  <h5 class="col-sm-9">{{subs.$id}}</h5>
                 </div>
               </li>
             </ul>
@@ -79,9 +98,9 @@
         <div ng-if="!sidebar" class="icons">
             <div class="text-center">
                 <a class="fa icon-bg-light icon-md" ng-class="{'fa-caret-right':!state, 'fa-caret-left':state }" ng-click="toggleState()"></a>
-                <span ui-sref="user_dashboard" class="fa fa-user icon-secondary icon-md"></span>
+                <span ui-sref="home"><img class="fa"id='ducky-icon-xs'ng-click="duckyAnimate()" ng-src="https://static.gearslutz.com/board/customavatars/avatar211639_1.gif"></span>
+                <span ui-sref="user_dashboard({userId:user._id})" class="fa fa-user icon-secondary icon-md"></span>
                 <span ui-sref="channels" class="fa fa-search icon-secondary icon-md"></span>
-                <span class="fa fa-file-code-o icon-secondary icon-md"></span>
                 <span class="fa fa-github-alt icon-secondary icon-md"></span>
                 <span class="fa fa-cog icon-bg-light icon-md"></span>
             </div>
