@@ -25,7 +25,7 @@ app.controller('ChannelsCtrl', function ($window, $scope, $firebaseObject, $fire
     $scope.search={};
     $scope.selCategory = function(category){
       $scope.searchCat = category;
-    }  
+    }
     function getChannelInfo(liveChannels) {
       var liveRef = new Firebase('https://ducky.firebaseio.com/channel');
       liveChannels.forEach(function(channel){
@@ -41,5 +41,7 @@ app.controller('ChannelsCtrl', function ($window, $scope, $firebaseObject, $fire
         })
       })
     };
+
+    console.log($scope.channels);
 });
 

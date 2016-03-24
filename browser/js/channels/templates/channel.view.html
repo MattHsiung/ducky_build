@@ -20,7 +20,7 @@
 </div>
 <!-- bloc-1 -->
 <div class="bloc bgc-white l-bloc" id="bloc-1">
-    <div class="container">
+    <div ng-if="online" class="container">
         <div class="row">
             <div class="col-sm-12">
                 <div class="embed-responsive embed-responsive-16by9">
@@ -30,11 +30,23 @@
         </div>
     </div>
 </div>
+<div class="bloc bgc-white l-bloc" id="bloc-1">
+    <div ng-if="!online" class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>{{username}} is offline </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!-- bloc-1 END -->
 
 <!-- bloc-2 -->
 <div class="bloc l-bloc bgc-white" id="bloc-2">
-    <div class="container">
+    <div ng-if="online" class="container">
         <div class="row push-down-xs">
             <div class="col-sm-3">
                 <a ng-click="subscribeToChannel()" class="btn   btn-deep-carmine-pink btn-sq btn-block">
@@ -210,7 +222,7 @@
                 {{username}}
             <a class="fa fa-cog icon-bg-light icon-md pull-right"></a>
         </h3>
-        
+
     </div>
     <div class="chatMessages">
         <ul class="list-group">
