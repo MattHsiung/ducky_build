@@ -37,7 +37,16 @@
     <div class="container">
         <div class="row push-down-xs">
             <div class="col-sm-3">
-                <a href="index.html" class="btn   btn-deep-carmine-pink btn-sq btn-block"><span class="fa fa-heart-o icon-spacer"></span>Follow {{username}}</a>
+                <a ng-click="subscribeToChannel()" class="btn   btn-deep-carmine-pink btn-sq btn-block">
+                    <span ng-show="!subscribed">
+                        <span class="fa fa-heart-o icon-spacer"></span>
+                        Follow {{username}}
+                    </span>
+                    <span ng-show="subscribed">
+                        <span class="fa fa-frown-o icon-spacer"></span>
+                        Unfollow {{username}}
+                    </span>
+                </a>
             </div>
             <div class="col-sm-1 text-center">
                 <span><a class="fa fa-facebook-square fa-2x"></a>

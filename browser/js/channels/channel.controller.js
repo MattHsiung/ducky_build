@@ -32,13 +32,14 @@ app.controller('ChannelCtrl', function ($scope, streamer, $firebaseObject, $fire
     .then(function(data){
       // console.log('loading');
       $scope.directory = converter(data);
+      $scope.isSubscribed()
     });
   }
 
-  var watch = $firebaseObject(ref.child('users').child(streamer))
-    .$watch(function(data){load()})
+  var watch = $firebaseObject(ref.child('users').child(streamer)).$watch(function(data){load()})
   var watchChannel = $firebaseObject(ref.child('channel').child(streamer)).$watch(function(data){})
   var watchSubs = $firebaseObject(ref.child('subscribers').child(streamer)).$watch(function(data){})
+
 
   function converter(obj) {
     if (obj.content) {
@@ -58,15 +59,13 @@ app.controller('ChannelCtrl', function ($scope, streamer, $firebaseObject, $fire
             editor.setValue(obj[key].content,1)
             selectMe = true;
           }
-          console.log('selectMe', selectMe, 'type', type);
+          // console.log('selectMe', selectMe, 'type', type);
           final.push({
             label: type||key,
             children: converter(obj[key]),
             onSelect: function(branch){
                 if(branch.data) {
-                  console.log(branch)
                   $scope.currentFile=branch.label;
-                  console.log('$scopecurrentfile', $scope.currentFile);
                   editor.setValue(branch.data,1)
                 }
             },
@@ -88,10 +87,49 @@ app.controller('ChannelCtrl', function ($scope, streamer, $firebaseObject, $fire
   })()
 
   function getSubs(){
-    $scope.subs = $firebaseArray(ref.child('subscribers').child(streamer))  
+    $scope.subs = $firebaseArray(ref.child('subscribers').child(streamer))
+  
   }
   getSubs()
+  
+  AuthService.getLoggedInUser().then(user=>$scope.curUser = user)
 
-  AuthService.getLoggedInUser().then(user=>console.log(user))
+  $scope.subscribeToChannel=function(){
+    if($scope.curUser){
+      var subscribe = $firebaseObject(ref.child('subscribers').child(streamer))
+      .$loaded(function(data){
+        data[$scope.curUser.username] = data[$scope.curUser.username] ? null:true;
+        data.$save()
+        console.log($scope.curUser.username+" subscribed to "+streamer)
+        $scope.isSubscribed()
+
+        
+      })
+      var subscript = $firebaseObject(ref.child('subscriptions').child($scope.curUser.username))
+      .$loaded(function(data){
+        console.log(data)
+        data[streamer] = data[streamer]?null:true;
+        data.$save()
+        $scope.isSubscribed()
+        
+      })
+    }else{
+      console.log('subscribed failed')
+    }
+  } 
+  $scope.isSubscribed = function(){
+    if($scope.curUser){
+      $firebaseObject(ref.child('subscribers').child(streamer))
+        .$loaded(function(data){
+          if(data[$scope.curUser.username])$scope.subscribed=true
+          else $scope.subscribed = false
+          console.log($scope.subscribed)  
+        })
+
+    }
+  }
+  $scope.subscribed;
+  
+
 
 });

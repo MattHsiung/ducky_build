@@ -1,0 +1,39 @@
+<div class=" fill-vh-fixed">
+<div class="searchBar bloc l-bloc bgc-white fixed-top" id="bloc-10">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-6">
+				<h1 class="mg-md">
+					Subscribers
+				</h1>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- bloc-0 END -->
+
+<!-- bloc-1 -->
+<div class="bloc cloud half-n-half" id="bloc-11">
+	<div class="container-fluid bloc-sm">
+		<div class="row bg-js">
+			<div class="col-sm-4 animated fadeIn" ng-repeat="subs in subscriptions" ui-sref="channel({username: subs.$id})">
+				<div class="panel channel-thumb panel-sq" style="background-image: url('/img/js.png')">
+					<div class="panel-heading">
+						<h4 class="mg-clear">
+							{{subs.$id}}
+						</h4>
+					</div>
+					<div class="panel-body channel-thumb-body">
+						<p>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row bg-html">
+		</div>
+		<div class="row bg-css">
+		</div>
+	</div>
+</div>
+</div>

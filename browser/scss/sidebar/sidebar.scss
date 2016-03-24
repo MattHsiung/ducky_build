@@ -122,6 +122,17 @@
     -webkit-animation-timing-function: linear;
 }
 
+#ducky-icon-xs{
+    width:100%;
+}
+#ducky-icon-xs:hover{
+    -webkit-animation-name: thumb;
+    -webkit-animation-duration: 200ms;
+    -webkit-transform-origin: 50% 50%;
+    -webkit-animation-iteration-count: 2;
+    -webkit-animation-timing-function: linear;
+}
+
 .icon-secondary {
     color: $secondary;
 }
@@ -129,4 +140,48 @@
 [ng-click],
 [ui-sref]{
     cursor: pointer;
+}
+
+/*TYPEAHEAD*/
+
+
+.dropdown-menu{
+    padding: 0;
+    width: 100%!important;
+    background-color: none!important;
+    box-shadow: 5px 0px 25px rgba(0,0,0,0.4)!important;
+    .searchRes{
+        width:100%;
+        margin:0;
+        background-color: none!important;
+    }
+
+        li:hover{
+            background-color: $primary-dark!important;
+            opacity: 1!important;
+        }
+
+    li{ 
+        background-color: white!important;
+
+        opacity: .9;
+        padding: 0!important;
+        overflow: hidden;
+        a{
+            
+          border-bottom: 1px solid $primary-light;  
+          padding: 5px;
+        background-color: white!important;
+          
+          .searchUser{
+            color:$primary!important;
+            font-size: 0.8em!important;
+          } 
+          .searchTitle{
+            display: block;
+            color:$primary-light!important;
+          }
+        }
+    }
+
 }
