@@ -13,10 +13,10 @@ app.controller('ChannelCtrl', function ($scope, streamer, $firebaseObject, $fire
   jwplayer.key = 'UI/JLLVJo3qYTxLMSXu9hiyaEAY/jkFCLR+38A==';
   var playerInstance = jwplayer("streamer");
   playerInstance.setup({
-      file: "rtmp://192.168.2.120/live/" +  streamer,
+      file: "rtmp://192.168.68.8/live/" +  streamer,
       width: "100%",
       aspectratio: "16:9",
-      image: '/img/js_logo.jpg'
+      image: '/preview/' + $scope.username + '.jpg'
     });
   //Firebase DB Reference
   var ref = new Firebase('https://ducky.firebaseio.com');

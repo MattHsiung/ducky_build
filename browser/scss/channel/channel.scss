@@ -239,13 +239,17 @@ body > div{
 }
 
 .channel-thumb{
+	img {
+		width: 100%;
+		height: auto;
+	}
 
 	background-color: black;
 	background-blend-mode: multiply;
-	background-size: auto 100%;
+	background-size: 100% auto;
 	background-position: center center;
 	background-repeat: no-repeat;
-	opacity:1;
+	// opacity:1;
 	/*height: 40vh;*/
 	box-shadow: 1px 10px 30px rgba(0,0,0,0.4)!important;
 	background-color: $secondary;
@@ -258,12 +262,12 @@ body > div{
 	color:white;
 }
 
-.channel-thumb-body{
-	opacity: 0;
-}
-.channel-thumb-body:hover{
-	opacity: 1;
-}
+// .channel-thumb-body{
+// 	opacity: 0;
+// }
+// .channel-thumb-body:hover{
+// 	opacity: 1;
+// }
 
 .panel-footer{
 	position: absolute;

@@ -21,7 +21,7 @@
    		<div class="streams-list" ng-controller="ChannelsCtrl">
 	   		<div class="stream-card" ng-repeat="channel in channels">
 	   			<a href="#">
-	   				<img src="/img/js_logo.jpg">
+	   				<img src="{{channel.image}}">
 	   				<div class="stream-info">
 	   					<h5>{{channel.user}}</h1>
 	   					<p>{{channel.title}}</p>
