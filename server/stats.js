@@ -11,7 +11,7 @@ var options = {
 module.exports = function() {
 	rp(options)
 		.then(stats => {
-			var jsonString =  parser.toJson(stats);
+			var jsonString = parser.toJson(stats);
 			var json = JSON.parse(jsonString);
 			var streams = json.rtmp.server.application[1].live.stream;
 			if (!Array.isArray(streams)) streams = [streams];
