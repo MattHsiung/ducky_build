@@ -1,9 +1,15 @@
 <!doctype html>
 <html>
-
 <head>
     <base href="/" />
-    <title>Fullstack Academy Generated Application</title>
+    <title>Ducky</title>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="img/ducky.gif" />
+
+    <!-- MODULES -->
     <script src="/lodash/index.js"></script>
     <script src="/angular/angular.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
@@ -12,36 +18,43 @@
     <script src="/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/angular-ui-bootstrap/ui-bootstrap.js"></script>
     <script src="/angular-ui-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="//cdn.jsdelivr.net/mojs/latest/mo.min.js"></script>
     <script src="/socket.io-client/socket.io.js"></script>
-    <!-- <script src="http://cdn.jsdelivr.net/mojs/latest/mo.min.js"></script> -->
     <script src="/main.js"></script>
-    <!-- divy-->
-    <script type="text/javascript" src="./browser/app.js"></script>
-    <meta charset="utf-8">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <link rel="shortcut icon" type="image/png" href="favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <!-- **** -->
+    
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" type="text/css" href="./resources/css/bootstrap.css">
+   
+    <!-- CSS-->
+    <link rel="stylesheet" id="ppstyle" type="text/css" href="style.css">
+    <!-- **** -->
+
+    <!-- FONTS/ICONS -->
+    <link rel='stylesheet' href='./resources/css/font-awesome.min.css' />
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="./browser/css/bootstrap.css">
-    <link rel="stylesheet" id="ppstyle" type="text/css" href="./style.css">
-    <link rel='stylesheet' href='./browser/css/font-awesome.min.css' />
     <link href='http://fonts.googleapis.com/css?family=Ubuntu&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <!-- **** -->
+
+    <!-- ACE EDITOR -->
     <script src="https://cdn.jsdelivr.net/ace/1.2.3/min/ace.js" type="text/javascript" charset="utf-8"></script>
+    <!-- **** -->
+
+    <!-- JWPLAYER -->
     <script type="text/javascript" src="/utils/jwplayer/jwplayer.js"></script>
-    <script src="./browser/js/jquery-2.1.0.min.js"></script>
-    <script src="./browser/js/bootstrap.js"></script>
-    <script src="./browser/js/blocs.js"></script>
+    <!-- **** -->
 
+    <!-- JS DEPENDENCIES -->
+    <script src="./resources/js/jquery-2.1.0.min.js"></script>
+    <script src="./resources/js/bootstrap.js"></script>
+    <script src="./resources/js/blocs.js"></script>
+    <!-- **** -->
 </head>
-
 <body ng-app="FullstackGeneratedApp">
     <!-- Main container -->
     <div class="bgc-dark-jungle-green" id="sidenav" ng-controller="SidebarController" sidebar-directive="state">
         <div ng-if="sidebar" class="area" ng-controller="ChannelsCtrl">
             <div ui-sref="home" class="row title">
-              <img id='ducky-icon' class="col-sm-3 ducky-icon" ng-click="duckyAnimate()" ng-src="https://static.gearslutz.com/board/customavatars/avatar211639_1.gif">
+              <img id='ducky-icon' class="col-sm-3 ducky-icon" ng-click="duckyAnimate()" ng-src="img/ducky.gif">
               <h1 class="col-sm-9">DUCKY</h1>
             </div>
 
@@ -53,7 +66,8 @@
                   <span class="searchUser pull-right">{{match.model.category}}</span>
               </a>
             </script>
-            <!-- TEMPLATE FOR TYPEAHEAD -->
+            <!-- **** -->
+
             <div class='search' ng-controller="TypeaheadCtrl">
                 <span class="fa fa-search"></span>
                 <input ng-click="reset()" class="embedded-search form-control" placeholder="Search" type="text" ng-model="selected" uib-typeahead="channel as channel.title for channel in channels | filter:$viewValue | limitTo:20" typeahead-template-url="customTemplate.html">
@@ -106,20 +120,15 @@
         </div>
     </div>
     <div class="page-container" ng-class="{'sidebarOpen': sidebar, 'chatOpen': chat}">
-        <!-- bloc-0 END -->
         <ui-view class="fade"></ui-view>
-        <!-- Main container END -->
     </div>
-        <script src="https://use.typekit.net/snz2cgr.js"></script>
-        <script>
-        try {
-            Typekit.load({
-                async: true
-            });
-        } catch (e) {}
-        </script>
+    <script src="https://use.typekit.net/snz2cgr.js"></script>
+    <script>
+    try {
+        Typekit.load({
+            async: true
+        });
+    } catch (e) {}
+    </script>
 </body>
-<!-- Google Analytics -->
-<!-- Google Analytics END -->
-
 </html
