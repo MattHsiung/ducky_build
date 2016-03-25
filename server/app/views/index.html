@@ -41,13 +41,13 @@
     <div class="bgc-dark-jungle-green" id="sidenav" ng-controller="SidebarController" sidebar-directive="state">
         <div ng-if="sidebar" class="area" ng-controller="ChannelsCtrl">
             <div ui-sref="home" class="row title">
-              <img id='ducky-icon' class="col-sm-3" ng-click="duckyAnimate()" ng-src="https://static.gearslutz.com/board/customavatars/avatar211639_1.gif">
+              <img id='ducky-icon' class="col-sm-3 ducky-icon" ng-click="duckyAnimate()" ng-src="https://static.gearslutz.com/board/customavatars/avatar211639_1.gif">
               <h1 class="col-sm-9">DUCKY</h1>
             </div>
-            
+
             <!-- TEMPLATE FOR TYPEAHEAD -->
             <script type="text/ng-template" id="customTemplate.html">
-              <a class="searchRes" ng-click="reset()" ui-sref="channel({username: match.model.user})">
+              <a class="searchRes" ui-sref="channel({username: match.model.user})">
                   <span class="searchTitle" ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
                   <span class="searchUser">{{match.model.user}}</span>
                   <span class="searchUser pull-right">{{match.model.category}}</span>
@@ -56,7 +56,7 @@
             <!-- TEMPLATE FOR TYPEAHEAD -->
             <div class='search' ng-controller="TypeaheadCtrl">
                 <span class="fa fa-search"></span>
-                <input class="embedded-search form-control" placeholder="Search" type="text" ng-model="selected" uib-typeahead="channel as channel.title for channel in channels | filter:$viewValue | limitTo:20" typeahead-template-url="customTemplate.html">
+                <input ng-click="reset()" class="embedded-search form-control" placeholder="Search" type="text" ng-model="selected" uib-typeahead="channel as channel.title for channel in channels | filter:$viewValue | limitTo:20" typeahead-template-url="customTemplate.html">
             </div>
             <div class="auth-panel">
                 <span class="login text-center" ng-if="!user" ui-sref='login'>Login</span>
@@ -97,7 +97,7 @@
         <div ng-if="!sidebar" class="icons">
             <div class="text-center">
                 <a class="fa icon-bg-light icon-md" ng-class="{'fa-caret-right':!state, 'fa-caret-left':state }" ng-click="toggleState()"></a>
-                <span ui-sref="home"><img class="fa"id='ducky-icon-xs'ng-click="duckyAnimate()" ng-src="https://static.gearslutz.com/board/customavatars/avatar211639_1.gif"></span>
+                <span ui-sref="home"><img class="fa ducky-icon"id='ducky-icon-xs'ng-click="duckyAnimate()" ng-src="https://static.gearslutz.com/board/customavatars/avatar211639_1.gif"></span>
                 <span ui-sref="user_dashboard({userId:user._id})" class="fa fa-user icon-secondary icon-md"></span>
                 <span ui-sref="channels" class="fa fa-search icon-secondary icon-md"></span>
                 <span class="fa fa-github-alt icon-secondary icon-md"></span>
