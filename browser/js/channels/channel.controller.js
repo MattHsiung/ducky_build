@@ -1,5 +1,6 @@
 app.controller('ChannelCtrl', function (Editor,$scope, streamer, $firebaseObject, $firebaseArray, AuthService) {
   $scope.username = streamer;
+  $scope.loading = true;
 
     //Firebase DB Reference
   var ref = new Firebase('https://ducky.firebaseio.com');
@@ -19,22 +20,20 @@ var checkOnline = function (){
             aspectratio: "16:9",
             image: '/img/js_logo.jpg'
           });
-
-         //ACE EDITOR SETUP
-
-        var editor = Editor;
-        editor.setTheme("ace/theme/monokai");
-        editor.getSession().setMode("ace/mode/javascript");
-        editor.$blockScrolling = Infinity
-        editor.setReadOnly(true);
-        editor.setShowPrintMargin(false);
-
         $scope.online = true;
       }
     })
   }
   checkOnline();
 
+    //ACE EDITOR SETUP
+
+    var editor = Editor;
+    editor.setTheme("ace/theme/monokai");
+    editor.getSession().setMode("ace/mode/javascript");
+    editor.$blockScrolling = Infinity
+    editor.setReadOnly(true);
+    editor.setShowPrintMargin(false);
 
 
 
@@ -69,7 +68,8 @@ var checkOnline = function (){
   }
 
   function converter(obj) {
-    if (obj.content) {
+    //need to check for empty content or infinite recursion getting objects like {content: "", type: 'js'}
+    if (obj.content || obj.content === "") {
       console.log(obj)
       return;
     }
@@ -105,6 +105,7 @@ var checkOnline = function (){
           })
         }
       }
+      $scope.loading = false;
       return final;
     }
   }

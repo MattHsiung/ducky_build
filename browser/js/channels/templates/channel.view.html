@@ -109,9 +109,9 @@
 
 <!-- bloc-4 -->
 <div class="bloc panel-background" id="bloc-4">
-
-    <div class="container">
+    <div  class="container">
         <div class="row collapse" id="code-editor">
+
             <div class="col-sm-3">
                 <div class="panel bgc-dark-jungle-green panel-sq">
                     <div class="panel-heading bgc-deep-carmine-pink">
@@ -120,7 +120,11 @@
                         </h4>
                     </div>
                     <div id="directory" class="panel-body">
-                        <abn-tree tree-data="directory" intial-selection="{{currentFile}}"></abn-tree>
+                      <div ng-if="loading" class='text-center'>
+                        <h3 class="ng-white"> Loading {{username}}'s files...</h3>
+                        <img id='ducky-icon-load' class="fa-spin col-sm-4" ng-src="https://static.gearslutz.com/board/customavatars/avatar211639_1.gif">
+                      </div>
+                        <abn-tree ng-hide="loading" tree-data="directory" intial-selection="{{currentFile}}"></abn-tree>
                     </div>
                     <div class="panel-footer bgc-dark-sea-green">
                         <h4 class="mg-clear tc-dark-jungle-green ">
@@ -148,7 +152,7 @@
 
                 <div id="editor">Click on a file to see some code!</div>
             </div>
-        </div>
+          </div>
     </div>
 </div>
 <!-- bloc-4 END -->
