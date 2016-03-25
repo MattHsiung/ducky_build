@@ -13,9 +13,8 @@ app.controller('ChannelsCtrl', function ($window, $scope, $firebaseObject, $fire
         if(key[0]!=="$"&& data.hasOwnProperty(key)) $scope.categories.push(key);
       }
     });
-
-    var firebaseRef = $firebaseObject(ref.child('users'));
-
+    
+    var firebaseRef = $firebaseObject(ref.child('files'))
     //load up all active channels
     firebaseRef.$loaded()
     .then(function(data){

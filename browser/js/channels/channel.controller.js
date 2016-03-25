@@ -43,7 +43,7 @@ var checkOnline = function (){
   }]
 
   function load(){
-    $firebaseObject(ref.child('users').child(streamer))
+    $firebaseObject(ref.child('files').child(streamer))
     .$loaded()
     .then(function(data){
       console.log('USER DATA', data);
@@ -52,7 +52,7 @@ var checkOnline = function (){
     });
   }
 
-  var watch = $firebaseObject(ref.child('users').child(streamer))
+  var watch = $firebaseObject(ref.child('files').child(streamer))
     .$watch(function(data){load()})
   var watchChannel = $firebaseObject(ref.child('channel').child(streamer)).$watch(function(data){})
   var watchSubs = $firebaseObject(ref.child('subscribers').child(streamer)).$watch(function(data){})
@@ -185,7 +185,5 @@ var checkOnline = function (){
 });
 
 app.factory('Editor', [function () {
-
-
   return ace.edit('editor' );
 }])
