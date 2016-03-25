@@ -1,4 +1,4 @@
-app.factory('StreamerFactory', ($firebaseObject) => {
+app.factory('StreamerFactory', ($firebaseObject, $firebaseArray) => {
   var ref = new Firebase('https://ducky.firebaseio.com');
 
   return {
@@ -34,6 +34,11 @@ app.factory('StreamerFactory', ($firebaseObject) => {
     			data.$save();
     			return isSubscribed;
     		})
+    },
+    getSubs: (streamer) => $firebaseArray(ref.child('subscribers').child(streamer)),
+    getChannelInfo: (streamer) => {
+    	return $firebaseObject(ref.child('channel').child(streamer))
+    		.$loaded()
     }
   }
 });

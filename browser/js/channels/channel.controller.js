@@ -38,10 +38,8 @@ app.controller('ChannelCtrl', function ($scope, EditorFactory, StreamerFactory, 
   }
 
   var watch = $firebaseObject(ref.child('files').child(streamer))
-    .$watch(function(data){load()})
-  var watchChannel = $firebaseObject(ref.child('channel').child(streamer)).$watch(function(data){})
-  var watchSubs = $firebaseObject(ref.child('subscribers').child(streamer)).$watch(function(data){})
-
+    .$watch(function(data){load()});
+    
   function checkForDots(key, type){
     var arr = key.split(",")
     if(arr.length>1){
@@ -110,18 +108,11 @@ app.controller('ChannelCtrl', function ($scope, EditorFactory, StreamerFactory, 
     editor.setValue(data,1)
   }
 
-  (function getChannelInfo(){
-    $firebaseObject(ref.child('channel').child(streamer))
-    .$loaded()
-    .then(function(data){
-      $scope.channelInfo = data;
-    });
-  })()
+  StreamerFactory.getChannelInfo(streamer)
+    .then(data => $scope.channelInfo = data)
+    .catch(null, console.error.bind(console));
 
-  function getSubs(){
-    $scope.subs = $firebaseArray(ref.child('subscribers').child(streamer))
-  }
-  getSubs();
+  $scope.subs = StreamerFactory.getSubs(streamer);
 
   AuthService.getLoggedInUser().then(user => $scope.curUser = user)
 
@@ -138,6 +129,4 @@ app.controller('ChannelCtrl', function ($scope, EditorFactory, StreamerFactory, 
         .catch(null, console.error.bind(console));
     }
   }
-
-  $scope.subscribed;
 });
