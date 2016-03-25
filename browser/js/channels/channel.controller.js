@@ -1,4 +1,4 @@
-app.controller('ChannelCtrl', function ($scope, streamer, $firebaseObject, $firebaseArray, AuthService) {
+app.controller('ChannelCtrl', function (Editor,$scope, streamer, $firebaseObject, $firebaseArray, AuthService) {
   $scope.username = streamer;
 
     //Firebase DB Reference
@@ -27,13 +27,28 @@ var checkOnline = function (){
 
 
   //ACE EDITOR SETUP
-  var editor = ace.edit('editor' );
+
+  var editor = Editor;
   editor.setTheme("ace/theme/monokai");
   editor.getSession().setMode("ace/mode/javascript");
   editor.$blockScrolling = Infinity
   editor.setReadOnly(true);
   editor.setShowPrintMargin(false);
 
+<<<<<<< HEAD
+=======
+  //JW PLAYER SETUP
+  jwplayer.key = 'UI/JLLVJo3qYTxLMSXu9hiyaEAY/jkFCLR+38A==';
+  var playerInstance = jwplayer("streamer");
+  playerInstance.setup({
+      file: "rtmp://192.168.68.8/live/" +  streamer,
+      width: "100%",
+      aspectratio: "16:9",
+      image: '/preview/' + $scope.username + '.jpg'
+    });
+  //Firebase DB Reference
+  var ref = new Firebase('https://ducky.firebaseio.com');
+>>>>>>> master
 
   $scope.directory = [{
     label: "Ducky",
@@ -50,39 +65,51 @@ var checkOnline = function (){
     });
   }
 
-
-
-  var watch = $firebaseObject(ref.child('users').child(streamer)).$watch(function(data){load()})
+  var watch = $firebaseObject(ref.child('users').child(streamer))
+    .$watch(function(data){load()})
   var watchChannel = $firebaseObject(ref.child('channel').child(streamer)).$watch(function(data){})
   var watchSubs = $firebaseObject(ref.child('subscribers').child(streamer)).$watch(function(data){})
 
+  function checkForDots(key, type){
+    var arr = key.split(",")
+    if(arr.length>1){
+      arr = arr.join('.')
+    }else{
+      arr = arr.join('')
+    }
+    return arr + '.'+ type
+  }
 
   function converter(obj) {
     if (obj.content) {
+      console.log(obj)
       return;
     }
     else {
+      console.log(obj)
       var final = [];
       for (var key in obj) {
         if (obj.hasOwnProperty(key) && String(key).indexOf("$") === -1) {
           var content = obj[key].content || null
-          if(obj[key].type){
-            var type = key + '.'+ obj[key].type;
-          }
           var selectMe=false;
-
-          if(key + '.'+ obj[key].type === $scope.currentFile){
+          var type=null;
+          //parse file name
+          if(obj[key].type){
+            type = checkForDots(key, obj[key].type);
+          }
+          //check for selected file upon refresh
+          if(type === $scope.currentFile){
             editor.setValue(obj[key].content,1)
             selectMe = true;
           }
-          // console.log('selectMe', selectMe, 'type', type);
+          //push file or folder to tree data
           final.push({
             label: type||key,
             children: converter(obj[key]),
             onSelect: function(branch){
                 if(branch.data) {
                   $scope.currentFile=branch.label;
-                  editor.setValue(branch.data,1)
+                  setEditorData(branch.data, branch.label.split('.'))
                 }
             },
             data:content,
@@ -93,6 +120,24 @@ var checkOnline = function (){
       return final;
     }
   }
+
+  function setEditorData(data, label){
+    var type = label[label.length-1]
+    var syntax={
+      'js':'javascript',
+      'html':'html',
+      'css':'css',
+      'json':'json',
+      'php':'php',
+      'txt':'text',
+      'swift':'swift',
+      'scss':'scss',
+      'ruby':'ruby'
+    }
+    editor.getSession().setMode("ace/mode/"+syntax[type]);
+    editor.setValue(data,1)
+  }
+
   (function getChannelInfo(){
     $firebaseObject(ref.child('channel').child(streamer))
     .$loaded()
@@ -149,3 +194,9 @@ var checkOnline = function (){
 
 
 });
+
+app.factory('Editor', [function () {
+
+
+  return ace.edit('editor' );
+}])

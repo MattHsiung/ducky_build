@@ -35,7 +35,8 @@ app.controller('ChannelsCtrl', function ($window, $scope, $firebaseObject, $fire
             category:data.category,
             title:data.title,
             views:data.views,
-            user:data.user
+            user:data.user,
+            image: '/preview/' + data.user + '.jpg'
           }
           $scope.channels.push(obj);
         })
