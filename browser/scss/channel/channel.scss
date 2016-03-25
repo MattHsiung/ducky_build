@@ -367,6 +367,10 @@ body > div{
     }
 }
 
+.panel-background {
+    background-color: #333;
+}
+
 #directory{
 	overflow:scroll;
 	max-height: calc(100% - 80px)!important;
