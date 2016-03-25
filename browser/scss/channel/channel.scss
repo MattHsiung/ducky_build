@@ -363,12 +363,6 @@ body > div{
 	transition: transform 0.5s
 }
 
-#offline {
-    h3 {
-        color: $primary;
-    }
-}
-
 .panel-background {
     background-color: #333;
 }
@@ -384,6 +378,13 @@ body > div{
 #directory{
 	overflow:scroll;
 	max-height: calc(100% - 80px)!important;
+}
+
+.offline-header {
+	color: #333;
+	font-weight: 600;
+	margin: 4em 0;
+	font-family: $main-font;
 }
 
 

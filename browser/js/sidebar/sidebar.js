@@ -7,7 +7,6 @@ app.controller('SidebarController', function($scope, $state, $rootScope, AuthSer
     function checkUser (){
       AuthService.getLoggedInUser()
         .then(user => {
-          console.log(user)
           if(!user) $scope.user = false;
           else{
             $scope.user = user;
