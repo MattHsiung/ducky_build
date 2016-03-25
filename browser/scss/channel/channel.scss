@@ -356,17 +356,11 @@ body > div{
 
 }
 
-.fa:hover{
+.ducky-icon:hover {
 	transform: rotate(360deg);
 }
-.fa{
+.ducky-icon {
 	transition: transform 0.5s
-}
-
-#offline {
-    h3 {
-        color: $primary;
-    }
 }
 
 .panel-background {
@@ -384,6 +378,13 @@ body > div{
 #directory{
 	overflow:scroll;
 	max-height: calc(100% - 80px)!important;
+}
+
+.offline-header {
+	color: #333;
+	font-weight: 600;
+	margin: 4em 0;
+	font-family: $main-font;
 }
 
 

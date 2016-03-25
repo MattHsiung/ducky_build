@@ -48,7 +48,5 @@ app.controller('ChannelsCtrl', function ($window, $scope, $firebaseObject, $fire
         })
       });
     };
-
-    console.log($scope.channels);
 });
 
