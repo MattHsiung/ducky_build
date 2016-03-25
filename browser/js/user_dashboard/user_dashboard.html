@@ -17,11 +17,11 @@
 				<div class = "each-dashboard">
 					<div class ="information-holder">
 						<h4 class = "info-titles">Title of your stream</h4>
-						<input placeholder="Whatever the title was before" ng-model="newData.title"></input>
+						<input placeholder="{{userInfo.title}}" ng-model="newData.title"></input>
 						<br>
 						<br>
 						<h4 class = "info-titles">Main Topic</h4>
-						<select placeholder="Whatever the category was before" ng-model="newData.category">
+						<select ng-model="newData.category">
 							<option ng-repeat="category in categories">{{category}}</option>
 						</select>
 						<button ng-click="updateFirebase(newData)">Update</button>
@@ -36,9 +36,11 @@
 
 				<div class = "each-dashboard">
 					<div class ="information-holder">
-						<h4 class = "info-titles">Followers: <span>100</span></h4>
+						<h4 class = "info-titles">Followers: 124</h4>
 						<br>
-						<h4 class = "info-titles">New Followers This Week: <span>12</span></h4>
+						<h4 class = "info-titles">New Followers This Week: 12</h4>
+						<br>
+						<h4 class = "info-titles">Total Views: {{userInfo.views || 0 }}</h4>
 					</div>
 				</div>
 			</div>
@@ -50,7 +52,7 @@
 
 				<div class = "each-dashboard">
 					<div class ="information-holder">
-						<h4 class = "info-titles">Following:</h4>
+						<h4 class = "info-titles">Following: {{numOfFollowers}}</h4>
 						<br>
 						<h4 class = "info-titles">Recently Watched Channel:</h4>
 						<br>
