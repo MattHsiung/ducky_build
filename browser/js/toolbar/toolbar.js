@@ -1,5 +1,5 @@
-app.controller('ToolbarCtrl', function (Editor, $scope, $log) {
-  var editor = Editor;
+app.controller('ToolbarCtrl', function (EditorFactory, $scope, $log) {
+  var editor = EditorFactory;
   $scope.themes = {
     monokai:'monokai',
     chaos:'chaos',

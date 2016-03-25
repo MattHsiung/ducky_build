@@ -1,9 +1,7 @@
-app.controller('ChannelCtrl', function (Editor,$scope, streamer, $firebaseObject, $firebaseArray, AuthService) {
+app.controller('ChannelCtrl', function ($scope, EditorFactory, StreamerFactory, streamer, $firebaseObject, $firebaseArray, AuthService) {
+  var ref = new Firebase('https://ducky.firebaseio.com');
   $scope.username = streamer;
   $scope.loading = true;
-
-    //Firebase DB Reference
-  var ref = new Firebase('https://ducky.firebaseio.com');
 
   $scope.jwplayerSetup = {
       file: `rtmp://192.168.68.8/live/${streamer}`,
@@ -12,24 +10,16 @@ app.controller('ChannelCtrl', function (Editor,$scope, streamer, $firebaseObject
       image: `/preview/${streamer}.jpg`
   };
 
-  var checkOnline = function (){
-    $firebaseObject(ref.child('files'))
-    .$loaded(function(data){
-      if(!data[streamer]) {
-        $scope.online = false;
-      } else {
-        $scope.online = true;
-      }
-    })
-  }
-  checkOnline();
+  StreamerFactory.checkOnline(streamer)
+    .then(isOnline => $scope.isOnline = isOnline)
+    .catch(null, console.error.bind(console));
 
-    //ACE EDITOR SETUP
+  // ACE EDITOR SETUP
 
-  var editor = Editor;
+  var editor = EditorFactory;
   editor.setTheme("ace/theme/monokai");
   editor.getSession().setMode("ace/mode/javascript");
-  editor.$blockScrolling = Infinity
+  editor.$blockScrolling = Infinity;
   editor.setReadOnly(true);
   editor.setShowPrintMargin(false);
 
@@ -125,54 +115,29 @@ app.controller('ChannelCtrl', function (Editor,$scope, streamer, $firebaseObject
     .$loaded()
     .then(function(data){
       $scope.channelInfo = data;
-      // console.log($scope.channelInfo)
     });
   })()
 
   function getSubs(){
     $scope.subs = $firebaseArray(ref.child('subscribers').child(streamer))
-
   }
-  getSubs()
+  getSubs();
 
-  AuthService.getLoggedInUser().then(user=>$scope.curUser = user)
+  AuthService.getLoggedInUser().then(user => $scope.curUser = user)
 
-  $scope.subscribeToChannel=function(){
-    if($scope.curUser){
-      var subscribe = $firebaseObject(ref.child('subscribers').child(streamer))
-      .$loaded(function(data){
-        data[$scope.curUser.username] = data[$scope.curUser.username] ? null:true;
-        data.$save()
-        console.log($scope.curUser.username+" subscribed to "+streamer)
-        $scope.isSubscribed()
+  $scope.subscribeToChannel = () => {
+    StreamerFactory.subscribeToChannel($scope.curUser, streamer)
+      .then(subscribed => $scope.subscribed = subscribed)
+      .catch(null, console.error.bind(console));
+  };
 
-
-      })
-      var subscript = $firebaseObject(ref.child('subscriptions').child($scope.curUser.username))
-      .$loaded(function(data){
-        console.log(data)
-        data[streamer] = data[streamer]?null:true;
-        data.$save()
-        $scope.isSubscribed()
-
-      })
-    }else{
-      console.log('subscribed failed')
+  $scope.isSubscribed = () => {
+    if ($scope.curUser) {
+      StreamerFactory.isSubscribed($scope.curUser, streamer)
+        .then(subscribed => $scope.subscribed = subscribed)
+        .catch(null, console.error.bind(console));
     }
   }
-  $scope.isSubscribed = function(){
-    if($scope.curUser){
-      $firebaseObject(ref.child('subscribers').child(streamer))
-        .$loaded(function(data){
-          if(data[$scope.curUser.username])$scope.subscribed=true
-          else $scope.subscribed = false
-        })
 
-    }
-  }
   $scope.subscribed;
 });
-
-app.factory('Editor', [function () {
-  return ace.edit('editor' );
-}])
