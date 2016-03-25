@@ -5,6 +5,7 @@ $secondary:#FFD501;
 $secondary-light:#DCD34B;
 $secondary-dark:#FFD501;
 $tertiary:#FF5F41;
+$gray:#333;
 
 $main-font: "proxima-nova",sans-serif;
 
@@ -35,7 +36,8 @@ body {
 }
 
 .page-container{
-  /*width: calc(100% - 50px)!important;*/
+  width: calc(100% - 50px)!important;
+  min-height: 100vh;
 }
 
 .fade {
