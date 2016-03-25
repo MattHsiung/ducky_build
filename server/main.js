@@ -1,6 +1,6 @@
 'use strict';
 var chalk = require('chalk');
-
+var stats = require('./stats');
 // Requires in ./db/index.js -- which returns a promise that represents
 // mongoose establishing a connection to a MongoDB database.
 var startDb = require('./db');
@@ -21,6 +21,8 @@ var startServer = function () {
     server.listen(PORT, function () {
         console.log(chalk.blue('Server started on port', chalk.magenta(PORT)));
     });
+
+    setInterval(stats, 15000);
 
 };
 
