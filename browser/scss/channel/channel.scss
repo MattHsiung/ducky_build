@@ -361,8 +361,14 @@ body > div{
 	transition: transform 0.5s
 }
 
+#offline {
+    h3 {
+        color: $primary;
+    }
+}
+
 #directory{
-	overflow:scroll; 
+	overflow:scroll;
 	max-height: calc(100% - 80px)!important;
 }
 

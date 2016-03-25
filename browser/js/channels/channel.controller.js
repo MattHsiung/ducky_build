@@ -19,6 +19,16 @@ var checkOnline = function (){
             aspectratio: "16:9",
             image: '/img/js_logo.jpg'
           });
+
+         //ACE EDITOR SETUP
+
+        var editor = Editor;
+        editor.setTheme("ace/theme/monokai");
+        editor.getSession().setMode("ace/mode/javascript");
+        editor.$blockScrolling = Infinity
+        editor.setReadOnly(true);
+        editor.setShowPrintMargin(false);
+
         $scope.online = true;
       }
     })
@@ -26,29 +36,7 @@ var checkOnline = function (){
   checkOnline();
 
 
-  //ACE EDITOR SETUP
 
-  var editor = Editor;
-  editor.setTheme("ace/theme/monokai");
-  editor.getSession().setMode("ace/mode/javascript");
-  editor.$blockScrolling = Infinity
-  editor.setReadOnly(true);
-  editor.setShowPrintMargin(false);
-
-<<<<<<< HEAD
-=======
-  //JW PLAYER SETUP
-  jwplayer.key = 'UI/JLLVJo3qYTxLMSXu9hiyaEAY/jkFCLR+38A==';
-  var playerInstance = jwplayer("streamer");
-  playerInstance.setup({
-      file: "rtmp://192.168.68.8/live/" +  streamer,
-      width: "100%",
-      aspectratio: "16:9",
-      image: '/preview/' + $scope.username + '.jpg'
-    });
-  //Firebase DB Reference
-  var ref = new Firebase('https://ducky.firebaseio.com');
->>>>>>> master
 
   $scope.directory = [{
     label: "Ducky",
