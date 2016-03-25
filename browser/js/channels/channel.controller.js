@@ -28,7 +28,7 @@ app.controller('ChannelCtrl', function (Editor,$scope, streamer, $firebaseObject
   }]
 
   function load(){
-    $firebaseObject(ref.child('users').child(streamer))
+    $firebaseObject(ref.child('files').child(streamer))
     .$loaded()
     .then(function(data){
       // console.log('loading');
@@ -37,7 +37,7 @@ app.controller('ChannelCtrl', function (Editor,$scope, streamer, $firebaseObject
     });
   }
 
-  var watch = $firebaseObject(ref.child('users').child(streamer))
+  var watch = $firebaseObject(ref.child('files').child(streamer))
     .$watch(function(data){load()})
   var watchChannel = $firebaseObject(ref.child('channel').child(streamer)).$watch(function(data){})
   var watchSubs = $firebaseObject(ref.child('subscribers').child(streamer)).$watch(function(data){})
@@ -168,7 +168,5 @@ app.controller('ChannelCtrl', function (Editor,$scope, streamer, $firebaseObject
 });
 
 app.factory('Editor', [function () {
-  
-
   return ace.edit('editor' );
 }])
