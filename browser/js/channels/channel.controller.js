@@ -1,39 +1,58 @@
-app.controller('ChannelCtrl', function (Editor,$scope, streamer, $firebaseObject, $firebaseArray, AuthService) {
-  $scope.username = streamer;
-  $scope.loading = true;
-
-    //Firebase DB Reference
+app.controller('ChannelCtrl', function ($state, Editor,$scope, streamer, $firebaseObject, $firebaseArray, AuthService) {
+  
   var ref = new Firebase('https://ducky.firebaseio.com');
 
+  $scope.username = streamer;
+  $scope.loading = true;
+  $scope.liveChannels = [];
 
-var checkOnline = function (){
-    $firebaseObject(ref.child('users'))
+  //this runs first, does the check to see if this channel is suppose to exist.
+  $firebaseObject(ref.child('channel'))
     .$loaded(function(data){
-      if(!data[streamer]) $scope.online = false;
-      else {
-         //JW PLAYER SETUP
-        jwplayer.key = 'UI/JLLVJo3qYTxLMSXu9hiyaEAY/jkFCLR+38A==';
-        var playerInstance = jwplayer("streamer");
-        playerInstance.setup({
-            file: "rtmp://192.168.2.120/live/" +  streamer,
-            width: "100%",
-            aspectratio: "16:9",
-            image: '/img/js_logo.jpg'
-          });
-        $scope.online = true;
+      console.log(data);
+      if(!data[$scope.username]) $state.go('channels');  
+    }) 
+
+  //quickly makes an array of all live channels
+  $firebaseObject(ref.child('files'))
+    .$loaded(function(data) {
+      for (var key in data) {
+        if (String(key).indexOf("$") === -1 && key !== "forEach") {
+          $scope.liveChannels.push(key);
+        }
       }
-    })
-  }
+    }); 
+
+
+  var checkOnline = function (){
+    if ($scope.liveChannels.indexOf($scope.username) === -1) {
+      $scope.online = false; 
+    }
+    else {
+       //JW PLAYER SETUP
+       jwplayer.key = 'UI/JLLVJo3qYTxLMSXu9hiyaEAY/jkFCLR+38A==';
+       var playerInstance = jwplayer("streamer");
+       playerInstance.setup({
+        file: "rtmp://192.168.2.120/live/" +  $scope.username,
+        width: "100%",
+        aspectratio: "16:9",
+        image: '/img/js_logo.jpg'
+      });
+       $scope.online = true;
+     }
+   }
+
+
   checkOnline();
 
     //ACE EDITOR SETUP
 
-    var editor = Editor;
-    editor.setTheme("ace/theme/monokai");
-    editor.getSession().setMode("ace/mode/javascript");
-    editor.$blockScrolling = Infinity
-    editor.setReadOnly(true);
-    editor.setShowPrintMargin(false);
+  var editor = Editor;
+  editor.setTheme("ace/theme/monokai");
+  editor.getSession().setMode("ace/mode/javascript");
+  editor.$blockScrolling = Infinity
+  editor.setReadOnly(true);
+  editor.setShowPrintMargin(false);
 
 
 
@@ -70,11 +89,11 @@ var checkOnline = function (){
   function converter(obj) {
     //need to check for empty content or infinite recursion getting objects like {content: "", type: 'js'}
     if (obj.content || obj.content === "") {
-      console.log(obj)
+      // console.log(obj)
       return;
     }
     else {
-      console.log(obj)
+      // console.log(obj)
       var final = [];
       for (var key in obj) {
         if (obj.hasOwnProperty(key) && String(key).indexOf("$") === -1) {
@@ -150,14 +169,14 @@ var checkOnline = function (){
       .$loaded(function(data){
         data[$scope.curUser.username] = data[$scope.curUser.username] ? null:true;
         data.$save()
-        console.log($scope.curUser.username+" subscribed to "+streamer)
+        // console.log($scope.curUser.username+" subscribed to "+streamer)
         $scope.isSubscribed()
 
 
       })
       var subscript = $firebaseObject(ref.child('subscriptions').child($scope.curUser.username))
       .$loaded(function(data){
-        console.log(data)
+        // console.log(data)
         data[streamer] = data[streamer]?null:true;
         data.$save()
         $scope.isSubscribed()
@@ -173,7 +192,7 @@ var checkOnline = function (){
         .$loaded(function(data){
           if(data[$scope.curUser.username])$scope.subscribed=true
           else $scope.subscribed = false
-          console.log($scope.subscribed)
+          // console.log($scope.subscribed)
         })
 
     }
