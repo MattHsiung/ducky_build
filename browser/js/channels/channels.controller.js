@@ -30,7 +30,7 @@ app.controller('ChannelsCtrl', function ($window, $scope, $firebaseObject, $fire
 
     $scope.selCategory = function(category){
       $scope.searchCat = category;
-    }  
+    }
 
     function getChannelInfo(liveChannels) {
       var liveRef = new Firebase('https://ducky.firebaseio.com/channel');
@@ -49,5 +49,7 @@ app.controller('ChannelsCtrl', function ($window, $scope, $firebaseObject, $fire
         })
       });
     };
+
+    console.log($scope.channels);
 });
 
