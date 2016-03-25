@@ -44,10 +44,10 @@
               <img id='ducky-icon' class="col-sm-3" ng-click="duckyAnimate()" ng-src="https://static.gearslutz.com/board/customavatars/avatar211639_1.gif">
               <h1 class="col-sm-9">DUCKY</h1>
             </div>
-            
+
             <!-- TEMPLATE FOR TYPEAHEAD -->
             <script type="text/ng-template" id="customTemplate.html">
-              <a class="searchRes" ng-click="reset()" ui-sref="channel({username: match.model.user})">
+              <a class="searchRes" ui-sref="channel({username: match.model.user})">
                   <span class="searchTitle" ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
                   <span class="searchUser">{{match.model.user}}</span>
                   <span class="searchUser pull-right">{{match.model.category}}</span>
@@ -56,7 +56,7 @@
             <!-- TEMPLATE FOR TYPEAHEAD -->
             <div class='search' ng-controller="TypeaheadCtrl">
                 <span class="fa fa-search"></span>
-                <input class="embedded-search form-control" placeholder="Search" type="text" ng-model="selected" uib-typeahead="channel as channel.title for channel in channels | filter:$viewValue | limitTo:20" typeahead-template-url="customTemplate.html">
+                <input ng-click="reset()" class="embedded-search form-control" placeholder="Search" type="text" ng-model="selected" uib-typeahead="channel as channel.title for channel in channels | filter:$viewValue | limitTo:20" typeahead-template-url="customTemplate.html">
             </div>
             <div class="auth-panel">
                 <span class="login text-center" ng-if="!user" ui-sref='login'>Login</span>

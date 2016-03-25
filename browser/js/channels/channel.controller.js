@@ -70,11 +70,9 @@ var checkOnline = function (){
   function converter(obj) {
     //need to check for empty content or infinite recursion getting objects like {content: "", type: 'js'}
     if (obj.content || obj.content === "") {
-      console.log(obj)
       return;
     }
     else {
-      console.log(obj)
       var final = [];
       for (var key in obj) {
         if (obj.hasOwnProperty(key) && String(key).indexOf("$") === -1) {
