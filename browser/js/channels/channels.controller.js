@@ -1,18 +1,21 @@
 app.controller('ChannelsCtrl', function ($window, $scope, $firebaseObject, $firebaseArray) {
     var ref = new Firebase('https://ducky.firebaseio.com/');
 
-    $scope.channels=[];
-    $scope.categories=[];
+    $scope.channels = [];
+    $scope.categories = [];
     var activeChannels = [];
-    var catRef= $firebaseObject(ref.child('categories'));
+
+    var catRef = $firebaseObject(ref.child('categories'));
 
     catRef.$loaded()
     .then(function(data){
       for(var key in data){
-        if(key[0]!=="$"&& data.hasOwnProperty(key))$scope.categories.push(key)
+        if(key[0]!=="$"&& data.hasOwnProperty(key)) $scope.categories.push(key);
       }
-    })
-    var firebaseRef = $firebaseObject(ref.child('users'))
+    });
+
+    var firebaseRef = $firebaseObject(ref.child('users'));
+
     //load up all active channels
     firebaseRef.$loaded()
     .then(function(data){
@@ -20,27 +23,31 @@ app.controller('ChannelsCtrl', function ($window, $scope, $firebaseObject, $fire
           activeChannels.push({username: key, files: value});
        });
       $scope.activeChannels = activeChannels;
-      getChannelInfo($scope.activeChannels)
+      getChannelInfo($scope.activeChannels);
     });
-    $scope.search={};
+
+    $scope.search = {};
+
     $scope.selCategory = function(category){
       $scope.searchCat = category;
     }  
+
     function getChannelInfo(liveChannels) {
       var liveRef = new Firebase('https://ducky.firebaseio.com/channel');
       liveChannels.forEach(function(channel){
-        var query = liveRef.child(channel.username)
-        $firebaseObject(query).$loaded().then(function(data){
+        var query = liveRef.child(channel.username);
+        $firebaseObject(query).$loaded()
+        .then(function(data){
           var obj = {
-            category:data.category,
-            title:data.title,
-            views:data.views,
-            user:data.user,
+            category: data.category,
+            title: data.title,
+            views: data.views,
+            user: data.user,
             image: '/preview/' + data.user + '.jpg'
           }
           $scope.channels.push(obj);
         })
-      })
+      });
     };
 });
 
