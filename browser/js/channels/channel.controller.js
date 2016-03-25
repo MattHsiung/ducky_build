@@ -1,26 +1,41 @@
 app.controller('ChannelCtrl', function (Editor,$scope, streamer, $firebaseObject, $firebaseArray, AuthService) {
   $scope.username = streamer;
+  $scope.loading = true;
 
-  //ACE EDITOR SETUP
-  
-  var editor = Editor;
-  editor.setTheme("ace/theme/monokai");
-  editor.getSession().setMode("ace/mode/javascript");
-  editor.$blockScrolling = Infinity
-  editor.setReadOnly(true);
-  editor.setShowPrintMargin(false);
-
-  //JW PLAYER SETUP
-  jwplayer.key = 'UI/JLLVJo3qYTxLMSXu9hiyaEAY/jkFCLR+38A==';
-  var playerInstance = jwplayer("streamer");
-  playerInstance.setup({
-      file: "rtmp://192.168.68.8/live/" +  streamer,
-      width: "100%",
-      aspectratio: "16:9",
-      image: '/preview/' + $scope.username + '.jpg'
-    });
-  //Firebase DB Reference
+    //Firebase DB Reference
   var ref = new Firebase('https://ducky.firebaseio.com');
+
+
+var checkOnline = function (){
+    $firebaseObject(ref.child('users'))
+    .$loaded(function(data){
+      if(!data[streamer]) $scope.online = false;
+      else {
+         //JW PLAYER SETUP
+        jwplayer.key = 'UI/JLLVJo3qYTxLMSXu9hiyaEAY/jkFCLR+38A==';
+        var playerInstance = jwplayer("streamer");
+        playerInstance.setup({
+            file: "rtmp://192.168.2.120/live/" +  streamer,
+            width: "100%",
+            aspectratio: "16:9",
+            image: '/img/js_logo.jpg'
+          });
+        $scope.online = true;
+      }
+    })
+  }
+  checkOnline();
+
+    //ACE EDITOR SETUP
+
+    var editor = Editor;
+    editor.setTheme("ace/theme/monokai");
+    editor.getSession().setMode("ace/mode/javascript");
+    editor.$blockScrolling = Infinity
+    editor.setReadOnly(true);
+    editor.setShowPrintMargin(false);
+
+
 
   $scope.directory = [{
     label: "Ducky",
@@ -31,7 +46,7 @@ app.controller('ChannelCtrl', function (Editor,$scope, streamer, $firebaseObject
     $firebaseObject(ref.child('files').child(streamer))
     .$loaded()
     .then(function(data){
-      // console.log('loading');
+      console.log('USER DATA', data);
       $scope.directory = converter(data);
       $scope.isSubscribed()
     });
@@ -48,12 +63,13 @@ app.controller('ChannelCtrl', function (Editor,$scope, streamer, $firebaseObject
       arr = arr.join('.')
     }else{
       arr = arr.join('')
-    } 
+    }
     return arr + '.'+ type
   }
 
   function converter(obj) {
-    if (obj.content) {
+    //need to check for empty content or infinite recursion getting objects like {content: "", type: 'js'}
+    if (obj.content || obj.content === "") {
       console.log(obj)
       return;
     }
@@ -89,6 +105,7 @@ app.controller('ChannelCtrl', function (Editor,$scope, streamer, $firebaseObject
           })
         }
       }
+      $scope.loading = false;
       return final;
     }
   }
@@ -121,10 +138,10 @@ app.controller('ChannelCtrl', function (Editor,$scope, streamer, $firebaseObject
 
   function getSubs(){
     $scope.subs = $firebaseArray(ref.child('subscribers').child(streamer))
-  
+
   }
   getSubs()
-  
+
   AuthService.getLoggedInUser().then(user=>$scope.curUser = user)
 
   $scope.subscribeToChannel=function(){
@@ -136,7 +153,7 @@ app.controller('ChannelCtrl', function (Editor,$scope, streamer, $firebaseObject
         console.log($scope.curUser.username+" subscribed to "+streamer)
         $scope.isSubscribed()
 
-        
+
       })
       var subscript = $firebaseObject(ref.child('subscriptions').child($scope.curUser.username))
       .$loaded(function(data){
@@ -144,25 +161,25 @@ app.controller('ChannelCtrl', function (Editor,$scope, streamer, $firebaseObject
         data[streamer] = data[streamer]?null:true;
         data.$save()
         $scope.isSubscribed()
-        
+
       })
     }else{
       console.log('subscribed failed')
     }
-  } 
+  }
   $scope.isSubscribed = function(){
     if($scope.curUser){
       $firebaseObject(ref.child('subscribers').child(streamer))
         .$loaded(function(data){
           if(data[$scope.curUser.username])$scope.subscribed=true
           else $scope.subscribed = false
-          console.log($scope.subscribed)  
+          console.log($scope.subscribed)
         })
 
     }
   }
   $scope.subscribed;
-  
+
 
 
 });
