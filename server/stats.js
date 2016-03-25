@@ -16,6 +16,7 @@ module.exports = function() {
 			var streams = json.rtmp.server.application[1].live.stream;
 			if (!Array.isArray(streams)) streams = [streams];
 			streams.forEach(stream => {
+                if(!stream) return;
 				var username = stream.name;
 				var viewers = Number(stream.nclients);
 				ducky.child(username).update({ views: viewers });

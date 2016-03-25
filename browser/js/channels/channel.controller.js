@@ -23,6 +23,7 @@ var checkOnline = function (){
       }
     })
   }
+  checkOnline();
 
 
   //ACE EDITOR SETUP
