@@ -1,9 +1,10 @@
 app.controller('SidebarController', function($scope, $state, $rootScope, AuthService, $firebaseArray) {
     var ref = new Firebase('https://ducky.firebaseio.com/');
-
     $scope.state = false;
     $rootScope.sidebar=false;
-
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options){ 
+        $rootScope.chat=false;
+    })
     function checkUser (){
       AuthService.getLoggedInUser()
         .then(user => {
@@ -14,13 +15,11 @@ app.controller('SidebarController', function($scope, $state, $rootScope, AuthSer
           }
         })
     }
-
     $scope.$on('auth-login-success', checkUser)
     $scope.$on('auth-logout-success', () => {
       $scope.user = false;
       $scope.subscriptions=[];
     })
-
     $scope.logout = function(){
       AuthService.logout()
       .then(() => {
@@ -37,8 +36,6 @@ app.controller('SidebarController', function($scope, $state, $rootScope, AuthSer
         $scope.state = !$scope.state;
         $rootScope.sidebar=!$rootScope.sidebar;
     };
-
-
     function getSubs(user){
       // $scope.watchSubs = $firebaseArray(ref.child('subscriptions').child(user.username)).$watch(function(data){})
       if(user){
@@ -48,8 +45,6 @@ app.controller('SidebarController', function($scope, $state, $rootScope, AuthSer
         })
       }
     }
-
-
 });
 
 app.directive('sidebarDirective', function() {
