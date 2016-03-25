@@ -3,7 +3,7 @@ app.controller('TypeaheadCtrl', function($scope, $firebaseObject, $firebaseArray
 
   // $scope.selected = undefined;
   $scope.reset=function(){
-    console.log('reset dis');
+    $scope.selected = "";
   }
 });
 
