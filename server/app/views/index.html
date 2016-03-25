@@ -54,7 +54,6 @@
               </a>
             </script>
             <!-- TEMPLATE FOR TYPEAHEAD -->
-            <pre>{{selected}}</pre>
             <div class='search' ng-controller="TypeaheadCtrl">
                 <span class="fa fa-search"></span>
                 <input class="embedded-search form-control" placeholder="Search" type="text" ng-model="selected" uib-typeahead="channel as channel.title for channel in channels | filter:$viewValue | limitTo:20" typeahead-template-url="customTemplate.html">
