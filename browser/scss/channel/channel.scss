@@ -363,8 +363,26 @@ body > div{
 	transition: transform 0.5s
 }
 
+#offline {
+    h3 {
+        color: $primary;
+    }
+}
+
+.panel-background {
+    background-color: #333;
+}
+
+#ducky-icon-load {
+  margin-left: 29%;
+}
+
+.ng-white {
+  color: white;
+}
+
 #directory{
-	overflow:scroll; 
+	overflow:scroll;
 	max-height: calc(100% - 80px)!important;
 }
 

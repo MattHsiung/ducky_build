@@ -20,7 +20,7 @@
 </div>
 <!-- bloc-1 -->
 <div class="bloc bgc-white l-bloc" id="bloc-1">
-    <div class="container">
+    <div ng-if="online" class="container">
         <div class="row">
             <div class="col-sm-12">
                 <div class="embed-responsive embed-responsive-16by9">
@@ -30,11 +30,21 @@
         </div>
     </div>
 </div>
+<div class="bloc bgc-white l-bloc" id="bloc-1">
+    <div ng-if="!online" class="container">
+        <div class="row">
+            <div id="offline" class="offline col-sm-12 text-center">
+                <h3 >{{username}} is offline </h3>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- bloc-1 END -->
 
 <!-- bloc-2 -->
-<div class="bloc l-bloc bgc-white" id="bloc-2">
-    <div class="container">
+<div ng-if="online" class="bloc l-bloc bgc-white" id="bloc-2">
+    <div ng-if="online" class="container">
         <div class="row push-down-xs">
             <div class="col-sm-3">
                 <a ng-click="subscribeToChannel()" class="btn   btn-deep-carmine-pink btn-sq btn-block">
@@ -98,10 +108,10 @@
 <!-- bloc-3 END -->
 
 <!-- bloc-4 -->
-<div class="bloc bgc-white d-bloc tc-white" id="bloc-4">
-
-    <div class="container">
+<div class="bloc panel-background" id="bloc-4">
+    <div  class="container">
         <div class="row collapse" id="code-editor">
+
             <div class="col-sm-3">
                 <div class="panel bgc-dark-jungle-green panel-sq">
                     <div class="panel-heading bgc-deep-carmine-pink">
@@ -110,7 +120,11 @@
                         </h4>
                     </div>
                     <div id="directory" class="panel-body">
-                        <abn-tree tree-data="directory" intial-selection="{{currentFile}}"></abn-tree>
+                      <div ng-if="loading" class='text-center'>
+                        <h3 class="ng-white"> Loading {{username}}'s files...</h3>
+                        <img id='ducky-icon-load' class="fa-spin col-sm-4" ng-src="https://static.gearslutz.com/board/customavatars/avatar211639_1.gif">
+                      </div>
+                        <abn-tree ng-hide="loading" tree-data="directory" intial-selection="{{currentFile}}"></abn-tree>
                     </div>
                     <div class="panel-footer bgc-dark-sea-green">
                         <h4 class="mg-clear tc-dark-jungle-green ">
@@ -121,30 +135,30 @@
             </div>
             <div class="col-sm-9">
                 <div id="toolbar" ng-controller="ToolbarCtrl">
-                
+
                 <div class="btn-group rale" uib-dropdown is-open="status.isopen">
                   <button id="single-button" type="button" class="btn btn-sq btn-primary" uib-dropdown-toggle ng-disabled="disabled">
                     Theme<span class="caret"></span>
                   </button>
                   <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
                     <li role="menuitem" ng-repeat="theme in themes" ng-click="setTheme(theme)"><a>{{theme}}</a></li>
-                    
+
                   </ul>
                 </div>
 
-                    
+
                 </div>
 
-                    
+
                 <div id="editor">Click on a file to see some code!</div>
             </div>
-        </div>
+          </div>
     </div>
 </div>
 <!-- bloc-4 END -->
 
 <!-- bloc-5 -->
-<div class="bloc bgc-medium-champagne l-bloc tc-medium-champagne" id="bloc-5">
+<div class="bloc l-bloc tc-medium-champagne" id="bloc-5">
     <div class="container bloc-sm">
         <div class="row">
             <div class="col-sm-6">
@@ -170,7 +184,7 @@
 <!-- bloc-5 END -->
 
 <!-- bloc-6 -->
-<div class="bloc bgc-wenge d-bloc" id="bloc-6">
+<div class="bloc d-bloc" id="bloc-6">
     <div class="container bloc-sm">
         <div class="row">
             <div class="col-sm-4">
@@ -188,7 +202,7 @@
 <!-- bloc-6 END -->
 
 <!-- bloc-7 -->
-<div class="bloc bgc-medium-champagne l-bloc" id="bloc-7">
+<div class="bloc l-bloc" id="bloc-7">
     <div class="container bloc-lg">
         <div class="row">
             <div class="col-sm-8">
@@ -226,7 +240,7 @@
                 {{username}}
             <a class="fa fa-cog icon-bg-light icon-md pull-right"></a>
         </h3>
-        
+
     </div>
     <div class="chatMessages">
         <ul class="list-group">
