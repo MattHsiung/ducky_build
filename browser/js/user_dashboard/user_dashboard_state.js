@@ -1,5 +1,4 @@
 'use strict';
-var ducky = new Firebase("https://ducky.firebaseio.com/");
 
 app.config(function ($stateProvider) {
 
@@ -8,8 +7,8 @@ app.config(function ($stateProvider) {
         templateUrl: 'js/user_dashboard/user_dashboard.html',
         controller: 'UserDashCtrl',
         resolve: {
-            theUser: function(UserFactory, $stateParams) {
-                return UserFactory.fetchById($stateParams.userId);
+            theUser: function(AuthService, $stateParams) {
+                return AuthService.getLoggedInUser()
             },
             theFollowersOfUser: function(UserFactory, $stateParams) {
                 return UserFactory.fetchAllFollowersForOneStreamer($stateParams.userId);
