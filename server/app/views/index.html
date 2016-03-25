@@ -41,7 +41,7 @@
     <div class="bgc-dark-jungle-green" id="sidenav" ng-controller="SidebarController" sidebar-directive="state">
         <div ng-if="sidebar" class="area" ng-controller="ChannelsCtrl">
             <div ui-sref="home" class="row title">
-              <img id='ducky-icon' class="col-sm-3" ng-click="duckyAnimate()" ng-src="https://static.gearslutz.com/board/customavatars/avatar211639_1.gif">
+              <img id='ducky-icon' class="col-sm-3 ducky-icon" ng-click="duckyAnimate()" ng-src="https://static.gearslutz.com/board/customavatars/avatar211639_1.gif">
               <h1 class="col-sm-9">DUCKY</h1>
             </div>
 
@@ -97,7 +97,7 @@
         <div ng-if="!sidebar" class="icons">
             <div class="text-center">
                 <a class="fa icon-bg-light icon-md" ng-class="{'fa-caret-right':!state, 'fa-caret-left':state }" ng-click="toggleState()"></a>
-                <span ui-sref="home"><img class="fa"id='ducky-icon-xs'ng-click="duckyAnimate()" ng-src="https://static.gearslutz.com/board/customavatars/avatar211639_1.gif"></span>
+                <span ui-sref="home"><img class="fa ducky-icon"id='ducky-icon-xs'ng-click="duckyAnimate()" ng-src="https://static.gearslutz.com/board/customavatars/avatar211639_1.gif"></span>
                 <span ui-sref="user_dashboard({userId:user._id})" class="fa fa-user icon-secondary icon-md"></span>
                 <span ui-sref="channels" class="fa fa-search icon-secondary icon-md"></span>
                 <span class="fa fa-github-alt icon-secondary icon-md"></span>
