@@ -1,0 +1,69 @@
+#start-page{
+	width: 100%;
+	min-height: 100vh;
+	.row{
+		height: 50vh;
+		div{
+			height: 100%;
+		}
+	}
+	.head{
+
+
+		.col-sm-8{
+			padding-top: 5vmin;
+		}
+		h1, h2{
+			color: $secondary;
+			font-weight: 900;
+			text-align: center;
+			font-size:7vmin;
+			margin-right: 30%;
+		}
+
+		h1{
+			font-size:15vmin;
+			margin-left: 20%;
+		}
+	
+		.rabu{
+			max-height: 50vh;
+			max-width: 50vw;
+		}
+
+	}
+	.readme{
+		h3{
+			font-size: 4vmin;
+			text-align: center;
+		}
+		color:white;
+	}
+	.info{
+		height: calc(50vh - 20px);
+		margin-bottom:20px;
+		font-size: 1.3em;
+		overflow: scroll;
+		h3{
+			color:$primary-light;
+			padding-bottom: 10px;
+			margin-bottom: 10px;
+			border-bottom: 1px solid $secondary;
+		}
+		pre{
+			border-radius: 0;
+			border:1px solid $primary;
+			color:$secondary;
+			background-color: $primary-light;
+			text-shadow:0px 3px 10px $primary-dark;
+			box-shadow: 0px 5px 20px rgba(0,0,0,0.4);
+			transition: transform 0.3s, box-shadow 0.3s;
+		}
+		pre:hover{
+			transform: scale(1.1);
+			box-shadow: 0px 10px 20px rgba(0,0,0,0.4);
+
+
+		}
+	}
+}

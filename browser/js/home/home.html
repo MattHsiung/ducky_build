@@ -18,9 +18,9 @@
     <div class="featured-streams">
         <h3>Featured Streams</h3>
         <h4>Users streaming right now</h4>
-   		<div class="streams-list" ng-controller="ChannelsCtrl">
-	   		<div class="stream-card" ng-repeat="channel in channels">
-	   			<a href="#">
+   		<div class="streams-list" ng-controller="ChannelsCtrl" >
+	   		<div class="stream-card" ng-repeat="channel in channels" ui-sref="channel({username: channel.user})">
+	   			<a>
 	   				<img src="{{channel.image}}">
 	   				<div class="stream-info">
 	   					<h5>{{channel.user}}</h1>

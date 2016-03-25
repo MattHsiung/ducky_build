@@ -74,7 +74,7 @@ body > div{
 	left: -250px;
 	bottom: 0;
 	padding:20px 5px;
-  	transition : 100ms left;
+  	transition : 200ms left;
   	z-index: 2;
   	width:300px;
 }
@@ -85,16 +85,17 @@ body > div{
 	right: -350px;
 	bottom: 0;
 	padding:20px 5px;
-  	transition : 100ms right;
+  	transition : 200ms right, 200ms transform;
   	z-index: 2;
   	width:350px;
 }
+
 
 .chatWindow > a{
 	right:20px;
 	position:fixed;
 	top:50px;
-	transition : 100ms right;
+	transition : 200ms right;
 }
 
 
@@ -104,6 +105,7 @@ body > div{
 
 .showChat {
     right: 0px !important;
+
 }
 
 #sidenav .icons{
@@ -163,20 +165,20 @@ body > div{
 	position: absolute;
 	left:50px;
 	right:0;
-  	transition : 100ms left;
-  	transition : 100ms right;
+  	transition : 400ms left, 400ms right;
 
 }
 
 .sidebarOpen{
-	left:300px!important;
+	left:300px;
 }
 .chatOpen{
-	right:350px!important;
+	right:350px;
 }
 .chatWindow > div{
 	position: absolute;
 	width: 340px;
+
 }
 .chatHeader{
 	text-align: center;
