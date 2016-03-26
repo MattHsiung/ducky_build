@@ -1,7 +1,8 @@
 'use strict';
-var ducky = new Firebase("https://ducky.firebaseio.com/");
 
 app.controller('UserDashCtrl', function ($scope, $firebaseObject, theUser) {
+    var ducky = new Firebase("https://ducky.firebaseio.com/");
+    
 	$scope.categories = [];
     $scope.user = theUser;
 

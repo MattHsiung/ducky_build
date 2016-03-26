@@ -13,7 +13,6 @@ $main-font: "proxima-nova",sans-serif;
   box-sizing: border-box;
 }
 
-
 body {
   background: #fdfdfd;
 }
@@ -36,7 +35,7 @@ body {
 }
 
 .page-container{
-  width: calc(100% - 50px)!important;
+  // width: calc(100% - 50px)!important;
   min-height: 100vh;
 }
 
@@ -50,8 +49,8 @@ body {
 }
 .fade.ng-enter,
 .fade.ng-leave {
-    -webkit-transition: all 0.5s ease;
-    transition: all 0.5s ease;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
 }
 .fade.ng-enter {
     opacity: 0;
