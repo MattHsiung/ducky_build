@@ -158,7 +158,7 @@ body > div{
 }
 
 .icon-bg-light{
-	color: rgba(200,200,200,0.3);
+	color: rgba(400,400,400,0.3);
 }
 
 .page-container{
@@ -259,7 +259,7 @@ body > div{
 	// opacity:1;
 	/*height: 40vh;*/
 	box-shadow: 1px 10px 30px rgba(0,0,0,0.4)!important;
-	background-color: $secondary;
+	background-color: white;
 	margin-bottom:50px;
 	border-radius: 10px;
 }
@@ -269,12 +269,12 @@ body > div{
 	color:white;
 }
 
-.channel-thumb-body{
+/*.channel-thumb-body{
 	opacity: 0;
 }
 .channel-thumb-body:hover{
 	opacity: 1;
-}
+}*/
 
 .panel-footer{
 	position: absolute;
@@ -400,10 +400,16 @@ body > div{
 
 .panel-heading {
   padding: 15px;
+  .fa-eye {
+    color: $secondary;
+  }
 }
 
-.move-over {
-  margin-left: 40px;
+.dropdown-menu {
+  li {
+    a {
+      background-color: #555 !important;
+    }
+  }
 }
-
 

@@ -18,13 +18,13 @@
 			margin-top: 5px;
 			vertical-align: middle;
 			padding-left: 0.5em;
-			-webkit-text-stroke: 1px black;
+			/*-webkit-text-stroke: 1px black;
 			text-shadow:
 		       	3px 3px 0 #000,
-		     	-1px -1px 0 #000,  
+		     	-1px -1px 0 #000,
 		      	1px -1px 0 #000,
 		      	-1px 1px 0 #000,
-		       	1px 1px 0 #000;
+		       	1px 1px 0 #000;*/
 		}
 
 		.nav-bar-right {
@@ -51,18 +51,18 @@
 			border-style: solid;
 			border-width: 1px;
 			border-color: black;
-			
+
 			h2 {
 				margin: 3%;
 				font-style: normal;
 				font-weight: 800;
 				color: $secondary-dark;
-				text-shadow:
+				/*text-shadow:
 			       	3px 3px 0 #000,
-			     	-1px -1px 0 #000,  
+			     	-1px -1px 0 #000,
 			      	1px -1px 0 #000,
 			      	-1px 1px 0 #000,
-			       	1px 1px 0 #000;
+			       	1px 1px 0 #000;*/
 			}
 		}
 
@@ -70,18 +70,18 @@
 			height: 100%;
 			border-style: solid;
 			border-width: 1px;
-			
+
 			.information-holder {
 				margin: 5%;
-				
+
 				input {
 					width: 90%;
 				}
-				
+
 				select {
 					font-size: 30px;
 				}
-				
+
 				.info-titles {
 					font-weight: 800;
 				}
