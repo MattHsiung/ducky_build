@@ -387,4 +387,23 @@ body > div{
 	font-family: $main-font;
 }
 
+/*styling for thumb images*/
+.profile-thumb {
+  margin-top: -10px;
+  margin-left: -25px;
+  margin-right: 15px;
+  img {
+    float: left;
+    width: 40px;
+  }
+}
+
+.panel-heading {
+  padding: 15px;
+}
+
+.move-over {
+  margin-left: 40px;
+}
+
 

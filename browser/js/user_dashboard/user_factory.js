@@ -19,20 +19,25 @@ app.factory('UserFactory', function($http) {
 			.then( response => response.data);
 	};
 
-    UserFactory.followUser =  function (userId, userToFollowId){
-        return $http.put('/api/users/' + userId + '/followers/' + userToFollowId)
-            .then( response => response.data);
-    }
+  UserFactory.followUser =  function (userId, userToFollowId){
+      return $http.put('/api/users/' + userId + '/followers/' + userToFollowId)
+          .then( response => response.data);
+  };
 
-    UserFactory.unfollowUser = function (userId, userToUnfollowId){
-        return $http.put('/api/users/' + userId + '/followers/' + userToUnfollowId)
-            .then( response => response.data);
-    }
+  UserFactory.unfollowUser = function (userId, userToUnfollowId){
+      return $http.put('/api/users/' + userId + '/followers/' + userToUnfollowId)
+          .then( response => response.data);
+  };
 
 	UserFactory.fetchById = function(userId) {
 		return $http.get('/api/users/' + userId)
 			.then( response => response.data);
 	};
+
+  UserFactory.fetchByUsername = function(username) {
+    return $http.get('/api/users/name/' + username)
+      .then( response => response.data);
+  };
 
 	UserFactory.create = function(userInfo){
 		return $http.post('/api/users', userInfo)

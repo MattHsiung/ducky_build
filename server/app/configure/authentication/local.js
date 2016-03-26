@@ -32,7 +32,9 @@ module.exports = function (app) {
         User.create(req.body)
         .then(newUser => {
             req.login(newUser, function(){
-                res.status(201).json(newUser);
+                res.status(201).send({
+                  user: newUser
+                })
             })
         })
         .then(null, next);
