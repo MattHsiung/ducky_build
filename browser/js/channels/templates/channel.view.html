@@ -227,7 +227,7 @@
     </div>
 </div>
  -->
-<div class="chatWindow bgc-dark-jungle-green" chat-directive="state">
+<div class="chatWindow" chat-directive="state">
     <a class="fa icon-bg-light icon-md" ng-class="{'fa-caret-right':show, 'fa-caret-left':!show, 'iconMove':show }" ng-click="toggle()"></a>
     <div class="chatHeader">
         <h3>
@@ -249,7 +249,7 @@
     </div>
     <div class="chatEnter">
             <textarea ng-enter="addMessage()"class="chatInput" ng-model="message"></textarea>
-            <a ng-click="addMessage()" class="btn btn-deep-carmine-pink btn-sq btn-block">
+            <a ng-click="addMessage()" class="btn chat-button btn-sq btn-block">
                 <span class="fa fa-comments-o icon-spacer"></span>Send
             </a>
     </div>

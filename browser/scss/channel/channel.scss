@@ -413,3 +413,32 @@ body > div{
   }
 }
 
+.chatWindow {
+  background-color: #444;
+}
+
+.messageUser {
+  color: $primary;
+}
+
+li:nth-child(even) {
+  .messageUser {
+    color: $primary-light;
+  }
+}
+
+.chatHeader {
+  color: white;
+  .fa-bars {
+    color: $secondary;
+  }
+  .fa-cog {
+    color: rgba(255, 255, 255, 0.3);
+  }
+}
+
+.chat-button {
+  background-color: $primary-light;
+  color: white;
+}
+
