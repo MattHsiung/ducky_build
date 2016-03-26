@@ -158,7 +158,7 @@ body > div{
 }
 
 .icon-bg-light{
-	color: rgba(200,200,200,0.3);
+	color: rgba(400,400,400,0.3);
 }
 
 .page-container{
@@ -259,7 +259,7 @@ body > div{
 	// opacity:1;
 	/*height: 40vh;*/
 	box-shadow: 1px 10px 30px rgba(0,0,0,0.4)!important;
-	background-color: $secondary;
+	background-color: white;
 	margin-bottom:50px;
 	border-radius: 10px;
 }
@@ -269,12 +269,12 @@ body > div{
 	color:white;
 }
 
-.channel-thumb-body{
+/*.channel-thumb-body{
 	opacity: 0;
 }
 .channel-thumb-body:hover{
 	opacity: 1;
-}
+}*/
 
 .panel-footer{
 	position: absolute;
@@ -387,4 +387,58 @@ body > div{
 	font-family: $main-font;
 }
 
+/*styling for thumb images*/
+.profile-thumb {
+  margin-top: -10px;
+  margin-left: -25px;
+  margin-right: 15px;
+  img {
+    float: left;
+    width: 40px;
+  }
+}
+
+.panel-heading {
+  padding: 15px;
+  .fa-eye {
+    color: $secondary;
+  }
+}
+
+.dropdown-menu {
+  li {
+    a {
+      background-color: #555 !important;
+    }
+  }
+}
+
+.chatWindow {
+  background-color: #444;
+}
+
+.messageUser {
+  color: $primary;
+}
+
+li:nth-child(even) {
+  .messageUser {
+    color: $primary-light;
+  }
+}
+
+.chatHeader {
+  color: white;
+  .fa-bars {
+    color: $secondary;
+  }
+  .fa-cog {
+    color: rgba(255, 255, 255, 0.3);
+  }
+}
+
+.chat-button {
+  background-color: $primary-light;
+  color: white;
+}
 

@@ -2,7 +2,7 @@ app.controller('SidebarController', function($scope, $state, $rootScope, AuthSer
     var ref = new Firebase('https://ducky.firebaseio.com/');
     $scope.state = false;
     $rootScope.sidebar=false;
-    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options){ 
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options){
         $rootScope.chat=false;
     })
     function checkUser (){
@@ -37,14 +37,13 @@ app.controller('SidebarController', function($scope, $state, $rootScope, AuthSer
         $rootScope.sidebar=!$rootScope.sidebar;
     };
     function getSubs(user){
-      // $scope.watchSubs = $firebaseArray(ref.child('subscriptions').child(user.username)).$watch(function(data){})
       if(user){
         var subRef = $firebaseArray(ref.child('subscriptions').child(user.username))
-        subRef.$loaded(function(data){
-          $scope.subscriptions=data;
-        })
+        subRef.$loaded()
+          .then(data => $scope.subscriptions = data)
       }
     }
+
 });
 
 app.directive('sidebarDirective', function() {

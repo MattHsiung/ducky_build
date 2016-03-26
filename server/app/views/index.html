@@ -12,19 +12,19 @@
     <!-- MODULES -->
     <script src="/lodash/index.js"></script>
     <script src="/angular/angular.js"></script>
-    <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
     <script src="/angularfire/dist/angularfire.js"></script>
     <script src="/angular-animate/angular-animate.js"></script>
     <script src="/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/angular-ui-bootstrap/ui-bootstrap.js"></script>
     <script src="/angular-ui-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
     <script src="/socket.io-client/socket.io.js"></script>
     <script src="/main.js"></script>
     <!-- **** -->
-    
+
     <!-- BOOTSTRAP -->
     <link rel="stylesheet" type="text/css" href="./resources/css/bootstrap.css">
-   
+
     <!-- CSS-->
     <link rel="stylesheet" id="ppstyle" type="text/css" href="style.css">
     <!-- **** -->
@@ -70,7 +70,8 @@
 
             <div class='search' ng-controller="TypeaheadCtrl">
                 <span class="fa fa-search"></span>
-                <input ng-click="reset()" class="embedded-search form-control" placeholder="Search" type="text" ng-model="selected" uib-typeahead="channel as channel.title for channel in channels | filter:$viewValue | limitTo:20" typeahead-template-url="customTemplate.html">
+                <input class="embedded-search form-control" placeholder="Search" type="text" ng-model="selected" uib-typeahead="channel as channel.title for channel in channels | filter:$viewValue | limitTo:20" typeahead-template-url="customTemplate.html">
+                <span ng-click="reset()" class="fa fa-times-circle-o"></span>
             </div>
             <div class="auth-panel">
                 <span class="login text-center" ng-if="!user" ui-sref='login'>Login</span>

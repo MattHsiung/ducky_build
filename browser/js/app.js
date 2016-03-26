@@ -1,5 +1,5 @@
 'use strict';
-window.app = angular.module('FullstackGeneratedApp', ['fsaPreBuilt', 'ui.router', 'ui.bootstrap', 'ngAnimate', 'firebase', 'angularBootstrapNavTree']);
+var app = angular.module('FullstackGeneratedApp', ['fsaPreBuilt', 'ui.router', 'ui.bootstrap', 'ngAnimate', 'firebase', 'angularBootstrapNavTree']);
 
 app.config(function ($urlRouterProvider, $locationProvider) {
     // This turns off hashbang urls (/#about) and changes it to something normal (/about)
@@ -15,24 +15,16 @@ app.run(function ($rootScope, AuthService, $state) {
     var destinationStateRequiresAuth = function (state) {
         return state.data && state.data.authenticate;
     };
-
-    // $stateChangeStart is an event fired
-    // whenever the process of changing a state begins.
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
 
         if (!destinationStateRequiresAuth(toState)) {
-            // The destination state does not require authentication
-            // Short circuit with return.
             return;
         }
 
         if (AuthService.isAuthenticated()) {
-            // The user is authenticated.
-            // Short circuit with return.
             return;
         }
 
-        // Cancel navigating to new state.
         event.preventDefault();
 
         AuthService.getLoggedInUser().then(function (user) {
