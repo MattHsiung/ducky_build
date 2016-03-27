@@ -2,6 +2,8 @@ app.controller('ChannelCtrl', function (Editor,$scope, streamer, $firebaseObject
   $scope.username = streamer;
   $scope.loading = true;
 
+  // $('.active').append("<span class='active-caret fa fa-caret-right'></span>");
+
     //Firebase DB Reference
   var ref = new Firebase('https://ducky.firebaseio.com');
 

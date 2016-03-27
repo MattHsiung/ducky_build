@@ -43,14 +43,15 @@
 #toolbar{
 	height: 40px;
 	z-index: 6;
-	box-shadow: 0px 5px 5px rgba(0,0,0,0.4)
+	box-shadow: 0px 5px 5px rgba(0,0,0,0.4);
+  background-color: #444;
 }
 
 #toolbar .btn{
 	font-weight: 900;
 	height:40px;
-	color:$secondary!important;
-	background-color: $primary-light;
+	color: white;
+	background-color: #666;
 }
 .ace_gutter-layer{
 	width:50px!important;
@@ -441,4 +442,46 @@ li:nth-child(even) {
   background-color: $primary-light;
   color: white;
 }
+
+.panel {
+  .project-directory {
+    background-color: $secondary;
+  }
+}
+
+.nav-pills > li.active > a {
+  background-color: RGBA(0,0,0,.4);
+  border-left: 2px solid $primary-light;
+}
+
+.nav-pills > li.active > a:hover{
+  background-color: RGBA(0,0,0,.4);
+  border-left: 2px solid $primary-light;
+}
+
+.nav-pills > li:hover {
+  background-color: RGBA(0,0,0,.4);
+  border-left: 2px solid $primary-light;
+}
+
+.active-caret {
+  z-index: 1;
+  color: rgba(200, 200, 200, 0.3);
+  position: absolute;
+  top: 9px;
+  right: 0em;
+  font-size: 1.2em;
+}
+
+.panel-footer {
+  background-color: #333 !important;
+  .fa {
+    color: #666;
+  }
+}
+
+.inner-lay {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
 
