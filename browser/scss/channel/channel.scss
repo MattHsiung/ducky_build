@@ -307,17 +307,13 @@ body > div{
   color:white;
 }
 
-/*.channel-thumb-body{
-	opacity: 0;
-}
-.channel-thumb-body:hover{
-	opacity: 1;
-}*/
-
 .panel-footer{
 	position: absolute;
 	bottom:50px;
 	width:100%;
+	.fa {
+	    color: $secondary;
+	}
 }
 
 .i-red{
@@ -550,14 +546,6 @@ body > div{
   border-left: 2px solid $primary-light;
 }
 
-
-.panel-footer {
-  background-color: #333 !important;
-  .fa {
-    color: #666;
-  }
-}
-
 .loading-info {
   background-color: #666;
   width: 35%;
@@ -575,5 +563,3 @@ body > div{
   margin-left: 48%;
   margin-top: 20%;
 }
-
-

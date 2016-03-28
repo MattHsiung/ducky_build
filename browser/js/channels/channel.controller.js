@@ -25,7 +25,7 @@ app.controller('ChannelCtrl', function (Editor,$scope, streamer, $firebaseObject
   checkOnline();
 
   //ACE EDITOR SETUP
-  var editor = Editor;
+  var editor = Editor.editor();
   editor.setTheme("ace/theme/monokai");
   editor.getSession().setMode("ace/mode/javascript");
   editor.$blockScrolling = Infinity
@@ -178,6 +178,8 @@ app.controller('ChannelCtrl', function (Editor,$scope, streamer, $firebaseObject
 
 });
 
-app.factory('Editor', [function () {
-  return ace.edit('editor' );
+app.service('Editor', [function () {
+  this.editor = function(){
+    return ace.edit('editor');
+  } 
 }])
