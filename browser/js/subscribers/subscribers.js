@@ -14,5 +14,4 @@ app.controller('SubscribersCtrl', ['$scope', '$firebaseArray', 'AuthService', fu
     })
 
 
-
 }])

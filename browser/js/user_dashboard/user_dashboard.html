@@ -1,13 +1,14 @@
 <section id = "dashboard">
+		<header class = "dashboard-header">
+			<div class="container-fluid">	
+		    	<img src="{{user.imageUrl}}?s=70">
+				<h1>User Dashboard</h1>
+				<div class = "nav-bar-right">
+				<h2><span class="fa fa-user"></span> {{user.username}}</h2>
+			</div>
+	   	</header>
 
-	<header class = "dashboard-header">
-    	<img src="{{user.imageUrl}}?s=70">
-		<h1>User Dashboard</h1>
-		<div class = "nav-bar-right">
-			<h3>Logged in: {{user.username}}</h3>
-		</div>
-   	</header>
-
+	</div>
 	<div class = "dashboard-main container-fluid">
 		<div class="row">
 			<div class = "dashboard-streamer col-sm-4">
@@ -25,7 +26,7 @@
 						<select ng-model="newData.category">
 							<option ng-repeat="category in categories">{{category}}</option>
 						</select>
-						<button ng-click="updateFirebase(newData)" id="update-btn">Update</button>
+						<button class="btn btn-sq" ng-click="updateFirebase(newData)" id="update-btn">Update</button>
 					</div>
 				</div>
 			</div>
@@ -53,7 +54,7 @@
 
 				<div class = "each-dashboard">
 					<div class ="information-holder">
-						<h4 class = "info-titles">Following: </h4>
+						<h4 class = "info-titles">Subscribed Channels: </h4>
 						<ul class="list-group">
 							<li class="list-group-item" ui-sref="channel({username: user})"ng-repeat="user in subscriptions">
 							{{user}}
