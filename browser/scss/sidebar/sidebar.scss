@@ -61,6 +61,17 @@
           left: 2em;
           font-size: 1.2em;
         }
+        .fa-times-circle-o {
+          z-index: 1;
+          color: rgba(200, 200, 200, 0.3);
+          position: absolute;
+          top: 9px;
+          right: 0em;
+          font-size: 1.2em;
+          &:hover {
+            color: $primary-light;
+          }
+        }
         padding-left: 1em;
         padding-right: 1em;
         text-align: left;
@@ -161,22 +172,22 @@
         opacity: 1!important;
     }
 
-    li{ 
+    li{
         background-color: white!important;
 
         opacity: .9;
         padding: 0!important;
         overflow: hidden;
         a{
-            
-          border-bottom: 1px solid $primary-light;  
+
+          border-bottom: 1px solid $primary-light;
           padding: 5px;
         background-color: white!important;
-          
+
           .searchUser{
             color:$primary!important;
             font-size: 0.8em!important;
-          } 
+          }
           .searchTitle{
             display: block;
             color:$primary-light!important;

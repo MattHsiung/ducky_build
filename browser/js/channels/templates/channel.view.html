@@ -2,18 +2,18 @@
 <div class="bloc bgc-dark-sea-green d-bloc" id="bloc-0">
     <div class="container ">
         <div class="row">
-            <div class="col-sm-1">
-                <div class="text-center">
-                    <span class="fa fa-terminal icon-deep-carmine-pink icon-lg"></span>
+            <div class="col-sm-2">
+                <div class="avatar">
+                    <img src="{{channelInfo.image}}?s=150">
                 </div>
             </div>
             <div class="col-sm-10">
                 <h2 class="mg-md tc-dark-jungle-green">
                     {{channelInfo.title}}
                 </h2>
-                <h4 class="mg-md tc-wenge ">
+                <h3 class="mg-md .ng-white">
                     {{username}} working in {{channelInfo.category}}
-                </h4>
+                </h3>
             </div>
         </div>
     </div>
@@ -40,7 +40,7 @@
     </div>
 </div>
 
-<div ng-if="online" class="bloc l-bloc bgc-white" id="bloc-2">
+<div ng-if="online" class="bloc l-bloc bgc-white rale" id="bloc-2">
     <div ng-if="online" class="container">
         <div class="row push-down-xs">
             <div class="col-md-3 col-xs-4">
@@ -100,8 +100,8 @@
     </div>
 </div>
 
-<div class="bloc panel-background" id="bloc-4">
-    <div  class="container">
+<div class="bloc panel-background expand-anim" id="bloc-4" ng-class="{'expanded-window':expanded}">
+    <div  ng-class="{'container':!expanded, 'container-fluid':expanded}">
         <div class="row collapse in" id="code-editor">
             <div class="col-sm-3">
                 <div class="panel panel-sq">
@@ -133,7 +133,9 @@
                       <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
                         <li role="menuitem" ng-repeat="theme in themes" ng-click="setTheme(theme)"><a>{{theme}}</a></li>
                       </ul>
+
                     </div>
+                    <a class="fa pull-right fa-3x" ng-class="{'fa-expand':!expanded, 'fa-compress':expanded}" ng-click="expandWindow()"></a>
                 </div>
                 <div id="editor">Click on a file to see some code!</div>
             </div>
@@ -141,7 +143,7 @@
     </div>
 </div>
 
-<!-- 
+<!--
 <div class="bloc l-bloc tc-medium-champagne" id="bloc-5">
     <div class="container bloc-sm">
         <div class="row">
@@ -211,6 +213,7 @@
     </div>
 </div>
 -->
+
 <div class="chatWindow" chat-directive="state">
     <a class="fa icon-bg-light icon-md" ng-class="{'fa-caret-right':show, 'fa-caret-left':!show, 'iconMove':show }" ng-click="toggle()"></a>
     <div class="chatHeader">
@@ -237,3 +240,4 @@
     </div>
 
 </div>
+

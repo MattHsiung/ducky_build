@@ -26,7 +26,6 @@ app.directive('chatDirective', function($rootScope, $firebaseArray, AuthService,
               scope.message = "";
             };
             scope.convertTimestamp = ChatFactory.convertTimestamp;
-            
         }
     };
 });

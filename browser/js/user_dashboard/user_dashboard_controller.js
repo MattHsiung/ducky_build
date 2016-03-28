@@ -2,7 +2,7 @@
 
 app.controller('UserDashCtrl', function ($scope, $firebaseObject, theUser) {
     var ducky = new Firebase("https://ducky.firebaseio.com/");
-    
+
 	$scope.categories = [];
     $scope.user = theUser;
 
@@ -26,7 +26,7 @@ app.controller('UserDashCtrl', function ($scope, $firebaseObject, theUser) {
     $firebaseObject(ducky.child('subscribers')).$loaded()
         .then(function(data) {
             var temp = [];
-            for (var key in data) { 
+            for (var key in data) {
                 if (String(key).indexOf("$") === -1 && data[key][$scope.user.username]) {
                     temp.push(key);
                 }

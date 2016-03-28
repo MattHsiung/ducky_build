@@ -2,6 +2,7 @@
 var crypto = require('crypto');
 var mongoose = require('mongoose');
 var _ = require('lodash');
+var md5 = require('blueimp-md5');
 
 var schema = new mongoose.Schema({
     username: {
@@ -16,6 +17,9 @@ var schema = new mongoose.Schema({
           validator: validateEmail,
           message: "Not a valid email address"
         }
+    },
+    imageUrl: {
+      type: String,
     },
     following: [{
         type: mongoose.Schema.Types.ObjectId, ref: 'User'
@@ -46,6 +50,13 @@ function validateEmail(email) {
    var emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
    return emailRegex.test(email);
 };
+
+//prehook to generate image via gravatar email
+schema.pre('save', function(next){
+  this.imageUrl = 'http://www.gravatar.com/avatar/' + md5(this.email.replace(/\s/g,''));
+  console.log('do they get an image', this.imageUrl, this.email);
+  next();
+})
 
 schema.statics.validateStreamingUser = function (data){
     console.log('validation', data);
