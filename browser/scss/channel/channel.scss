@@ -307,17 +307,13 @@ body > div{
   color:white;
 }
 
-/*.channel-thumb-body{
-	opacity: 0;
-}
-.channel-thumb-body:hover{
-	opacity: 1;
-}*/
-
 .panel-footer{
 	position: absolute;
 	bottom:50px;
 	width:100%;
+	.fa {
+	    color: $secondary;
+	}
 }
 
 .i-red{
@@ -378,6 +374,27 @@ body > div{
 
 #search{
 	margin-top:20px;
+}
+
+#bloc-2{
+	.btn{
+		color:white;
+		background-color: $gray;
+		.fa{
+			visibility: hidden;
+			
+			
+		}
+		&:hover{
+			color:white;
+			background-color: $primary-light;
+			.fa{
+				visibility: visible!important;
+			}
+
+		}		
+	}	
+
 }
 
 #bloc-10 h1{
@@ -497,10 +514,6 @@ body > div{
 
 
 
- .chatWindow {
-   background-color: #444;
- }
-
  .messageUser {
    color: $primary;
  }
@@ -529,12 +542,6 @@ body > div{
 	}
 }
 
-.panel {
-  .project-directory {
-    background-color: $secondary;
-  }
-}
-
 .nav-pills > li.active > a {
   background-color: RGBA(0,0,0,.4);
   border-left: 2px solid $primary-light;
@@ -548,14 +555,6 @@ body > div{
 .nav-pills > li:hover {
   background-color: RGBA(0,0,0,.4);
   border-left: 2px solid $primary-light;
-}
-
-
-.panel-footer {
-  background-color: #333 !important;
-  .fa {
-    color: #666;
-  }
 }
 
 .loading-info {
@@ -575,5 +574,3 @@ body > div{
   margin-left: 48%;
   margin-top: 20%;
 }
-
-

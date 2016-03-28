@@ -1,7 +1,7 @@
 <section id = "dashboard">
 
 	<header class = "dashboard-header">
-    <img src="{{user.imageUrl}}?s=70">
+    	<img src="{{user.imageUrl}}?s=70">
 		<h1>User Dashboard</h1>
 		<div class = "nav-bar-right">
 			<h3>Logged in: {{user.username}}</h3>
@@ -9,7 +9,7 @@
    	</header>
 
 	<div class = "dashboard-main container-fluid">
-		<div class = "row">
+		<div class="row">
 			<div class = "dashboard-streamer col-sm-4">
 				<div class = "dashboard-title">
 					<h2>Streamer's Corner</h2>
@@ -25,7 +25,7 @@
 						<select ng-model="newData.category">
 							<option ng-repeat="category in categories">{{category}}</option>
 						</select>
-						<button ng-click="updateFirebase(newData)">Update</button>
+						<button ng-click="updateFirebase(newData)" id="update-btn">Update</button>
 					</div>
 				</div>
 			</div>
@@ -37,9 +37,9 @@
 
 				<div class = "each-dashboard">
 					<div class ="information-holder">
-						<h4 class = "info-titles">Followers: 124</h4>
+						<h4 class = "info-titles">Subscribers: {{subscribers.length}}</h4>
 						<br>
-						<h4 class = "info-titles">New Followers This Week: 12</h4>
+						<h4 class = "info-titles">New Followers This Week: {{weekFollower}}</h4>
 						<br>
 						<h4 class = "info-titles">Total Views: {{userInfo.views || 0 }}</h4>
 					</div>
@@ -53,11 +53,33 @@
 
 				<div class = "each-dashboard">
 					<div class ="information-holder">
-						<h4 class = "info-titles">Following: {{numOfFollowers}}</h4>
+						<h4 class = "info-titles">Following: </h4>
+						<ul class="list-group">
+							<li class="list-group-item" ui-sref="channel({username: user})"ng-repeat="user in subscriptions">
+							{{user}}
+							</li>
+						</ul>
 						<br>
-						<h4 class = "info-titles">Recently Watched Channel:</h4>
-						<br>
-						<h4 class = "info-titles">Favorites:</h4>
+						<h4 class = "info-titles">Recently Watched Channel: </h4>
+						<div class="" ui-sref="channel({username: recent.user})">
+							<div class="panel channel-thumb panel-sq">
+								<div class="panel-heading">
+						            <a class="profile-thumb col-sm-2">
+						              <img src="{{recent.image}}">
+						            </a>
+									<h4 class="mg-clear">
+										{{recent.user}} 
+										<span class="fa fa-eye pull-right"><span class="viewsCounter rale">{{recent.views}}</span></span>
+									</h4>
+								</div>
+								<div class="panel-body channel-thumb-body">
+									<img src="{{recent}}">
+									<p>
+										{{recent.title}}
+									</p>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

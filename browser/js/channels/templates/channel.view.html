@@ -51,18 +51,17 @@
         </div>
     </div>
 </div>
-
 <div ng-if="online" class="bloc l-bloc bgc-white rale" id="bloc-2">
     <div ng-if="online" class="container">
         <div class="row push-down-xs">
             <div class="col-md-3 col-xs-4">
-                <a ng-click="subscribeToChannel()" class="btn   btn-deep-carmine-pink btn-sq btn-block">
+                <a ng-click="subscribeToChannel()" class="btn btn-sq btn-block">
                     <span ng-show="!subscribed">
-                        <span class="fa fa-heart-o icon-spacer"></span>
+                        <span class="fa fa-heart-o icon-spacer fa-lg"></span>
                         Follow {{username}}
                     </span>
                     <span ng-show="subscribed">
-                        <span class="fa fa-frown-o icon-spacer"></span>
+                        <span class="fa fa-frown-o icon-spacer fa-lg"></span>
                         Unfollow {{username}}
                     </span>
                 </a>
@@ -132,7 +131,7 @@
                     <div class="panel-footer">
                         <h4 class="mg-clear ">
                           <span class="fa fa-database"></span>
-                            Current File
+                            {{currentFile}}
                         </h4>
                     </div>
                 </div>
