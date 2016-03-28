@@ -1,6 +1,16 @@
 #dashboard {
 	font-family: "proxima-nova",sans-serif;
 
+	#update-btn{
+		position: relative;
+	}
+	#update-btn + span{
+		position: absolute;
+		bottom: 20px;
+		left:0;
+		background-color: $primary-light;
+	}
+
 	.dashboard-header {
 		background-color: $primary-light;
 		width: 100%;
@@ -72,6 +82,7 @@
 			border-width: 1px;
 
 			.information-holder {
+				position: relative;
 				margin: 5%;
 
 				input {

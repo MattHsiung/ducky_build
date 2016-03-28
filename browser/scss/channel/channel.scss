@@ -376,6 +376,27 @@ body > div{
 	margin-top:20px;
 }
 
+#bloc-2{
+	.btn{
+		color:white;
+		background-color: $gray;
+		.fa{
+			visibility: hidden;
+			
+			
+		}
+		&:hover{
+			color:white;
+			background-color: $primary-light;
+			.fa{
+				visibility: visible!important;
+			}
+
+		}		
+	}	
+
+}
+
 #bloc-10 h1{
 	font-family: 'Raleway', sans-serif;
 	font-weight: 900;
@@ -493,10 +514,6 @@ body > div{
 
 
 
- .chatWindow {
-   background-color: #444;
- }
-
  .messageUser {
    color: $primary;
  }
@@ -523,12 +540,6 @@ body > div{
 	h2{
 		text-shadow:0 0 0 transparent!important;
 	}
-}
-
-.panel {
-  .project-directory {
-    background-color: $secondary;
-  }
 }
 
 .nav-pills > li.active > a {
