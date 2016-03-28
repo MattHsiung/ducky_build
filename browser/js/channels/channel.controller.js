@@ -6,7 +6,7 @@ app.controller('ChannelCtrl', function (Editor,$scope, streamer, $firebaseObject
   var ref = new Firebase('https://ducky.firebaseio.com');
 
   $scope.jwplayerSetup = {
-      file: `rtmp://192.168.68.8/live/${streamer}`,
+      file: `rtmp://localhost/live/${streamer}`,
       width: "100%",
       aspectratio: "16:9",
       image: `/preview/${streamer}.jpg`
