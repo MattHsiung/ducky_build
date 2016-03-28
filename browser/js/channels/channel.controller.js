@@ -25,7 +25,7 @@ app.controller('ChannelCtrl', function (Editor,$scope, streamer, $firebaseObject
   checkOnline();
 
   //ACE EDITOR SETUP
-  var editor = Editor;
+  var editor = Editor.editor();
   editor.setTheme("ace/theme/monokai");
   editor.getSession().setMode("ace/mode/javascript");
   editor.$blockScrolling = Infinity
@@ -102,22 +102,6 @@ app.controller('ChannelCtrl', function (Editor,$scope, streamer, $firebaseObject
     }
   }
 
-  function setEditorData(data, label){
-    var type = label[label.length-1]
-    var syntax={
-      'js':'javascript',
-      'html':'html',
-      'css':'css',
-      'json':'json',
-      'php':'php',
-      'txt':'text',
-      'swift':'swift',
-      'scss':'scss',
-      'ruby':'ruby'
-    }
-    editor.getSession().setMode("ace/mode/"+syntax[type]);
-    editor.setValue(data,1)
-  }
 
   (function getChannelInfo(){
     $firebaseObject(ref.child('channel').child(streamer))
@@ -134,13 +118,16 @@ app.controller('ChannelCtrl', function (Editor,$scope, streamer, $firebaseObject
   }
   getSubs()
 
-  AuthService.getLoggedInUser().then(user=>$scope.curUser = user)
+  AuthService.getLoggedInUser().then(user=> $scope.curUser = user)
+  .then(function(user){
+     ref.child('recent').child(user.username).set(streamer);
+  })
 
   $scope.subscribeToChannel=function(){
     if($scope.curUser){
       var subscribe = $firebaseObject(ref.child('subscribers').child(streamer))
       .$loaded(function(data){
-        data[$scope.curUser.username] = data[$scope.curUser.username] ? null:true;
+        data[$scope.curUser.username] = data[$scope.curUser.username] ? null:Firebase.ServerValue.TIMESTAMP;
         data.$save()
         console.log($scope.curUser.username+" subscribed to "+streamer)
         $scope.isSubscribed()
@@ -159,6 +146,7 @@ app.controller('ChannelCtrl', function (Editor,$scope, streamer, $firebaseObject
       console.log('subscribed failed')
     }
   }
+
   $scope.isSubscribed = function(){
     if($scope.curUser){
       $firebaseObject(ref.child('subscribers').child(streamer))
@@ -171,13 +159,36 @@ app.controller('ChannelCtrl', function (Editor,$scope, streamer, $firebaseObject
   }
   $scope.subscribed;
 
+  //--------TEXT-EDITOR CONTROLS---------
   $scope.expanded = false;
   $scope.expandWindow = function(){
     $scope.expanded = !$scope.expanded;
   }
 
+
+  function setEditorData(data, label){
+    var type = label[label.length-1]
+    var syntax={
+      'js':'javascript',
+      'html':'html',
+      'css':'css',
+      'json':'json',
+      'php':'php',
+      'txt':'text',
+      'swift':'swift',
+      'scss':'scss',
+      'ruby':'ruby',
+      'md':'markdown'
+    }
+    editor.getSession().setMode("ace/mode/"+syntax[type]);
+    editor.setValue(data,1)
+  }
+
+
 });
 
-app.factory('Editor', [function () {
-  return ace.edit('editor' );
+app.service('Editor', [function () {
+  this.editor = function(){
+    return ace.edit('editor');
+  } 
 }])

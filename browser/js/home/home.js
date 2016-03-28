@@ -7,7 +7,7 @@ app.config(function ($stateProvider) {
             loggedInUser: function (AuthService){
                 return AuthService.getLoggedInUser()
                     .then( user => {
-                        if(!user) return false;
+                        if(!user) return null;
                         else return user;
                     })
             }
