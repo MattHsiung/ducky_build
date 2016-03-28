@@ -1,14 +1,14 @@
 <!-- bloc-0 -->
 <div class="bloc bgc-dark-sea-green d-bloc" id="bloc-0">
-    <div class="container bloc-sm">
+    <div class="container ">
         <div class="row">
             <div class="col-sm-2">
-                <div class="text-center">
+                <div class="avatar">
                     <img src="{{channelInfo.image}}?s=150">
                 </div>
             </div>
             <div class="col-sm-10">
-                <h2 class="mg-md tc-dark-jungle-green ">
+                <h2 class="mg-md tc-dark-jungle-green">
                     {{channelInfo.title}}
                 </h2>
                 <h3 class="mg-md .ng-white">
@@ -40,13 +40,10 @@
     </div>
 </div>
 
-<!-- bloc-1 END -->
-
-<!-- bloc-2 -->
-<div ng-if="online" class="bloc l-bloc bgc-white" id="bloc-2">
+<div ng-if="online" class="bloc l-bloc bgc-white rale" id="bloc-2">
     <div ng-if="online" class="container">
         <div class="row push-down-xs">
-            <div class="col-sm-3">
+            <div class="col-md-3 col-xs-4">
                 <a ng-click="subscribeToChannel()" class="btn   btn-deep-carmine-pink btn-sq btn-block">
                     <span ng-show="!subscribed">
                         <span class="fa fa-heart-o icon-spacer"></span>
@@ -58,44 +55,41 @@
                     </span>
                 </a>
             </div>
-            <div class="col-sm-1 text-center">
-                <span><a class="fa fa-facebook-square fa-2x"></a>
-                </span>
+            <div class="col-md-3 col-xs-4">
+                <div class="row text-r">
+                    <div class="col-sm-4">
+                <span><a class="fa fa-facebook-square fa-2x"></a></span>
+                    </div>
+                    <div class="col-sm-4">
+                <span><a class="fa fa-github fa-2x"></a></span>
+                    </div>
+                    <div class="col-sm-4">
+                <span><a class="fa fa-twitter fa-2x"></a></span>
+                    </div>
+                </div>
             </div>
-            <div class="col-sm-1 text-center">
-                <span><a class="fa fa-github fa-2x"></a>
-                </span>
-            </div>
-            <div class="col-sm-1 text-center">
-                <span><a class="fa fa-twitter fa-2x"></a>
-                </span>
-            </div>
-            <div class="col-md-1 col-md-offset-3 col-sm-2 col-xs-4 txt-r">
-                <h5 class="mg-md text-w-md">
-                    <span class="fa fa-user icon-deep-carmine-pink icon-dark-jungle-green"></span> {{subs.length}}
-                </h5>
-            </div>
-            <div class="col-md-1 col-sm-2 col-xs-4 txt-r">
-                <h5 class="mg-md sm-shadow text-w-md">
-                    <span class="fa fa-eye icon-1315"></span>{{channelInfo.views}}
-                </h5>
-            </div>
-            <div class="col-md-1 col-sm-2 no-pad col-xs-4 txt-r">
-                <h5 class="mg-md sm-shadow text-w-md ">
-                    <span class="fa fa-heart icon-deep-carmine-pink"></span> 15,334
-                </h5>
+            <div class="col-md-4 col-md-offset-2 col-xs-4">
+                <div class="row txt-r">
+                    <div class="col-sm-4">
+                        <span class="fa fa-user icon-deep-carmine-pink icon-dark-jungle-green">{{subs.length}}</span> 
+                    </div>
+                    <div class="col-sm-4">
+                        <span class="fa fa-eye icon-1315">{{channelInfo.views}}</span>
+                    </div>
+                    <div class="col-sm-4">
+                        <span class="fa fa-heart icon-deep-carmine-pink">15,334</span> 
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<!-- bloc-2 END -->
 
-<!-- bloc-3 -->
-<div class="bloc bgc-dark-jungle-green d-bloc" id="bloc-3">
+<div class="bloc d-bloc" id="bloc-3">
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-                <h3 class="mg-md">
+                <h3 class="mg-md rale">
                     <span class="fa fa-file-code-o icon-1315"></span> Code
                 </h3>
             </div>
@@ -105,17 +99,14 @@
         </div>
     </div>
 </div>
-<!-- bloc-3 END -->
 
-<!-- bloc-4 -->
-<div class="bloc panel-background" id="bloc-4">
-    <div  class="container">
+<div class="bloc panel-background expand-anim" id="bloc-4" ng-class="{'expanded-window':expanded}">
+    <div  ng-class="{'container':!expanded, 'container-fluid':expanded}">
         <div class="row collapse in" id="code-editor">
-
             <div class="col-sm-3">
-                <div class="panel bgc-dark-jungle-green panel-sq">
-                    <div class="panel-heading bgc-deep-carmine-pink">
-                        <h4 class="mg-clear tc-dark-jungle-green ">
+                <div class="panel panel-sq">
+                    <div class="panel-heading">
+                        <h4 class="mg-clear ">
                             Project Directory
                         </h4>
                     </div>
@@ -126,8 +117,8 @@
                       </div>
                         <abn-tree ng-hide="loading" tree-data="directory" intial-selection="{{currentFile}}"></abn-tree>
                     </div>
-                    <div class="panel-footer bgc-dark-sea-green">
-                        <h4 class="mg-clear tc-dark-jungle-green ">
+                    <div class="panel-footer">
+                        <h4 class="mg-clear ">
                             Current File
                         </h4>
                     </div>
@@ -135,27 +126,22 @@
             </div>
             <div class="col-sm-9">
                 <div id="toolbar" ng-controller="ToolbarCtrl">
+                    <div class="btn-group rale" uib-dropdown is-open="status.isopen">
+                      <button id="single-button" type="button" class="btn btn-sq btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+                        Theme<span class="caret"></span>
+                      </button>
+                      <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                        <li role="menuitem" ng-repeat="theme in themes" ng-click="setTheme(theme)"><a>{{theme}}</a></li>
+                      </ul>
 
-                <div class="btn-group rale" uib-dropdown is-open="status.isopen">
-                  <button id="single-button" type="button" class="btn btn-sq btn-primary" uib-dropdown-toggle ng-disabled="disabled">
-                    Theme<span class="caret"></span>
-                  </button>
-                  <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
-                    <li role="menuitem" ng-repeat="theme in themes" ng-click="setTheme(theme)"><a>{{theme}}</a></li>
-
-                  </ul>
+                    </div>
+                    <a class="fa pull-right fa-3x" ng-class="{'fa-expand':!expanded, 'fa-compress':expanded}" ng-click="expandWindow()"></a>
                 </div>
-
-
-                </div>
-
-
                 <div id="editor">Click on a file to see some code!</div>
             </div>
           </div>
     </div>
 </div>
-<!-- bloc-4 END -->
 
 <!--
 <div class="bloc l-bloc tc-medium-champagne" id="bloc-5">
@@ -226,31 +212,32 @@
         </div>
     </div>
 </div>
- -->
+-->
+
 <div class="chatWindow" chat-directive="state">
     <a class="fa icon-bg-light icon-md" ng-class="{'fa-caret-right':show, 'fa-caret-left':!show, 'iconMove':show }" ng-click="toggle()"></a>
     <div class="chatHeader">
         <h3>
-            <a class="fa fa-bars pull-left" ></a>
+            <a class="fa fa-comment pull-left" ></a>
                 {{username}}
             <a class="fa fa-cog icon-bg-light icon-md pull-right"></a>
         </h3>
-
     </div>
     <div class="chatMessages">
         <ul class="list-group">
             <li class="list-group-item message" ng-repeat="message in messages">
                 <span class="messageUser">{{message.from}}: </span>
                 <span class="messageText">{{message.content}}</span>
-                <br>
-                <span class="messageText">{{convertTimestamp(message.timestamp)}}</span>
+                <span class="messageTime pull-right">{{convertTimestamp(message.timestamp)}}</span>
             </li>
         </ul>
     </div>
     <div class="chatEnter">
             <textarea ng-enter="addMessage()"class="chatInput" ng-model="message"></textarea>
-            <a ng-click="addMessage()" class="btn chat-button btn-sq btn-block">
+            <a ng-click="addMessage()" class="btn btn-block">
                 <span class="fa fa-comments-o icon-spacer"></span>Send
             </a>
     </div>
+
 </div>
+
