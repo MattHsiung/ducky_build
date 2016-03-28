@@ -2,8 +2,6 @@ app.controller('ChannelCtrl', function (Editor,$scope, streamer, $firebaseObject
   $scope.username = streamer;
   $scope.loading = true;
 
-  // $('.active').append("<span class='active-caret fa fa-caret-right'></span>");
-
     //Firebase DB Reference
   var ref = new Firebase('https://ducky.firebaseio.com');
 
@@ -26,8 +24,7 @@ app.controller('ChannelCtrl', function (Editor,$scope, streamer, $firebaseObject
   }
   checkOnline();
 
-    //ACE EDITOR SETUP
-
+  //ACE EDITOR SETUP
   var editor = Editor;
   editor.setTheme("ace/theme/monokai");
   editor.getSession().setMode("ace/mode/javascript");

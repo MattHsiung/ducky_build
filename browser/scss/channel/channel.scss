@@ -247,27 +247,27 @@ body > div{
 }
 
 .channel-thumb{
-	img {
-		width: 100%;
-		height: auto;
-	}
+  img {
+    width: 100%;
+    height: auto;
+  }
 
-	background-color: black;
-	background-blend-mode: multiply;
-	background-size: 100% auto;
-	background-position: center center;
-	background-repeat: no-repeat;
-	// opacity:1;
-	/*height: 40vh;*/
-	box-shadow: 1px 10px 30px rgba(0,0,0,0.4)!important;
-	background-color: white;
-	margin-bottom:50px;
-	border-radius: 10px;
+  background-color: black;
+  background-blend-mode: multiply;
+  background-size: 100% auto;
+  background-position: center center;
+  background-repeat: no-repeat;
+  // opacity:1;
+  /*height: 40vh;*/
+  box-shadow: 1px 10px 30px rgba(0,0,0,0.4)!important;
+  background-color: white;
+  margin-bottom:50px;
+  border-radius: 10px;
 }
 
 .channel-thumb .panel-heading{
-	background-color:#444;
-	color:white;
+  background-color:#444;
+  color:white;
 }
 
 /*.channel-thumb-body{
@@ -372,6 +372,13 @@ body > div{
   margin-left: 29%;
 }
 
+#ducky-icon-load-main {
+  width: 40px;
+  height: 40px;
+  margin-top: 2em;
+  margin-left: 47%;
+}
+
 .ng-white {
   color: white;
 }
@@ -384,7 +391,7 @@ body > div{
 .offline-header {
 	color: #333;
 	font-weight: 600;
-	margin: 4em 0;
+	margin-top: 4em;
 	font-family: $main-font;
 }
 
@@ -464,14 +471,14 @@ li:nth-child(even) {
   border-left: 2px solid $primary-light;
 }
 
-.active-caret {
+/*.active-caret {
   z-index: 1;
   color: rgba(200, 200, 200, 0.3);
   position: absolute;
   top: 9px;
   right: 0em;
   font-size: 1.2em;
-}
+}*/
 
 .panel-footer {
   background-color: #333 !important;
@@ -480,8 +487,30 @@ li:nth-child(even) {
   }
 }
 
-.inner-lay {
-  background-color: rgba(255, 255, 255, 0.2);
+/*.offline-header-main {
+  transition: color 0.5s ease;
+  color: $secondary;
+  &:hover {
+    color: $secondary-dark;
+  }
+}*/
+
+.loading-info {
+  background-color: #666;
+  width: 35%;
+  padding: 1em;
+  margin: 0 auto 1em;
+  .stream-link {
+    color: $secondary-light;
+  }
+}
+
+#loader-main {
+  width: 100px;
+  width: 70px;
+  margin: auto;
+  margin-left: 48%;
+  margin-top: 20%;
 }
 
 

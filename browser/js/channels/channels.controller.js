@@ -1,6 +1,6 @@
 app.controller('ChannelsCtrl', function ($window, $scope, $firebaseObject, $firebaseArray) {
     var ref = new Firebase('https://ducky.firebaseio.com/');
-
+    $scope.loading = true;
     $scope.channels = [];
     $scope.categories = [];
     var activeChannels = [];
@@ -48,6 +48,7 @@ app.controller('ChannelsCtrl', function ($window, $scope, $firebaseObject, $fire
           $scope.channels.push(obj);
         })
       });
+      $scope.loading = false;
     };
 });
 

@@ -35,9 +35,11 @@
 	</div>
 </div>
 <!-- bloc-0 END -->
-
 <!-- bloc-1 -->
-<div class="bloc cloud half-n-half" id="bloc-11">
+<div ng-if="loading">
+  <img id='loader-main' class="col-sm-1 fa-spin" ng-src="https://www.firebase.com/resources/images/forge/loader.gif">
+</div>
+<div ng-if="!loading" class="bloc cloud half-n-half" id="bloc-11">
 	<div class="container-fluid bloc-sm">
 		<div class="row bg-js">
 			<div class="col-sm-4 col-lg-3 animated fadeIn" ng-repeat="channel in channels | filter:search:undefined | filter:searchCat:true" ui-sref="channel({username: channel.user})">
