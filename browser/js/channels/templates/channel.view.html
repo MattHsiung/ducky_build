@@ -1,7 +1,7 @@
 <!-- bloc-0 -->
 <div class="bloc bgc-dark-sea-green d-bloc" id="bloc-0">
     <div class="container ">
-        <div class="row">
+        <div ng-if="!loading" class="row">
             <div class="col-sm-2">
                 <div class="avatar">
                     <img src="{{channelInfo.image}}?s=150">
@@ -16,6 +16,18 @@
                 </h3>
             </div>
         </div>
+        <div ng-if="loading" class="container">
+        <div class="row text-center">
+            <img id='ducky-icon-load-main' class="fa-spin pull-left" ng-src="https://www.firebase.com/resources/images/forge/loader.gif">
+            <div class="col-sm-12">
+              <h3 class="offline-header-main">Loading {{username}}'s page...</h3>
+            </div>
+          </div>
+          <div class="loading-info text-center">
+            <h5 class="ng-white">Did you know you know you can start streaming on ducky to. </h5>
+            <h5 class="ng-white">Visit <a class="stream-link" href="https://www.npmjs.com/package/ducky-stream">ducky-stream</a> to download the latest node module.</h5>
+          </div>
+    </div>
     </div>
 </div>
 <!-- bloc-1 -->
@@ -31,7 +43,7 @@
     </div>
 </div>
 <div class="bloc bgc-white l-bloc" id="bloc-1">
-    <div ng-if="!online" class="container">
+    <div ng-if="!online && !loading" class="container">
         <div class="row">
             <div id="offline" class="offline col-sm-12 text-center">
                 <h3 class="offline-header">{{username}} is offline </h3>
@@ -71,13 +83,13 @@
             <div class="col-md-4 col-md-offset-2 col-xs-4">
                 <div class="row txt-r">
                     <div class="col-sm-4">
-                        <span class="fa fa-user icon-deep-carmine-pink icon-dark-jungle-green">{{subs.length}}</span> 
+                        <span class="fa fa-user icon-deep-carmine-pink icon-dark-jungle-green">{{subs.length}}</span>
                     </div>
                     <div class="col-sm-4">
                         <span class="fa fa-eye icon-1315">{{channelInfo.views}}</span>
                     </div>
                     <div class="col-sm-4">
-                        <span class="fa fa-heart icon-deep-carmine-pink">15,334</span> 
+                        <span class="fa fa-heart icon-deep-carmine-pink">15,334</span>
                     </div>
                 </div>
             </div>
@@ -119,6 +131,7 @@
                     </div>
                     <div class="panel-footer">
                         <h4 class="mg-clear ">
+                          <span class="fa fa-database"></span>
                             Current File
                         </h4>
                     </div>

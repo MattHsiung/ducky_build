@@ -24,8 +24,7 @@ app.controller('ChannelCtrl', function (Editor,$scope, streamer, $firebaseObject
   }
   checkOnline();
 
-    //ACE EDITOR SETUP
-
+  //ACE EDITOR SETUP
   var editor = Editor;
   editor.setTheme("ace/theme/monokai");
   editor.getSession().setMode("ace/mode/javascript");

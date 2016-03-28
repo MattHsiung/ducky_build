@@ -54,7 +54,6 @@
 	z-index: 6;
 	background-color: rgb(36,36,36);
 	box-shadow: 1px 0px 10px rgba(0,0,0,0.4);
-
 }
 
 #toolbar .btn{
@@ -109,7 +108,7 @@ body > div{
 	  	box-shadow: 5px 0px 25px rgba(0,0,0,0.4);
 	  	&:hover{
 			background-color: $primary!important;
-	  		
+
 	  	}
 
 	}
@@ -118,7 +117,7 @@ body > div{
 		text-shadow: 0px 5px 15px rgba(0,0,0,0.3);
 
 	}
-	
+
 }
 
 .chatWindow > a{
@@ -130,15 +129,15 @@ body > div{
 }
 
 .fa-facebook-square{
-	color:#103480!important;	
+	color:#103480!important;
 }
 
 .fa-github{
-	color:black!important;	
+	color:black!important;
 }
 
 .fa-twitter{
-	color:$primary-light!important;	
+	color:$primary-light!important;
 }
 
 .iconMove{
@@ -285,27 +284,27 @@ body > div{
 }
 
 .channel-thumb{
-	img {
-		width: 100%;
-		height: auto;
-	}
+  img {
+    width: 100%;
+    height: auto;
+  }
 
-	background-color: black;
-	background-blend-mode: multiply;
-	background-size: 100% auto;
-	background-position: center center;
-	background-repeat: no-repeat;
-	// opacity:1;
-	/*height: 40vh;*/
-	box-shadow: 1px 10px 30px rgba(0,0,0,0.4)!important;
-	background-color: white;
-	margin-bottom:50px;
-	border-radius: 10px;
+  background-color: black;
+  background-blend-mode: multiply;
+  background-size: 100% auto;
+  background-position: center center;
+  background-repeat: no-repeat;
+  // opacity:1;
+  /*height: 40vh;*/
+  box-shadow: 1px 10px 30px rgba(0,0,0,0.4)!important;
+  background-color: white;
+  margin-bottom:50px;
+  border-radius: 10px;
 }
 
 .channel-thumb .panel-heading{
-	background-color:#444;
-	color:white;
+  background-color:#444;
+  color:white;
 }
 
 /*.channel-thumb-body{
@@ -410,6 +409,13 @@ body > div{
   margin-left: 29%;
 }
 
+#ducky-icon-load-main {
+  width: 40px;
+  height: 40px;
+  margin-top: 2em;
+  margin-left: 47%;
+}
+
 .ng-white {
   color: white;
 }
@@ -422,7 +428,7 @@ body > div{
 .offline-header {
 	color: #333;
 	font-weight: 600;
-	margin: 4em 0;
+	margin-top: 4em;
 	font-family: $main-font;
 }
 
@@ -436,7 +442,7 @@ body > div{
 	.panel-heading{
 		box-shadow: 1px 0px 10px rgba(0,0,0,0.4);
 		background-color: rgba(0,0,0,0.3);
-		
+
 	}
 	.panel-footer{
 		box-shadow: 1px 0px 10px rgba(0,0,0,0.4);
@@ -452,7 +458,7 @@ body > div{
 	}
 }
 #bloc-3{
-	background-color:$primary-light; 
+	background-color:$primary-light;
 	h3, span{
 		color: $secondary!important;
 	}
@@ -491,38 +497,26 @@ body > div{
 
 
 
-// .chatWindow {
-//   background-color: #444;
-// }
+ .chatWindow {
+   background-color: #444;
+ }
 
-// .messageUser {
-//   color: $primary;
-// }
+ .messageUser {
+   color: $primary;
+ }
 
-// li:nth-child(even) {
-//   .messageUser {
-//     color: $primary-light;
-//   }
-// }
+  li:nth-child(even) {
+  .messageUser {
+    color: $primary-light;
+   }
+ }
 
-// .chatHeader {
-//   color: white;
-//   .fa-bars {
-//     color: $secondary;
-//   }
-//   .fa-cog {
-//     color: rgba(255, 255, 255, 0.3);
-//   }
-// }
 
-// .chat-button {
-//   background-color: $primary-light;
-//   color: white;
-// >>>>>>> master
+
 
 .expanded-window{
 	padding:0 !important;
-	// transition: padding 0.5s;
+	 transition: padding 0.5s;
 }
 .expand-anim{
 	transition: padding 0.5s;
@@ -533,6 +527,53 @@ body > div{
 	h2{
 		text-shadow:0 0 0 transparent!important;
 	}
+}
+
+.panel {
+  .project-directory {
+    background-color: $secondary;
+  }
+}
+
+.nav-pills > li.active > a {
+  background-color: RGBA(0,0,0,.4);
+  border-left: 2px solid $primary-light;
+}
+
+.nav-pills > li.active > a:hover{
+  background-color: RGBA(0,0,0,.4);
+  border-left: 2px solid $primary-light;
+}
+
+.nav-pills > li:hover {
+  background-color: RGBA(0,0,0,.4);
+  border-left: 2px solid $primary-light;
+}
+
+
+.panel-footer {
+  background-color: #333 !important;
+  .fa {
+    color: #666;
+  }
+}
+
+.loading-info {
+  background-color: #666;
+  width: 35%;
+  padding: 1em;
+  margin: 0 auto 1em;
+  .stream-link {
+    color: $secondary-light;
+  }
+}
+
+#loader-main {
+  width: 100px;
+  width: 70px;
+  margin: auto;
+  margin-left: 48%;
+  margin-top: 20%;
 }
 
 

@@ -9,9 +9,9 @@ app.config( function ($stateProvider){
         templateUrl: '/js/channels/templates/channel.view.html',
         controller: 'ChannelCtrl',
         resolve: {
-            streamer: function ($stateParams) {
-                return $stateParams.username;
+            streamer: function ($stateParams){
+              return $stateParams.username;
             }
         }
-    })
-})
+    });
+});
