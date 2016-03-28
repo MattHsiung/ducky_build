@@ -1,3 +1,5 @@
+
+
 .no-pad{
 	padding-left: 0;
 }
@@ -22,7 +24,10 @@
 
 #code-editor{
 	height:90vh;
+	box-shadow: 0px 0px 20px rgba(0,0,0,0.4);
 }
+
+
 
 #code-editor >div{
 	height:100%;
@@ -40,18 +45,23 @@
     left: 0;
     margin:0;
 }
+.dropdown-menu{
+	top:37px!important;
+}
+
 #toolbar{
 	height: 40px;
 	z-index: 6;
-	box-shadow: 0px 5px 5px rgba(0,0,0,0.4);
-  background-color: #444;
+	background-color: rgb(36,36,36);
+	box-shadow: 1px 0px 10px rgba(0,0,0,0.4);
 }
 
 #toolbar .btn{
+	border: none;
 	font-weight: 900;
 	height:40px;
-	color: white;
-	background-color: #666;
+	color:$secondary!important;
+	background-color: transparent;
 }
 .ace_gutter-layer{
 	width:50px!important;
@@ -89,16 +99,46 @@ body > div{
   	transition : 200ms right, 200ms transform;
   	z-index: 2;
   	width:350px;
-}
+  	background-color: $gray;
+  	box-shadow: 5px -5px 25px rgba(0,0,0,0.4);
+  	.btn{
+		background-color: $primary-light!important;
+		border-radius:0;
+		color: $secondary;
+	  	box-shadow: 5px 0px 25px rgba(0,0,0,0.4);
+	  	&:hover{
+			background-color: $primary!important;
 
+	  	}
+
+	}
+	h3,.fa{
+		color: $secondary;
+		text-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+
+	}
+
+}
 
 .chatWindow > a{
 	right:20px;
 	position:fixed;
-	top:50px;
+	top:20px;
 	transition : 200ms right;
+
 }
 
+.fa-facebook-square{
+	color:#103480!important;
+}
+
+.fa-github{
+	color:black!important;
+}
+
+.fa-twitter{
+	color:$primary-light!important;
+}
 
 .iconMove{
 	right:360px!important;
@@ -141,6 +181,8 @@ body > div{
 #sidenav .icons>div>span{
 	margin-bottom: 25px;
 	display: block;
+    text-shadow: 5px 5px 5px rgba(0,0,0,0.3);
+
 }
 #sidenav .icons>div>span:last-of-type{
 
@@ -188,17 +230,11 @@ body > div{
 	box-shadow: 0px 3px 5px rgba(0,0,0,0.4);
 	z-index:2;
 	color:$primary-light;
+	background-color:$primary-light;
 }
 .chatHeader >h3{
 	position: relative;
 	margin:1rem;
-}
-
-.chatHeader >h3>a{
-	color:#77B59C;
-}
-.chatHeader >h3>a:hover{
-	color:#ED3B3B;
 }
 
 .chatMessages{
@@ -208,8 +244,9 @@ body > div{
 	overflow: scroll;
 }
 
-.message{
-
+.messageTime{
+	font-size: .7em;
+	color: rgba(0,0,0,0.4);
 }
 
 .messageUser{
@@ -395,6 +432,43 @@ body > div{
 	font-family: $main-font;
 }
 
+#bloc-4{
+	color: $secondary;
+	background-color: rgb(25,25,25);
+	.panel{
+		border:1px solid black;
+		background-color: $gray;
+	}
+	.panel-heading{
+		box-shadow: 1px 0px 10px rgba(0,0,0,0.4);
+		background-color: rgba(0,0,0,0.3);
+
+	}
+	.panel-footer{
+		box-shadow: 1px 0px 10px rgba(0,0,0,0.4);
+		background-color: rgba(0,0,0,0.3);
+
+	}
+}
+.avatar{
+	img{
+		max-width: 100%;
+		max-height: 80%;
+		padding:10px 0;
+	}
+}
+#bloc-3{
+	background-color:$primary-light;
+	h3, span{
+		color: $secondary!important;
+	}
+
+	h3{
+		font-weight: 900;
+	}
+	z-index: 6;
+
+}
 /*styling for thumb images*/
 .profile-thumb {
   margin-top: -10px;
@@ -421,33 +495,38 @@ body > div{
   }
 }
 
-.chatWindow {
-  background-color: #444;
-}
 
-.messageUser {
-  color: $primary;
-}
 
-li:nth-child(even) {
+ .chatWindow {
+   background-color: #444;
+ }
+
+ .messageUser {
+   color: $primary;
+ }
+
+  li:nth-child(even) {
   .messageUser {
     color: $primary-light;
-  }
+   }
+ }
+
+
+
+
+.expanded-window{
+	padding:0 !important;
+	 transition: padding 0.5s;
+}
+.expand-anim{
+	transition: padding 0.5s;
+	padding:0 50px;
 }
 
-.chatHeader {
-  color: white;
-  .fa-bars {
-    color: $secondary;
-  }
-  .fa-cog {
-    color: rgba(255, 255, 255, 0.3);
-  }
-}
-
-.chat-button {
-  background-color: $primary-light;
-  color: white;
+#bloc-0{
+	h2{
+		text-shadow:0 0 0 transparent!important;
+	}
 }
 
 .panel {
@@ -471,14 +550,6 @@ li:nth-child(even) {
   border-left: 2px solid $primary-light;
 }
 
-/*.active-caret {
-  z-index: 1;
-  color: rgba(200, 200, 200, 0.3);
-  position: absolute;
-  top: 9px;
-  right: 0em;
-  font-size: 1.2em;
-}*/
 
 .panel-footer {
   background-color: #333 !important;
@@ -486,14 +557,6 @@ li:nth-child(even) {
     color: #666;
   }
 }
-
-/*.offline-header-main {
-  transition: color 0.5s ease;
-  color: $secondary;
-  &:hover {
-    color: $secondary-dark;
-  }
-}*/
 
 .loading-info {
   background-color: #666;

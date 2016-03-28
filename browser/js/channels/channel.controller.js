@@ -170,6 +170,12 @@ app.controller('ChannelCtrl', function (Editor,$scope, streamer, $firebaseObject
     }
   }
   $scope.subscribed;
+
+  $scope.expanded = false;
+  $scope.expandWindow = function(){
+    $scope.expanded = !$scope.expanded;
+  }
+
 });
 
 app.factory('Editor', [function () {
