@@ -87,7 +87,7 @@
                 </li>
                 <li ui-sref="subscribers"ng-click="setActive('following')" ng-class="{active: activetab == 'following'}">
                     <a href="#">
-                        <span class="fa fa-plus"></span>
+                        <span class="fa fa-group"></span>
                         Subscribers
                     </a>
                 </li>
@@ -112,7 +112,7 @@
         <div ng-if="!sidebar" class="icons">
             <div class="text-center">
                 <a class="fa icon-bg-light icon-md" ng-class="{'fa-caret-right':!state, 'fa-caret-left':state }" ng-click="toggleState()"></a>
-                <span ui-sref="home"><img class="fa ducky-icon"id='ducky-icon-xs'ng-click="duckyAnimate()" ng-src="https://static.gearslutz.com/board/customavatars/avatar211639_1.gif"></span>
+                <span ui-sref="home"><img class="fa ducky-icon"id='ducky-icon-xs'ng-click="duckyAnimate()" ng-src="img/ducky.gif"></span>
                 <span ui-sref="user_dashboard({userId:user._id})" class="fa fa-user icon-secondary icon-md"></span>
                 <span ui-sref="channels" class="fa fa-search icon-secondary icon-md"></span>
                 <span class="fa fa-github-alt icon-secondary icon-md"></span>
