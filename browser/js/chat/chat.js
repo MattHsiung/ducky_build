@@ -1,8 +1,7 @@
 app.directive('chatDirective', function($rootScope, $firebaseArray, AuthService, ChatFactory) {
     return {
         link : function(scope, element, attr) {
-
-            var ducky = new Firebase('https://ducky.firebaseio.com/chat/' + scope.username);
+            var ducky = new Firebase('https://ducky.firebaseio.com/chat/' + scope.username)
 
             scope.show=false;
             $rootScope.chat=false;
@@ -12,6 +11,7 @@ app.directive('chatDirective', function($rootScope, $firebaseArray, AuthService,
               if(scope.show)element.addClass('showChat');
               else element.removeClass('showChat');
             }
+
             AuthService.getLoggedInUser().then(user=>scope.user=user)
 
             scope.messages = $firebaseArray(ducky);
@@ -71,4 +71,21 @@ app.directive('ngEnter', function() {
             }
         });
     };
+});
+
+app.controller('chatCtrl', function($scope, username){
+    $scope.username = username;
+})
+
+app.config( function ($stateProvider){
+    $stateProvider.state('chat', {
+        url: '/chat/:username',
+        templateUrl: '/js/chat/chat.html',
+        controller:'chatCtrl',
+        resolve: {
+            username: function ($stateParams){
+              return $stateParams.username;
+            }
+        }
+    });
 });

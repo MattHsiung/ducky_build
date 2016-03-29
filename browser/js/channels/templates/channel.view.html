@@ -1,18 +1,18 @@
 <!-- bloc-0 -->
 <div class="bloc bgc-dark-sea-green d-bloc" id="bloc-0">
-    <div class="container ">
+    <div class="container">
         <div ng-if="!loading" class="row">
-            <div class="col-sm-2">
+            <div class="col-sm-2 col-xs-2">
                 <div class="avatar">
                     <img src="{{channelInfo.image}}?s=150">
                 </div>
             </div>
-            <div class="col-sm-10">
+            <div class="col-sm-10 col-xs-10">
                 <h2 class="mg-md tc-dark-jungle-green">
                     {{channelInfo.title}}
                 </h2>
-                <h3 class="mg-md .ng-white">
-                    {{username}} working in {{channelInfo.category}}
+                <h3 class="mg-md .ng-white rale ch-title">
+                    {{username}}  <span class="pull-right">{{channelInfo.category||null}}</span>
                 </h3>
             </div>
         </div>
@@ -54,7 +54,7 @@
 <div ng-if="online" class="bloc l-bloc bgc-white rale" id="bloc-2">
     <div ng-if="online" class="container">
         <div class="row push-down-xs">
-            <div class="col-md-3 col-xs-4">
+            <div class="col-xs-12 col-md-3 col-sm-4">
                 <a ng-click="subscribeToChannel()" class="btn btn-sq btn-block">
                     <span ng-show="!subscribed">
                         <span class="fa fa-heart-o icon-spacer fa-lg"></span>
@@ -66,28 +66,28 @@
                     </span>
                 </a>
             </div>
-            <div class="col-md-3 col-xs-4">
+            <div class="col-md-3 col-sm-4 col-xs-12">
                 <div class="row text-r">
-                    <div class="col-sm-4">
+                    <div class="col-xs-4 col-sm-4">
                 <span><a class="fa fa-facebook-square fa-2x"></a></span>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-xs-4 col-sm-4">
                 <span><a class="fa fa-github fa-2x"></a></span>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-xs-4 col-sm-4">
                 <span><a class="fa fa-twitter fa-2x"></a></span>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-md-offset-2 col-xs-4">
+            <div class="col-md-4 col-md-offset-2 col-sm-4 col-xs-12">
                 <div class="row txt-r">
-                    <div class="col-sm-4">
+                    <div class="col-xs-4 col-sm-4">
                         <span class="fa fa-user icon-deep-carmine-pink icon-dark-jungle-green">{{subs.length}}</span>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-xs-4 col-sm-4">
                         <span class="fa fa-eye icon-1315">{{channelInfo.views}}</span>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-xs-4 col-sm-4">
                         <span class="fa fa-heart icon-deep-carmine-pink">15,334</span>
                     </div>
                 </div>
@@ -99,12 +99,12 @@
 <div class="bloc d-bloc" id="bloc-3">
     <div class="container">
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-xs-6 col-sm-6">
                 <h3 class="mg-md rale">
                     <span class="fa fa-file-code-o icon-1315"></span> Code
                 </h3>
             </div>
-            <div class="col-sm-6">
+            <div class="col-xs-6 col-sm-6">
                 <span class="fa fa-caret-square-o-down push-down-xs pull-right icon-bg-light icon-md" data-toggle="collapse" data-target="#code-editor"></span>
             </div>
         </div>
@@ -114,7 +114,7 @@
 <div class="bloc panel-background expand-anim" id="bloc-4" ng-class="{'expanded-window':expanded}">
     <div  ng-class="{'container':!expanded, 'container-fluid':expanded}">
         <div class="row collapse in" id="code-editor">
-            <div class="col-sm-3">
+            <div class="col-xs-3 col-sm-3">
                 <div class="panel panel-sq">
                     <div class="panel-heading">
                         <h4 class="mg-clear ">
@@ -136,7 +136,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-9">
+            <div class="col-xs-9 col-sm-9">
                 <div id="toolbar" ng-controller="ToolbarCtrl">
                     <div class="btn-group rale" uib-dropdown is-open="status.isopen">
                       <button id="single-button" type="button" class="btn btn-sq btn-primary" uib-dropdown-toggle ng-disabled="disabled">
