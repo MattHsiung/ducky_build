@@ -1,4 +1,6 @@
 #sidenav {
+    height: 100vh;
+    overflow-y:scroll;
     background-color: #333;
     font-family: "proxima-nova",sans-serif;
     color: white;
@@ -117,6 +119,11 @@
     .active {
         border-left: 2px solid $primary-light;
         background-color: RGBA(0,0,0,.4);
+    }
+    .subscribed-channels{
+        img{
+            
+        }
     }
 }
 
