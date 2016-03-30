@@ -6,9 +6,10 @@ app.controller('HomeCtrl', function ($scope, loggedInUser) {
     })
 
     $scope.jwplayerSetup = {
-        file: "rtmp://192.168.68.8/live/jmeeker2",
+        file: "rtmp://162.243.92.50/live/Matt",
         width: "100%",
-        aspectratio: "16:9"
+        aspectratio: "16:9",
+        image: "/preview/Matt.jpg"
     };
 
 });
