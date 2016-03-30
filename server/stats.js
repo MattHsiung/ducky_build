@@ -5,7 +5,7 @@ var parser = require('xml2json');
 
 var options = {
 	method: 'GET',
-	uri: 'http://localhost/stat'
+	uri: 'http://127.0.0.1:8080/stat'
 };
 
 module.exports = function() {
