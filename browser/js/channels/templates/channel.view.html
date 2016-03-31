@@ -12,7 +12,7 @@
                     {{channelInfo.title}}
                 </h2>
                 <h3 class="mg-md .ng-white rale ch-title">
-                    {{username}}  <span class="pull-right">{{channelInfo.category||null}}</span>
+                    {{channelInfo.user}}  <span class="pull-right">{{channelInfo.category||null}}</span>
                 </h3>
             </div>
         </div>
@@ -20,7 +20,7 @@
         <div class="row text-center">
             <img id='ducky-icon-load-main' class="fa-spin pull-left" ng-src="https://www.firebase.com/resources/images/forge/loader.gif">
             <div class="col-sm-12">
-              <h3 class="offline-header-main">Loading {{username}}'s page...</h3>
+              <h3 class="offline-header-main">Loading {{channelInfo.user}}'s page...</h3>
             </div>
           </div>
           <div class="loading-info text-center">
@@ -46,7 +46,7 @@
     <div ng-if="!online && !loading" class="container">
         <div class="row">
             <div id="offline" class="offline col-sm-12 text-center">
-                <h3 class="offline-header">{{username}} is offline </h3>
+                <h3 class="offline-header">{{channelInfo.user}} is offline </h3>
             </div>
         </div>
     </div>
@@ -55,14 +55,14 @@
     <div ng-if="online" class="container">
         <div class="row push-down-xs">
             <div class="col-xs-12 col-md-3 col-sm-4">
-                <a ng-click="subscribeToChannel()" class="btn btn-sq btn-block">
+                <a ng-show="user" ng-click="subscribeToChannel()" class="btn btn-sq btn-block">
                     <span ng-show="!subscribed">
                         <span class="fa fa-heart-o icon-spacer fa-lg"></span>
-                        Follow {{username}}
+                        Follow {{channelInfo.user}}
                     </span>
                     <span ng-show="subscribed">
                         <span class="fa fa-frown-o icon-spacer fa-lg"></span>
-                        Unfollow {{username}}
+                        Unfollow {{channelInfo.user}}
                     </span>
                 </a>
             </div>
@@ -82,7 +82,8 @@
             <div class="col-md-4 col-md-offset-2 col-sm-4 col-xs-12">
                 <div class="row txt-r">
                     <div class="col-xs-4 col-sm-4">
-                        <span class="fa fa-user icon-deep-carmine-pink icon-dark-jungle-green">{{subs.length}}</span>
+                        <span class="fa fa-user icon-deep-carmine-pink icon-dark-jungle-green">{{numOfSubscribers}}</span>
+                        
                     </div>
                     <div class="col-xs-4 col-sm-4">
                         <span class="fa fa-eye icon-1315">{{channelInfo.views}}</span>
@@ -123,7 +124,7 @@
                     </div>
                     <div id="directory" class="panel-body">
                       <div ng-if="loading" class='text-center'>
-                        <h3 class="ng-white"> Loading {{username}}'s files...</h3>
+                        <h3 class="ng-white"> Loading {{channelInfo.user}}'s files...</h3>
                         <img id='ducky-icon-load' class="fa-spin col-sm-4" ng-src="https://static.gearslutz.com/board/customavatars/avatar211639_1.gif">
                       </div>
                         <abn-tree ng-hide="loading" tree-data="directory" intial-selection="{{currentFile}}"></abn-tree>
@@ -231,7 +232,7 @@
     <div class="chatHeader">
         <h3>
             <a class="fa fa-comment pull-left" ></a>
-                {{username}}
+                {{channelInfo.user}}
             <a class="fa fa-cog icon-bg-light icon-md pull-right"></a>
         </h3>
     </div>

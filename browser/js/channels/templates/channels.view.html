@@ -15,7 +15,7 @@
 							<a ng-click="selCategory(undefined)" class="a-btn a-block">None</a>
 						</li>
 						<li ng-repeat="category in categories">
-							<a ng-click="selCategory(category)" class="a-btn a-block">{{category}}</a>
+							<a ng-click="selCategory(category.$id)" class="a-btn a-block">{{category.$id}}</a>
 						</li>
 
 					</ul>
@@ -42,11 +42,11 @@
 <div ng-if="!loading" class="bloc cloud half-n-half" id="bloc-11">
 	<div class="container-fluid bloc-sm">
 		<div class="row bg-js">
-			<div class="col-sm-4 col-lg-3 animated fadeIn" ng-repeat="channel in channels | filter:search:undefined | filter:searchCat:true" ui-sref="channel({username: channel.user})">
+			<div class="col-sm-4 col-lg-3 " ng-repeat="channel in channels | filter:search:undefined | filter:searchCat:undefined" ui-sref="channel({username: channel.user})">
 				<div class="panel channel-thumb panel-sq">
 					<div class="panel-heading">
 			            <a class="profile-thumb col-sm-2">
-			              <img src="{{channel.profilephoto}}">
+			              <img src="{{channel.image}}">
 			            </a>
 						<h4 class="mg-clear">
 							{{channel.user}}
@@ -59,9 +59,6 @@
 							<h4>{{channel.title}}</h4>
 						</div class="channel-thumb-foot">
 					</div>
-					<!-- <div class="panel-footer">
-						Hello
-					</div> -->
 				</div>
 			</div>
 		</div>
@@ -73,35 +70,3 @@
 </div>
 </div>
 
-<!-- bloc-1 END -->
-
-
-<!-- Footer - bloc-2 -->
-<!-- <div class="bloc l-bloc bgc-white" id="bloc-2">
-	<div class="container bloc-md">
-		<div class="row">
-			<div class="col-sm-3">
-				<h3 class="mg-md">
-					About
-				</h3><a href="index.html" class="a-btn a-block">The team</a><a href="index.html" class="a-btn a-block">Contact us</a>
-			</div>
-			<div class="col-sm-3">
-				<h3 class="mg-md">
-					Get the App
-				</h3><a href="index.html" class="a-btn a-block">iPhone</a><a href="index.html" class="a-btn a-block">Android</a>
-			</div>
-			<div class="col-sm-3">
-				<h3 class="mg-md">
-					Follow us
-				</h3><a href="index.html" class="a-btn a-block">Twitter</a><a href="index.html" class="a-btn a-block">Facebook</a>
-			</div>
-			<div class="col-sm-3">
-				<h3 class="mg-md">
-					Company
-				</h3><a href="index.html" class="a-btn a-block">Terms of use</a><a href="index.html" class="a-btn a-block">Privacy</a>
-			</div>
-		</div>
-	</div>
-</div> -->
-<!-- Footer - bloc-2 END -->
-<!-- Main container END -->
