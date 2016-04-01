@@ -112,49 +112,7 @@
     </div>
 </div>
 
-<div class="bloc panel-background expand-anim" id="bloc-4" ng-class="{'expanded-window':expanded}">
-    <div  ng-class="{'container':!expanded, 'container-fluid':expanded}">
-        <div class="row collapse in" id="code-editor">
-            <div class="col-xs-3 col-sm-3">
-                <div class="panel panel-sq">
-                    <div class="panel-heading">
-                        <h4 class="mg-clear ">
-                            Project Directory
-                        </h4>
-                    </div>
-                    <div id="directory" class="panel-body">
-                      <div ng-if="loading" class='text-center'>
-                        <h3 class="ng-white"> Loading {{channelInfo.user}}'s files...</h3>
-                        <img id='ducky-icon-load' class="fa-spin col-sm-4" ng-src="https://static.gearslutz.com/board/customavatars/avatar211639_1.gif">
-                      </div>
-                        <abn-tree ng-hide="loading" tree-data="directory" intial-selection="{{currentFile}}"></abn-tree>
-                    </div>
-                    <div class="panel-footer">
-                        <h4 class="mg-clear ">
-                          <span class="fa fa-database"></span>
-                            {{currentFile}}
-                        </h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-9 col-sm-9">
-                <div id="toolbar" ng-controller="ToolbarCtrl">
-                    <div class="btn-group rale" uib-dropdown is-open="status.isopen">
-                      <button id="single-button" type="button" class="btn btn-sq btn-primary" uib-dropdown-toggle ng-disabled="disabled">
-                        Theme<span class="caret"></span>
-                      </button>
-                      <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
-                        <li role="menuitem" ng-repeat="theme in themes" ng-click="setTheme(theme)"><a>{{theme}}</a></li>
-                      </ul>
-
-                    </div>
-                    <a class="fa pull-right fa-3x" ng-class="{'fa-expand':!expanded, 'fa-compress':expanded}" ng-click="expandWindow()"></a>
-                </div>
-                <div id="editor">Click on a file to see some code!</div>
-            </div>
-          </div>
-    </div>
-</div>
+<editor streamer="streamer"></editor>
 
 <!--
 <div class="bloc l-bloc tc-medium-champagne" id="bloc-5">

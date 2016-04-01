@@ -28,12 +28,24 @@ app.factory('CategoryFactory', function(FB, $firebaseArray){
   return $firebaseArray(ref);
 });
 
+app.factory('RecentFactory', function(FB, $firebaseObject){
+  var ref = new Firebase(FB+'recent');
+  return {
+      setRecent: function(user, streamer){
+        return $firebaseObject(ref.child(user))
+          .$loaded(recent => {
+            recent.$value = streamer
+            recent.$save()
+          });
+      }
+  }
+});
+
 app.factory('FilesFactory', function(FB, $firebaseObject){
   var ref = new Firebase(FB+'files')
   return {
       getFiles: function(streamer){
         return $firebaseObject(ref.child(streamer)).$loaded()
-
       } 
   }
 });
