@@ -1,6 +1,6 @@
 #Ducky
 [![Built at Fullstack Academy](https://img.shields.io/badge/Built%20at-Fullstack%20Academy-red.svg?style=round-square)](http://fullstackacademy.com)
-[![Backlog Issues](https://waffle.io/MattHsiung/ducky_build.svg?label=backlog&title=Backlog)](http://waffle.io/MattHsiung/ducky_build)
+[![Backlog Issues](https://badge.waffle.io/MattHsiung/ducky_build.svg?label=backlog&title=Backlog)](http://waffle.io/MattHsiung/ducky_build)
 
 Ducky is a real-time video and file streaming platform for software engineers to work collaboratively on projects and coding challenges. Please visit us as www.duckystream.tv to see more.
 
