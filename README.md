@@ -6,7 +6,9 @@ Ducky is a real-time video and file streaming platform for software engineers to
 
 ##About
 
-Ducky provides a unique platform for code collaboration and education. Ducky combines live streaming video with a in-browser project directory that updates in real time. Streamers can stream live video of their coding projects using tools like OBS, and use the ducky-stream module CLI tool to share their project directory in real time. Users watching their channel will be able to view their entire projects code base, excluding any files that have been gitignored. 
+Ducky provides a unique platform for code collaboration and education. Ducky combines live streaming video with a in-browser project directory that updates in real time. Streamers can stream live video of their coding projects using tools like OBS, and use the ducky-stream module CLI tool to share their project directory in real time. Users watching their channel will be able to view their entire projects code base, excluding any files that have been gitignored.
+
+Why Ducky? Much like the [rubber duck debugging method](https://en.wikipedia.org/wiki/Rubber_duck_debugging), we think Ducky can be used to assist in overcoming code challenges and debugging, collaboratively and in real time. 
 
 For more information about live streaming files, check out the [ducky-stream repo](https://github.com/jmeeke02/ducky-stream).
 
