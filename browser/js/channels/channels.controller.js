@@ -45,8 +45,8 @@ app.factory('FilesFactory', function(FB, $firebaseObject){
   var ref = new Firebase(FB+'files')
   return {
       getFiles: function(streamer){
-        return $firebaseObject(ref.child(streamer)).$loaded()
-      } 
+        return $firebaseObject(ref.child(streamer))
+      }
   }
 });
 

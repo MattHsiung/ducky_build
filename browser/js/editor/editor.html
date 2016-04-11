@@ -13,12 +13,12 @@
                         <h3 class="ng-white"> Loading {{channelInfo.user}}'s files...</h3>
                         <img id='ducky-icon-load' class="fa-spin col-sm-4" ng-src="https://static.gearslutz.com/board/customavatars/avatar211639_1.gif">
                       </div>
-                        <abn-tree ng-hide="loading" tree-data="directory" intial-selection="{{currentFile}}"></abn-tree>
+                        <abn-tree ng-hide="loading" tree-data="directory" intial-selection="{{currentFile.label}}"></abn-tree>
                     </div>
                     <div class="panel-footer">
                         <h4 class="mg-clear ">
                           <span class="fa fa-database"></span>
-                            {{currentFile}}
+                            {{currentFile.label}}
                         </h4>
                     </div>
                 </div>
