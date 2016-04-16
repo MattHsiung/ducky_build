@@ -3,7 +3,7 @@ app.factory('ChannelsFactory', function(FB, $firebaseArray){
   return $firebaseArray(ref);
 });
 app.factory('ActiveFactory', function(FB, $firebaseArray, $firebaseObject){
-  var ref = new Firebase(FB+'files');
+  var ref = new Firebase(FB+'active');
   return {
       all: function(){
         return $firebaseArray(ref);
@@ -76,7 +76,8 @@ app.controller('ChannelsCtrl', function (categories, $scope, filterFilter, Activ
       var channels = [];
       angular.forEach(activeChannels, channel => {
           ChannelInfoFactory.getInfo(channel.$id).$loaded(data => {
-            data.preview = '';
+            console.log(data);
+            data.preview = '/preview/' + data.user + '.jpg';
             channels.push(data)
         })
 
