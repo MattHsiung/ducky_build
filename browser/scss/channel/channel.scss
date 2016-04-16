@@ -283,28 +283,53 @@ body > div{
 	z-index: 2;
 }
 
+.bg-js .col-sm-4{
+	height:30%;
+	margin-bottom: 20px;
+}
+
 .channel-thumb{
   img {
     width: 100%;
     height: auto;
   }
-
+  overflow: hidden;
+  position: relative;
   background-color: black;
   background-blend-mode: multiply;
   background-size: 100% auto;
   background-position: center center;
   background-repeat: no-repeat;
-  // opacity:1;
-  /*height: 40vh;*/
+  height: 100%;
   box-shadow: 1px 10px 30px rgba(0,0,0,0.4)!important;
   background-color: white;
-  margin-bottom:50px;
   border-radius: 10px;
+
+  &:hover{
+  	.channel-thumb-foot{
+  		transform: translateY(0);
+  	}
+  	
+  }
+
+  .channel-thumb-foot{
+  	background-color: $gray;
+  	color:$primary-light;
+  	position: absolute;
+  	bottom: 0;
+  	left: 0;
+  	width: 100%;
+  	padding:0 10px;
+  	overflow: hidden;
+  	transform:translateY(100%);
+  	transition:transform 0.3s
+  	
+  }
 }
 
 .channel-thumb .panel-heading{
-  background-color:#444;
-  color:white;
+  background-color:$gray;
+  color:$secondary;
 }
 
 .panel-footer{
@@ -539,6 +564,14 @@ body > div{
 #bloc-0{
 	h2{
 		text-shadow:0 0 0 transparent!important;
+	}
+
+	.col-sm-10{
+		padding-top: 15px;
+	}
+	.ch-title{
+		width: 100%;
+		font-weight: 900!important;
 	}
 }
 

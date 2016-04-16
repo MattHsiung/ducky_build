@@ -1,4 +1,4 @@
-app.controller('ToolbarCtrl', function (Editor, $scope, $log) {
+app.controller('ToolbarCtrl', function (Editor, $scope) {
   var editor = Editor.editor();
   $scope.themes = {
     monokai:'monokai',

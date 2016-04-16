@@ -52,10 +52,14 @@
 <body ng-app="FullstackGeneratedApp">
     <!-- Main container -->
     <div class="bgc-dark-jungle-green" id="sidenav" ng-controller="SidebarController" sidebar-directive="state">
-        <div ng-if="sidebar" class="area" ng-controller="ChannelsCtrl">
+        <div ng-if="sidebar" class="area" >
             <div ui-sref="home" class="row title">
-              <img id='ducky-icon' class="col-sm-3 ducky-icon" ng-click="duckyAnimate()" ng-src="img/ducky.gif">
-              <h1 class="col-sm-9">DUCKY</h1>
+                <div class="col-sm-3 col-xs-3">
+                    <img id='ducky-icon' class="ducky-icon img-responsive" ng-click="duckyAnimate()" ng-src="img/ducky.gif">
+                </div>
+                <div class="col-sm-9 col-xs-9">
+                    <h1 >DUCKY</h1>
+                </div>
             </div>
 
             <!-- TEMPLATE FOR TYPEAHEAD -->
@@ -97,14 +101,20 @@
                 <li ui-sref="channels" ng-click="setActive('channels')" ng-class="{active: activetab == 'channels'}"><a ><span class="fa fa-play"></span>Channels</a></li>
             </ul>
             <h3 class='nav-headers' ng-if="user">Subscribed Channels</h3>
-            <ul class="recommended-channels" ng-if="user" ng-controller="ChannelsCtrl">
-              <li ng-repeat="subs in subscriptions" ui-sref="channel({username:subs.$id})">
-                <div class="row">
-                  <img class="col-sm-3" src="/img/js_logo.jpg">
-                  <h5 class="col-sm-9">{{subs.$id}}</h5>
-                </div>
-              </li>
-            </ul>
+            <div class="subscribed-channels">
+                <ul class="recommended-channels" ng-if="user" ng-controller="ChannelsCtrl">
+                  <li ng-repeat="subs in subscriptions" ui-sref="channel({username:subs.$id})">
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-3">
+                            <img class="img-responsive" src="/img/js_logo.jpg">
+                        </div>
+                        <div  class="col-sm-9 col-xs-9">
+                            <h5>{{subs.$id}}</h5>
+                        </div>
+                    </div>
+                  </li>
+                </ul>
+            </div>
         </div>
         <div ng-if="sidebar" class="icons">
             <a class="fa icon-bg-light icon-md" ng-class="{'fa-caret-right':!state, 'fa-caret-left':state }" ng-click="toggleState()"></a>

@@ -41,3 +41,6 @@ app.run(function ($rootScope, AuthService, $state) {
     });
 
 });
+
+app.constant('FB', 'https://ducky.firebaseio.com/');
+
