@@ -75,7 +75,11 @@ app.controller('ChannelsCtrl', function (categories, $scope, filterFilter, Activ
     ActiveFactory.all().$loaded(activeChannels => {
       var channels = [];
       angular.forEach(activeChannels, channel => {
-          ChannelInfoFactory.getInfo(channel.$id).$loaded(data =>channels.push(data))
+          ChannelInfoFactory.getInfo(channel.$id).$loaded(data => {
+            data.preview = '';
+            channels.push(data)
+        })
+
       });
       $scope.channels = channels;
       $scope.loading = false;
