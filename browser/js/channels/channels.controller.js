@@ -3,7 +3,7 @@ app.factory('ChannelsFactory', function(FB, $firebaseArray){
   return $firebaseArray(ref);
 });
 app.factory('ActiveFactory', function(FB, $firebaseArray, $firebaseObject){
-  var ref = new Firebase(FB+'active');
+  var ref = new Firebase(FB+'files');
   return {
       all: function(){
         return $firebaseArray(ref);
@@ -19,7 +19,7 @@ app.factory('ChannelInfoFactory', function(FB, $firebaseObject){
   return {
       getInfo: function(user){
         return $firebaseObject(ref.child(user));
-      } 
+      }
   }
 });
 
@@ -69,9 +69,18 @@ app.factory('SubscriberFactory', function(FB, $firebaseObject) {
   }
 });
 
-app.controller('ChannelsCtrl', function (channels, categories, $scope, filterFilter) {
+app.controller('ChannelsCtrl', function (categories, $scope, filterFilter, ActiveFactory, ChannelInfoFactory) {
 
-    $scope.channels = channels;
+    //need this here to show loading icon, resolving in state sits until everything loads, looks like button broken
+    ActiveFactory.all().$loaded(activeChannels => {
+      var channels = [];
+      angular.forEach(activeChannels, channel => {
+          ChannelInfoFactory.getInfo(channel.$id).$loaded(data =>channels.push(data))
+      });
+      $scope.channels = channels;
+      $scope.loading = false;
+    })
+    $scope.loading = true;
     $scope.categories = categories;
     $scope.searchCat = "";
     $scope.search = {};

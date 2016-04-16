@@ -4,15 +4,6 @@ app.config( function ($stateProvider){
         templateUrl: '/js/channels/templates/channels.html',
         controller: 'ChannelsCtrl',
         resolve:{
-            channels: function(ActiveFactory, FB, ChannelInfoFactory){
-                return ActiveFactory.all().$loaded(activeChannels => {
-                    var channels = [];
-                    angular.forEach(activeChannels, channel => {
-                        ChannelInfoFactory.getInfo(channel.$id).$loaded(data =>channels.push(data))
-                    });
-                    return channels
-                })
-            },
             categories: function(CategoryFactory){
                 return CategoryFactory.$loaded();
             }

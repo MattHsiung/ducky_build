@@ -19,7 +19,9 @@ app.controller('ChannelCtrl', function (active,$scope, channelInfo, ChannelInfoF
     })
 
     // -------ASSIGN RECENTLY WATCHED CHANNEL
-    RecentFactory.setRecent(user.username, streamer)
+    if(user){
+      RecentFactory.setRecent(user.username, streamer)
+    }
 
     $scope.subscribeToChannel = function(){
         if(user){
