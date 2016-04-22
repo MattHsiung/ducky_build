@@ -7,9 +7,9 @@
             <div class="stream-contain">
                 <player setup="jwplayerSetup"></player>
                 <div class="hero-stream-info">
-                    <h3>Stream Title</h3>
-                    <h4>jmeeker working in Javascript</h4>
-                    <span><i class="fa fa-user"></i>14</span>   
+                    <h3>{{topChannel.title}}</h3>
+                    <h4>{{topChannel.user}} |  {{topChannel.category}}</h4>
+                    <span><i class="fa fa-user"></i>14</span>
                 </div>
             </div>
         </div>
@@ -17,16 +17,53 @@
     <div class="featured-streams">
         <h3>Featured Streams</h3>
         <h4>Users streaming right now</h4>
-   		<div class="streams-list" ng-controller="ChannelsCtrl" >
+   		<div class="streams-list" >
 	   		<div class="stream-card" ng-repeat="channel in channels" ui-sref="channel({username: channel.user})">
 	   			<a>
-	   				<img src="{{channel.image}}">
+	   				<img src="{{channel.preview}}">
 	   				<div class="stream-info">
-	   					<h5>{{channel.user}}</h1>
-	   					<p>{{channel.title}}</p>
+  	   					<h5>{{channel.user}}</h1>
+  	   					<p>{{channel.title}}</p>
 	   				</div>
 	   			</a>
 	   		</div>
 	   	</div>
    	</div>
 </section>
+
+
+<!-- bloc-1 END -->
+
+
+<!-- Footer - bloc-2 -->
+<div class="bloc l-bloc bgc-white" id="bloc-2">
+    <div class="container bloc-md">
+        <div class="row">
+            <div class="col-sm-4">
+                <h3 class="mg-md">
+                    About
+                </h3>
+                <a href="" class="a-btn a-block">The Team</a>
+                <a href="" class="a-btn a-block">The Project</a>
+            </div>
+            <div class="col-sm-4">
+                <h3 class="mg-md">
+                    Follow us
+                </h3>
+                <a href="" class="a-btn a-block">Twitter</a>
+                <a href="" class="a-btn a-block">Facebook</a>
+                <a href="" class="a-btn a-block">Contact Us</a>
+
+            </div>
+            <div class="col-sm-4">
+                <h3 class="mg-md">
+                    Help
+                </h3>
+                <a href="" class="a-btn a-block">FAQ</a>
+                <a href="" class="a-btn a-block">Announcements</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer - bloc-2 END -->
+<!-- Main container END -->

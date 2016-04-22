@@ -22,7 +22,7 @@ var startServer = function () {
         console.log(chalk.blue('Server started on port', chalk.magenta(PORT)));
     });
 
-    setInterval(stats, 15000);
+    // setInterval(stats, 15000);
 
 };
 
