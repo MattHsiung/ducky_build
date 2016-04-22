@@ -2,7 +2,7 @@ app.factory('ChannelsFactory', function(FB, $firebaseArray){
   var ref = new Firebase(FB+'channel');
   return $firebaseArray(ref);
 });
-app.factory('ActiveFactory', function(FB, $firebaseArray, $firebaseObject){
+app.factory('ActiveFactory', function(FB, $firebaseArray, $firebaseObject, ChannelInfoFactory){
   var ref = new Firebase(FB+'active');
   return {
       all: function(){
@@ -10,6 +10,20 @@ app.factory('ActiveFactory', function(FB, $firebaseArray, $firebaseObject){
       },
       one: function(streamer){
         return $firebaseObject(ref.child(streamer));
+      },
+      allPopulated: function(){
+        return this.all().$loaded(activeChannels => {
+          var channels = [];
+          angular.forEach(activeChannels, channel => {
+              ChannelInfoFactory.getInfo(channel.$id).$loaded(data => {
+                // console.log(data);
+                data.preview = '/preview/' + data.user + '.jpg';
+                channels.push(data)
+            })
+
+          });
+          return channels;
+        })
       }
   }
 });
@@ -69,23 +83,9 @@ app.factory('SubscriberFactory', function(FB, $firebaseObject) {
   }
 });
 
-app.controller('ChannelsCtrl', function (categories, $scope, filterFilter, ActiveFactory, ChannelInfoFactory) {
-
-    //need this here to show loading icon, resolving in state sits until everything loads, looks like button broken
-    ActiveFactory.all().$loaded(activeChannels => {
-      var channels = [];
-      angular.forEach(activeChannels, channel => {
-          ChannelInfoFactory.getInfo(channel.$id).$loaded(data => {
-            console.log(data);
-            data.preview = '/preview/' + data.user + '.jpg';
-            channels.push(data)
-        })
-
-      });
-      $scope.channels = channels;
-      $scope.loading = false;
-    })
-    $scope.loading = true;
+app.controller('ChannelsCtrl', function (channels, categories, $scope, filterFilter, ActiveFactory, ChannelInfoFactory) {
+    // $scope.loading = false;
+    $scope.channels = channels;
     $scope.categories = categories;
     $scope.searchCat = "";
     $scope.search = {};
