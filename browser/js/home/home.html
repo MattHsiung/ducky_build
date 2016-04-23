@@ -18,7 +18,7 @@
         <h3>Featured Streams</h3>
         <h4>Users streaming right now</h4>
    		<div class="streams-list" >
-	   		<div class="stream-card" ng-repeat="channel in channels" ui-sref="channel({username: channel.user})">
+	   		<div class="stream-card" ng-repeat="channel in channels | orderBy: 'views'" ui-sref="channel({username: channel.user})">
 	   			<a>
 	   				<img src="{{channel.preview}}">
 	   				<div class="stream-info">
@@ -32,10 +32,6 @@
 </section>
 
 
-<!-- bloc-1 END -->
-
-
-<!-- Footer - bloc-2 -->
 <div class="bloc l-bloc bgc-white" id="bloc-2">
     <div class="container bloc-md">
         <div class="row">
@@ -65,5 +61,3 @@
         </div>
     </div>
 </div>
-<!-- Footer - bloc-2 END -->
-<!-- Main container END -->

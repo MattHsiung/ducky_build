@@ -2,7 +2,7 @@ app.factory('ChannelsFactory', function(FB, $firebaseArray){
   var ref = new Firebase(FB+'channel');
   return $firebaseArray(ref);
 });
-app.factory('ActiveFactory', function(FB, $firebaseArray, $firebaseObject, ChannelInfoFactory){
+app.factory('ActiveFactory', function(FB, $q, $firebaseArray, $firebaseObject, ChannelInfoFactory){
   var ref = new Firebase(FB+'active');
   return {
       all: function(){
@@ -15,24 +15,25 @@ app.factory('ActiveFactory', function(FB, $firebaseArray, $firebaseObject, Chann
         return this.all().$loaded(activeChannels => {
           var channels = [];
           angular.forEach(activeChannels, channel => {
-              ChannelInfoFactory.getInfo(channel.$id).$loaded(data => {
-                // console.log(data);
-                data.preview = '/preview/' + data.user + '.jpg';
-                channels.push(data)
+            ChannelInfoFactory.getInfo(channel.$id).$loaded(info => {
+                info.preview = '/preview/' + info.user + '.jpg';
+                channels.push(info)
             })
-
           });
-          return channels;
+          return channels
         })
       }
   }
 });
 
-app.factory('ChannelInfoFactory', function(FB, $firebaseObject){
+app.factory('ChannelInfoFactory', function(FB, $firebaseObject, $firebaseArray){
   var ref = new Firebase(FB+'channel');
   return {
       getInfo: function(user){
         return $firebaseObject(ref.child(user));
+      },
+      topChannel: function(){
+        return $firebaseArray(ref.orderByChild('views').limitToLast(1));
       }
   }
 });
@@ -92,7 +93,5 @@ app.controller('ChannelsCtrl', function (channels, categories, $scope, filterFil
     $scope.selCategory = function(category){
       $scope.searchCat = category;
     }
-
-
 });
 
