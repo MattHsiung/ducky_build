@@ -4,12 +4,15 @@ app.config(function ($stateProvider) {
         templateUrl: 'js/home/home.html',
         controller: 'HomeCtrl',
         resolve: {
-            loggedInUser: function (AuthService){
-                return AuthService.getLoggedInUser()
-                    .then( user => {
-                        if(!user) return null;
-                        else return user;
-                    })
+            user: function(AuthService) {
+                return AuthService.getLoggedInUser().then(user => user);
+            },
+            channels: function(ActiveFactory){
+                return ActiveFactory.allPopulated()
+            },
+            topChannel: function(ChannelInfoFactory){
+                return ChannelInfoFactory.topChannel()
+                    .$loaded( data => data[0] )
             }
         }
     });

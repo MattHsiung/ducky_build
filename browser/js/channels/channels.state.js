@@ -6,6 +6,9 @@ app.config( function ($stateProvider){
         resolve:{
             categories: function(CategoryFactory){
                 return CategoryFactory.$loaded();
+            },
+            channels: function(ActiveFactory){
+                return ActiveFactory.allPopulated();
             }
         }
     });
