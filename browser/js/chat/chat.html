@@ -1,9 +1,9 @@
-<div id="streamer-chat" class="chatWindow" chat-directive="state">
-
+<div class="chatWindow" ng-class="{showChat: show.chat, expand: expand}">
+    <a class="fa icon-bg-light icon-md" ng-class="{'fa-caret-right':show.chat, 'fa-caret-left':!show.chat, 'iconMove':show.chat }" ng-click="toggle()"></a>
     <div class="chatHeader">
         <h3>
             <a class="fa fa-comment pull-left" ></a>
-                {{username}}
+                {{streamer}}
             <a class="fa fa-cog icon-bg-light icon-md pull-right"></a>
         </h3>
     </div>
@@ -12,7 +12,7 @@
             <li class="list-group-item message" ng-repeat="message in messages">
                 <span class="messageUser">{{message.from}}: </span>
                 <span class="messageText">{{message.content}}</span>
-                <span class="messageTime pull-right">{{convertTimestamp(message.timestamp)}}</span>
+                <span class="messageTime pull-right">{{message.timestamp | date: "shortTime"}}</span>
             </li>
         </ul>
     </div>
