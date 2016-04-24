@@ -1,64 +1,69 @@
-app.directive('chatDirective', function($rootScope, $firebaseArray, AuthService, ChatFactory) {
+app.directive('chat', function() {
     return {
-        link : function(scope, element, attr) {
-            var ducky = new Firebase('https://ducky.firebaseio.com/chat/' + scope.username)
-
-            scope.show=false;
-            $rootScope.chat=false;
-            scope.toggle=function(){
-              scope.show=!scope.show
-              $rootScope.chat=!$rootScope.chat;
-              if(scope.show)element.addClass('showChat');
-              else element.removeClass('showChat');
-            }
-
-            AuthService.getLoggedInUser().then(user=>scope.user=user)
-
-            scope.messages = $firebaseArray(ducky);
-            scope.addMessage = function() {
-              // $add on a synchronized array is like Array.push() except it saves to the database!
-              scope.messages.$add({
-                from: scope.user.username,
-                content: scope.message,
-                timestamp: Firebase.ServerValue.TIMESTAMP
-              });
-
-              scope.message = "";
-            };
-            scope.convertTimestamp = ChatFactory.convertTimestamp;
-        }
+        restrict:'E',
+        replace: true,
+        scope:{
+          streamer: '=',
+          user: '=',
+          expand: '='
+        },
+        templateUrl: '/js/chat/chat.html',
+        controller: 'chatCtrl',
+        link: function (scope, element) {
+          scope.$watchCollection('messages', (update) => {
+            if(update) $('.chatMessages').scrollTop($('.chatMessages')[0].scrollHeight);
+          });
+      },
     };
 });
 
-app.factory('ChatFactory', [function () {
-
+app.factory('ChatFactory', ['FB', '$firebaseArray', function (FB, $firebaseArray) {
+  var ref = new Firebase(FB+'chat');
   return {
-
-      convertTimestamp: function(timestamp) {
-        var date = new Date(timestamp);
-        // Hours part from the timestamp
-        var ampm=' am'
-        var hours = date.getHours();
-        if(hours >12){
-          hours = hours-12
-          ampm = 'pm'
-        }else if(hours ===0){
-          hours = 12
-        }
-        // Minutes part from the timestamp
-        var minutes = "0" + date.getMinutes();
-        // Seconds part from the timestamp
-        var seconds = "0" + date.getSeconds();
-
-        // Will display time in 10:30:23 format
-        var formattedTime = hours + ':' + minutes.substr(-2) + ampm
-        return formattedTime;
-      }
-
+    getMessages: function(streamer) {
+      return $firebaseArray(ref.child(streamer));
+    }
   };
-
 }])
 
+app.controller('chatCtrl', function($scope, SidebarFactory, ChatFactory){
+    //controlling view
+    $scope.show = SidebarFactory;
+    $scope.toggle=function(){
+        SidebarFactory.chat = !SidebarFactory.chat
+    }
+    //fetch messages and add messages
+    $scope.messages = ChatFactory.getMessages($scope.streamer)
+    $scope.addMessage = function() {
+      $scope.messages.$add({
+        from: $scope.user,
+        content: $scope.message,
+        timestamp: Firebase.ServerValue.TIMESTAMP
+      }).then(()=> $scope.message = "")
+    };
+})
+
+//STATE FOR INDIVIDUAL STREAM PAGE
+app.config( function ($stateProvider){
+    $stateProvider.state('chat', {
+        url: '/chat/:streamer',
+        template: '<chat streamer="streamer" user="user.username" expand="true"></chat>',
+        controller:function($scope, streamer, user){
+          $scope.streamer = streamer
+          $scope.user = user
+        },
+        resolve: {
+            streamer: function ($stateParams){
+              return $stateParams.streamer;
+            },
+            user: function(AuthService){
+                return AuthService.getLoggedInUser().then(user => user)
+            }
+        }
+    });
+});
+
+//Hit enter inside of text area to trigger 'submit'
 app.directive('ngEnter', function() {
     return function(scope, element, attrs) {
         element.bind("keydown keypress", function(event) {
@@ -66,26 +71,8 @@ app.directive('ngEnter', function() {
                 scope.$apply(function(){
                     scope.$eval(attrs.ngEnter, {'event': event});
                 });
-
                 event.preventDefault();
             }
         });
     };
-});
-
-app.controller('chatCtrl', function($scope, username){
-    $scope.username = username;
-})
-
-app.config( function ($stateProvider){
-    $stateProvider.state('chat', {
-        url: '/chat/:username',
-        templateUrl: '/js/chat/chat.html',
-        controller:'chatCtrl',
-        resolve: {
-            username: function ($stateParams){
-              return $stateParams.username;
-            }
-        }
-    });
 });

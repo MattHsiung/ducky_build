@@ -1,62 +1,43 @@
-app.controller('SidebarController', function($scope, $state, $rootScope, AuthService, $firebaseArray) {
-    var ref = new Firebase('https://ducky.firebaseio.com/');
-    $scope.state = false;
-    $rootScope.sidebar=false;
-    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options){
-        $rootScope.chat=false;
+app.controller('SidebarController', function(SidebarFactory, SubscriberFactory, $scope, $state, AuthService) {
+    $scope.open = SidebarFactory;
+    
+    $scope.$on('auth-login-success', ()=>{
+      AuthService.getLoggedInUser().then(user => {
+        $scope.user = user;
+        SubscriberFactory.getSubscriptions(user.username)
+        .$loaded(data => $scope.subscriptions = data)
+      });
     })
-    function checkUser (){
-      AuthService.getLoggedInUser()
-        .then(user => {
-          if(!user) $scope.user = false;
-          else{
-            $scope.user = user;
-            getSubs(user)
-          }
-        })
-    }
-    $scope.$on('auth-login-success', checkUser)
+
     $scope.$on('auth-logout-success', () => {
       $scope.user = false;
       $scope.subscriptions=[];
-    })
+      $state.go('home');
+    });
     $scope.logout = function(){
       AuthService.logout()
-      .then(() => {
-        $scope.user = false;
-        $state.go('home');
+    };
 
-      })
-    }
     $scope.setActive = function(tab){
       $scope.activetab = tab;
-    }
+    };
 
     $scope.toggleState = function() {
-        $scope.state = !$scope.state;
-        $rootScope.sidebar=!$rootScope.sidebar;
+        SidebarFactory.sidebar = !SidebarFactory.sidebar
     };
-    function getSubs(user){
-      if(user){
-        var subRef = $firebaseArray(ref.child('subscriptions').child(user.username))
-        subRef.$loaded()
-          .then(data => $scope.subscriptions = data)
-      }
-    }
+    
 
 });
-
-app.directive('sidebarDirective', function() {
+//sidebar-directive="state"
+app.directive('sideBar', function() {
     return {
-        link : function(scope, element, attr) {
-            scope.$watch(attr.sidebarDirective, function(newVal) {
-                if(newVal){
-                  element.addClass('show');
-                  return;
-                }
-                element.removeClass('show');
-            });
-        }
+        restrict:'E',
+        replace: true,
+        scope:{},
+        templateUrl: '/js/sidebar/sidebar.html',
+        controller: 'SidebarController'
     };
 });
+
+
 
