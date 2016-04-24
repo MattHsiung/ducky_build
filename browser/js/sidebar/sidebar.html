@@ -64,7 +64,7 @@
             </div>
         </div>
         <div ng-if="open.sidebar" class="icons">
-            <a class="fa icon-bg-light icon-md" ng-class="{'fa-caret-right':!state, 'fa-caret-left':state }" ng-click="toggleState()"></a>
+            <a class="fa icon-bg-light icon-md" ng-class="{'fa-caret-right':!open.sidebar, 'fa-caret-left':open.sidebar }" ng-click="toggleState()"></a>
         </div>
         <div ng-if="!open.sidebar" class="icons">
             <div class="text-center">

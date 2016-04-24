@@ -34,6 +34,9 @@ app.factory('ChannelInfoFactory', function(FB, $firebaseObject, $firebaseArray){
       },
       topChannel: function(){
         return $firebaseArray(ref.orderByChild('views').limitToLast(1));
+      },
+      updateInfo: function(user, data) {
+        ref.child(user).update(data);
       }
   }
 });
@@ -43,14 +46,22 @@ app.factory('CategoryFactory', function(FB, $firebaseArray){
   return $firebaseArray(ref);
 });
 
-app.factory('RecentFactory', function(FB, $firebaseObject){
+app.factory('RecentFactory', function(FB, $firebaseObject, ChannelInfoFactory){
   var ref = new Firebase(FB+'recent');
   return {
       setRecent: function(user, streamer){
+        if(user===streamer)return
         return $firebaseObject(ref.child(user))
           .$loaded(recent => {
             recent.$value = streamer
             recent.$save()
+          });
+      }, 
+      getRecent: function(user){
+        return $firebaseObject(ref.child(user))
+          .$loaded(recent => {
+            if(!recent.$value)return null;
+            return ChannelInfoFactory.getInfo(recent.$value) 
           });
       }
   }
@@ -80,6 +91,14 @@ app.factory('SubscriberFactory', function(FB, $firebaseObject) {
           subscriptions.$save()
           subscribers[user.username]= subscribers[user.username] ? null:Firebase.ServerValue.TIMESTAMP;
           subscribers.$save()
+    },
+    getWeekly: function(obj){
+        let subs = [0,0];
+        angular.forEach(obj, function(sub){
+          subs[0]++
+          if ((Date.now()) - sub < 604800) subs[1]++;
+        })
+        return subs;
     }
   }
 });

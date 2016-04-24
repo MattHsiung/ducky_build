@@ -15,32 +15,29 @@
 				<div class = "dashboard-title">
 					<h2>Streamer's Corner</h2>
 				</div>
-
 				<div class = "each-dashboard">
 					<div class ="information-holder">
 						<h4 class = "info-titles">Title of your stream</h4>
-						<input placeholder="{{userInfo.title}}" ng-model="newData.title"></input>
+						<input placeholder="{{userInfo.title}}" ng-model="newInfo.title"></input>
 						<br>
 						<br>
 						<h4 class = "info-titles">Main Topic</h4>
-						<select ng-model="newData.category">
-							<option ng-repeat="category in categories">{{category}}</option>
+						<select ng-model="newInfo.category">
+							<option ng-repeat="category in categories">{{category.$id}}</option>
 						</select>
-						<button class="btn btn-sq" ng-click="updateFirebase(newData)" id="update-btn">Update</button>
+						<button class="btn btn-sq" ng-click="updateChannel(newInfo)" id="update-btn">Update</button>
 					</div>
 				</div>
 			</div>
-
 			<div class = "dashboard-user col-sm-4">
 				<div class = "dashboard-title">
 					<h2>Analytics</h2>
 				</div>
-
 				<div class = "each-dashboard">
 					<div class ="information-holder">
-						<h4 class = "info-titles">Subscribers: {{subscribers.length}}</h4>
+						<h4 class = "info-titles">Subscribers: {{subscribers[0]}}</h4>
 						<br>
-						<h4 class = "info-titles">New Followers This Week: {{weekFollower}}</h4>
+						<h4 class = "info-titles">New Followers This Week: {{subscribers[1]}}</h4>
 						<br>
 						<h4 class = "info-titles">Total Views: {{userInfo.views || 0 }}</h4>
 					</div>
@@ -56,13 +53,13 @@
 					<div class ="information-holder">
 						<h4 class = "info-titles">Subscribed Channels: </h4>
 						<ul class="list-group">
-							<li class="list-group-item" ui-sref="channel({username: user})"ng-repeat="user in subscriptions">
+							<li class="list-group-item" ui-sref="channel({username: user})"ng-repeat="(user,v) in subscriptions">
 							{{user}}
 							</li>
 						</ul>
 						<br>
 						<h4 class = "info-titles">Recently Watched Channel: </h4>
-						<div class="" ui-sref="channel({username: recent.user})">
+						<div class="" ng-show="recent" ui-sref="channel({username: recent.user})">
 							<div class="panel channel-thumb panel-sq">
 								<div class="panel-heading">
 						            <a class="profile-thumb col-sm-2">
