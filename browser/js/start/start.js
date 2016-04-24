@@ -1,11 +1,6 @@
 app.config(function ($stateProvider) {
     $stateProvider.state('start', {
         url: '/start',
-        templateUrl: 'js/start/start.html',
-        controller: 'StartCtrl'
+        templateUrl: 'js/start/start.html'
     });
 });
-
-app.controller('StartCtrl', ['$scope', function ($scope) {
-    
-}])
