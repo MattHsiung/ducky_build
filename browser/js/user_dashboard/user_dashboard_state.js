@@ -9,10 +9,10 @@ app.config(function ($stateProvider) {
         resolve: {
             theUser: function(AuthService, $stateParams) {
                 return AuthService.getLoggedInUser()
-            },
-            theFollowersOfUser: function(UserFactory, $stateParams) {
-                return UserFactory.fetchAllFollowersForOneStreamer($stateParams.userId);
             }
+            // theFollowersOfUser: function(UserFactory, $stateParams) {
+            //     return UserFactory.fetchAllFollowersForOneStreamer($stateParams.userId);
+            // }
         }
     });
 
