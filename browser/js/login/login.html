@@ -1,22 +1,8 @@
 <div class="login-header">
-    <h1>Log In</h1>
+    <h1 ng-show="state" class="ngFade">Log In</h1>
+    <h1 ng-hide="state" class="ngFade">Sign Up</h1>
 </div>
 
-<div class="login-contain">
-    <form id="login-form" name="loginForm" ng-submit="loginForm.$valid && sendLogin(login)">
+<login ng-show="state" ng-animate></login>
+<sign-up ng-hide="state" ng-animate></sign-up>
 
-        <alert type="danger" ng-show="error">
-            {{ error }}
-        </alert>
-
-        <div class="form-group">
-            <input type="text" ng-model="login.username" class="form-control" id="username" placeholder="Username">
-        </div>
-        <div class="form-group">
-            <input type="password" ng-model="login.password" class="form-control" id="login-password" placeholder="Password">
-        </div>
-        <button type="submit" class="btn btn-default">Sign In</button>
-        <span>Or</span>
-        <a ui-sref="signup">Sign Up</a>
-    </form>
-</div>
