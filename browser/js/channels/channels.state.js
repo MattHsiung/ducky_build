@@ -46,6 +46,9 @@ app.config( function ($stateProvider){
                 return SubscriberFactory.getSubscriptions(user.username).$loaded()
             }
 
+        },
+        onExit: function(SidebarFactory){
+            SidebarFactory.chat = false;
         }
     });
 });
