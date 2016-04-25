@@ -1,13 +1,12 @@
 app.controller('SignUpCtrl', function ($scope, AuthService, $state, SignUpFactory) {
-
     $scope.sendSignup = function (signupInfo) {
         $scope.error = null;
         AuthService.signup(signupInfo)
-        .then((user) => {
-            SignUpFactory.signUp(user)
-        })
-        .then(() => $state.go('start'))
-        .catch(() => $scope.error = 'Invalid signup credentials.')
+            .then((user) => {
+                SignUpFactory.signUp(user)
+            })
+            .then(() => $state.go('start'))
+            .catch(() => $scope.error = 'Invalid signup credentials.')
     };
 
 });
@@ -25,5 +24,16 @@ app.factory('SignUpFactory', ['FB', function (FB) {
                 views: 0
             })
         }
+    };
+}])
+
+
+app.directive('signUp', [function () {
+    return {
+        templateUrl: 'js/signup/signup.directive.html',
+        replace: true,
+        restrict: 'E',
+        scope: true,
+        controller: 'SignUpCtrl'
     };
 }])
