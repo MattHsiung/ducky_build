@@ -50,7 +50,7 @@
             <h3 class='nav-headers' ng-if="user">Subscribed Channels</h3>
             <div class="subscribed-channels">
                 <ul class="recommended-channels" ng-if="user">
-                  <li ng-repeat="(key, value) in subscriptions" ui-sref="channel({username:subs.$id})">
+                  <li ng-repeat="(key, value) in subscriptions" ui-sref="channel({username: key})">
                     <div class="row">
                         <div class="col-sm-3 col-xs-3">
                             <img class="img-responsive" src="/img/js_logo.jpg">
